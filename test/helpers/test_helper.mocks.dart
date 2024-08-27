@@ -9,7 +9,7 @@ import 'dart:typed_data' as _i18;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i7;
-import 'package:ditonton/features/movies/data/datasources/db/database_helper.dart'
+import 'package:ditonton/features/movies/data/datasources/db/movie_database_helper.dart'
     as _i15;
 import 'package:ditonton/features/movies/data/datasources/movie_local_data_source.dart'
     as _i12;
@@ -401,11 +401,12 @@ class MockMovieLocalDataSource extends _i1.Mock
       ) as _i6.Future<List<_i13.MovieTable>>);
 }
 
-/// A class which mocks [DatabaseHelper].
+/// A class which mocks [MovieDatabaseHelper].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDatabaseHelper extends _i1.Mock implements _i15.DatabaseHelper {
-  MockDatabaseHelper() {
+class MockMovieDatabaseHelper extends _i1.Mock
+    implements _i15.MovieDatabaseHelper {
+  MockMovieDatabaseHelper() {
     _i1.throwOnMissingStub(this);
   }
 

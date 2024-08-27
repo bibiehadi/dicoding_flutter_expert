@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const String BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+const String API_KEY =
+    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZDBkYzdlMTQzZjMyYTQ4YzkxMDM1YzQ3MmZiYWVlNCIsIm5iZiI6MTcyMTcwNTQyOS4xMDAxNzYsInN1YiI6IjY2ODNjM2I5MDQwN2RkMmZjNzI2MzQ0YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QnNM3diW2Z2H57f4Ljz9XD8IJG9lPsIewBKRA5RGTeg";
 
 // colors
 const Color kRichBlack = Color(0xFF000814);
