@@ -1,4 +1,4 @@
-enum TvSeriesListCategories { nowPlaying, popular, topRated, upcoming }
+enum TvSeriesListCategories { nowPlaying, popular, topRated }
 
 class GetTvSeriesListParams {
   final int page;
