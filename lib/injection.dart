@@ -19,7 +19,6 @@ import 'package:ditonton/features/movies/presentation/provider/movie_search_noti
 import 'package:ditonton/features/movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/features/movies/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/features/movies/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/features/tv_series/data/datasources/local/tv_series_local_datasource.dart';
 import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_remote_datasource.dart';
 import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_remote_datasource_impl.dart';
 import 'package:ditonton/features/tv_series/data/repositories/tv_series_repository_impl.dart';

@@ -125,7 +125,7 @@ Row _buildSubHeading({required String title, required Function() onTap}) {
 class TvSeriesList extends StatelessWidget {
   final List<TvSeries> tvSeriesList;
 
-  TvSeriesList(this.tvSeriesList);
+  const TvSeriesList(this.tvSeriesList, {super.key});
 
   @override
   Widget build(BuildContext context) {

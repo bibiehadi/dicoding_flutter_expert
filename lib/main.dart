@@ -95,9 +95,9 @@ class MyApp extends StatelessWidget {
             case TvSeriesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => TvSeriesPage());
             case TvSeriesDetailPage.ROUTE_NAME:
-              final tvSeries = settings.arguments as TvSeries;
+              final tvSeries = settings.arguments as int;
               return MaterialPageRoute(
-                builder: (_) => TvSeriesDetailPage(tvSeries: tvSeries),
+                builder: (_) => TvSeriesDetailPage(tvSeriesId: tvSeries),
                 settings: settings,
               );
 

@@ -15,11 +15,9 @@ class TvSeriesDetailModel extends Equatable {
     required this.popularity,
     required this.posterPath,
     required this.firstAirDate,
-    required this.runtime,
     required this.status,
     required this.tagline,
     required this.name,
-    required this.video,
     required this.voteAverage,
     required this.voteCount,
   });
@@ -35,11 +33,10 @@ class TvSeriesDetailModel extends Equatable {
   final double popularity;
   final String posterPath;
   final String firstAirDate;
-  final int runtime;
+
   final String status;
   final String tagline;
   final String name;
-  final bool video;
   final double voteAverage;
   final int voteCount;
 
@@ -56,12 +53,10 @@ class TvSeriesDetailModel extends Equatable {
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
         posterPath: json["poster_path"],
-        firstAirDate: json["release_date"],
-        runtime: json["runtime"],
+        firstAirDate: json["first_air_date"],
         status: json["status"],
         tagline: json["tagline"],
         name: json["name"],
-        video: json["video"],
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
       );
@@ -77,12 +72,10 @@ class TvSeriesDetailModel extends Equatable {
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "release_date": firstAirDate,
-        "runtime": runtime,
+        "first_air_date": firstAirDate,
         "status": status,
         "tagline": tagline,
         "name": name,
-        "video": video,
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
@@ -119,11 +112,9 @@ class TvSeriesDetailModel extends Equatable {
         popularity,
         posterPath,
         firstAirDate,
-        runtime,
         status,
         tagline,
         name,
-        video,
         voteAverage,
         voteCount,
       ];
