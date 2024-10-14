@@ -2,6 +2,9 @@ import 'package:ditonton/features/movies/data/models/movie_table.dart';
 import 'package:ditonton/features/movies/domain/entities/genre.dart';
 import 'package:ditonton/features/movies/domain/entities/movie.dart';
 import 'package:ditonton/features/movies/domain/entities/movie_detail.dart';
+import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
+import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
+import 'package:ditonton/features/tv_series/domain/entities/tv_series_genre.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -52,6 +55,75 @@ final testMovieTable = MovieTable(
 );
 
 final testMovieMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'title': 'title',
+};
+
+final testTvSeries = TvSeries(
+  adult: false,
+  backdropPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+  firstAirDate: "2024-12-01",
+  genreIds: [
+    123,
+  ],
+  id: 81231,
+  name: "Pulang Araw",
+  originCountry: ["PH"],
+  originalLanguage: "tl",
+  originalName: "Pulang Araw",
+  overview:
+      "Red Sun is a family drama that tells stories of courage, sacrifice, and hardships that every Filipino family has. These stories were inspired by the tales of the unsung heroes who defied the odds of World War II and the Japanese occupation of the Philippines.",
+  popularity: 3296.682,
+  posterPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+  voteAverage: 7.4,
+  voteCount: 9,
+);
+
+final testTvSeriesList = [testTvSeries];
+
+final testTvSeriesDetail = TvSeriesDetail(
+  adult: false,
+  backdropPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+  firstAirDate: "2024-12-01",
+  genres: [
+    TvSeriesGenre(id: 123, name: "Drama"),
+  ],
+  id: 81231,
+  name: "Pulang Araw",
+  originCountry: ["PH"],
+  originalLanguage: "tl",
+  originalName: "Pulang Araw",
+  overview:
+      "Red Sun is a family drama that tells stories of courage, sacrifice, and hardships that every Filipino family has. These stories were inspired by the tales of the unsung heroes who defied the odds of World War II and the Japanese occupation of the Philippines.",
+  popularity: 3296.682,
+  posterPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+  voteAverage: 7.4,
+  voteCount: 9,
+  homepage: "asdsadasda",
+  status: "status",
+  lastAirDate: "2024-12-01",
+  numberOfEpisodes: 10,
+  numberOfSeasons: 1,
+  seasons: [],
+);
+
+final testWatchlistTvSeries = TvSeries.watchlist(
+  id: 1,
+  name: 'title',
+  posterPath: 'posterPath',
+  firstAirDate: 'overview',
+);
+
+final testTvSeriesTable = MovieTable(
+  id: 1,
+  title: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvSeriesMap = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',

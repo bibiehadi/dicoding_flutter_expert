@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class TvSeries extends Equatable {
   TvSeries({
+    required this.adult,
     required this.backdropPath,
     required this.firstAirDate,
     required this.genreIds,
@@ -17,13 +19,14 @@ class TvSeries extends Equatable {
     required this.voteCount,
   });
 
-  // TvSeries.watchlist({
-  //   required this.id,
-  //   required this.name,
-  //   required this.posterPath,
-  //   required this.firstAirDate,
-  // });
+  TvSeries.watchlist({
+    required this.id,
+    required this.name,
+    required this.posterPath,
+    required this.firstAirDate,
+  });
 
+  bool? adult;
   String? backdropPath;
   String? firstAirDate;
   List<int>? genreIds;

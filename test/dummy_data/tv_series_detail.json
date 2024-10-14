@@ -1,0 +1,108 @@
+{
+    "adult": false,
+    "backdrop_path": "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+    "created_by": [
+      {
+        "id": 972892,
+        "credit_id": "65e246c8a39d0b0163087863",
+        "name": "Lucero Suárez",
+        "original_name": "Lucero Suárez",
+        "gender": 1,
+        "profile_path": null
+      }
+    ],
+    "episode_run_time": [],
+    "first_air_date": "2024-07-01",
+    "genres": [
+      {
+        "id": 10766,
+        "name": "Soap"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10759,
+        "name": "Action & Adventure"
+      },
+      {
+        "id": 10765,
+        "name": "Sci-Fi & Fantasy"
+      }
+    ],
+    "homepage": "",
+    "id": 247884,
+    "in_production": true,
+    "languages": [],
+    "last_air_date": "2024-09-04",
+    "last_episode_to_air": {
+      "id": 5615759,
+      "name": "Episode 73",
+      "overview": "",
+      "vote_average": 0,
+      "vote_count": 0,
+      "air_date": "2024-10-09",
+      "episode_number": 73,
+      "episode_type": "standard",
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "show_id": 247884,
+      "still_path": null
+    },
+    "name": "Fugitivas: en busca de la libertad",
+    "next_episode_to_air": {
+      "id": 5615760,
+      "name": "Episode 74",
+      "overview": "",
+      "vote_average": 0,
+      "vote_count": 0,
+      "air_date": "2024-10-10",
+      "episode_number": 74,
+      "episode_type": "standard",
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "show_id": 247884,
+      "still_path": null
+    },
+    "networks": [
+      {
+        "id": 487,
+        "logo_path": "/6ROTTOqsZo3XefxZAYowukFdJ6w.png",
+        "name": "Las Estrellas",
+        "origin_country": "MX"
+      }
+    ],
+    "number_of_episodes": 60,
+    "number_of_seasons": 1,
+    "origin_country": [
+      "MX"
+    ],
+    "original_language": "es",
+    "original_name": "Fugitivas: en busca de la libertad",
+    "overview": "Lorena, Frida, Lisset and Montse, four friends who are in prison serving a sentence. One of them is accused unjustly. In the prison where they are held there is a massive escape and they escape. After their escape, the fugitives take refuge in a bar looking for the opportunity to start a new life.",
+    "popularity": 2777.028,
+    "poster_path": "/oqHWSZmoCgz7JPsbNXihASGnfLW.jpg",
+    "production_companies": [],
+    "production_countries": [],
+    "seasons": [
+      {
+        "air_date": "2024-07-01",
+        "episode_count": 80,
+        "id": 381761,
+        "name": "Season 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "spoken_languages": [],
+    "status": "Returning Series",
+    "tagline": "",
+    "type": "Scripted",
+    "vote_average": 7.5,
+    "vote_count": 16
+  }

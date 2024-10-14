@@ -15,12 +15,10 @@ class GetTvSeriesList
   Future<Either<Failure, List<TvSeries>>> call(
       GetTvSeriesListParams params) async {
     return switch (params.category) {
-      TvSeriesListCategories.popular =>
-        await repository.getPopularTvSeries(page: params.page),
-      TvSeriesListCategories.topRated =>
-        await repository.getTopRatedTvSeries(page: params.page),
+      TvSeriesListCategories.popular => await repository.getPopularTvSeries(),
+      TvSeriesListCategories.topRated => await repository.getTopRatedTvSeries(),
       TvSeriesListCategories.nowPlaying =>
-        await repository.getNowPlayingTvSeries(page: params.page),
+        await repository.getNowPlayingTvSeries(),
     };
   }
 }

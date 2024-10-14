@@ -15,6 +15,6 @@ class GetTvSeriesDetail
   @override
   Future<Either<Failure, TvSeriesDetail>> call(
       GetTvSeriesDetailParams params) async {
-    return await repository.getTvSeriesDetail(params.tvSeries.id);
+    return await repository.getTvSeriesDetail(params.tvSeriesId);
   }
 }
