@@ -32,7 +32,9 @@ import 'package:ditonton/features/tv_series/domain/usecases/save_tv_series_watch
 import 'package:ditonton/features/tv_series/domain/usecases/search_tv_series/search_tv_series.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_search_notifier.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -93,6 +95,18 @@ void init() {
   locator.registerFactory(
     () => TvSeriesSearchNotifier(
       searchTvSeries: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => TvSeriesPopularNotifier(
+      getTvSeriesList: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => TvSeriesTopRatedNotifier(
+      getTvSeriesList: locator(),
     ),
   );
 

@@ -5,6 +5,8 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_detail_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_popular_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_top_rated_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -59,10 +61,11 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                 },
               ),
               _buildSubHeading(
-                  title: 'Popular',
-                  onTap: () =>
-                      // Navigator.pushNamed(context, TvSeries.ROUTE_NAME),
-                      {}),
+                title: 'Popular',
+                onTap: () => Navigator.pushNamed(
+                    context, TvSeriesPopularPage.ROUTE_NAME),
+                // {}
+              ),
               Consumer<TvSeriesListNotifier>(builder: (context, value, child) {
                 final state = value.popularTvSeriesState;
                 log("STATE $state");
@@ -77,10 +80,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                 }
               }),
               _buildSubHeading(
-                  title: 'Top Rated',
-                  onTap: () =>
-                      // Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
-                      {}),
+                title: 'Top Rated',
+                onTap: () => Navigator.pushNamed(
+                    context, TvSeriesTopRatedPage.ROUTE_NAME),
+              ),
               Consumer<TvSeriesListNotifier>(builder: (context, value, child) {
                 final state = value.topRatedTvSeriesState;
                 if (state == RequestState.Loading) {

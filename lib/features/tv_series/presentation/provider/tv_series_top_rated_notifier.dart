@@ -5,7 +5,7 @@ import 'package:ditonton/features/tv_series/domain/usecases/get_tv_series_list/g
 
 import 'package:flutter/material.dart';
 
-class TvSeriesListNotifier extends ChangeNotifier {
+class TvSeriesTopRatedNotifier extends ChangeNotifier {
   var _topRatedTvSeries = <TvSeries>[];
   List<TvSeries> get topRatedTvSeries => _topRatedTvSeries;
 
@@ -15,7 +15,7 @@ class TvSeriesListNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  TvSeriesListNotifier({
+  TvSeriesTopRatedNotifier({
     required this.getTvSeriesList,
   });
 
