@@ -1,1 +1,0 @@
-genhtml coverage/test.info -o coverage --no-function-coverage --prefix /Users/moden/Downloads/flutter_expert_project
