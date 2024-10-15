@@ -39,7 +39,6 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     });
 
     if (response.statusCode == 200) {
-      log(response.body, name: "Datasource Popular");
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
       throw ServerException();
@@ -54,9 +53,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
           'Authorization': 'Bearer $API_KEY',
           'accept': 'application/json',
         });
-    log(response.body, name: "Datasource Top Rated");
     if (response.statusCode == 200) {
-      log(response.body, name: "Datasource");
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
       throw ServerException();
@@ -81,8 +78,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
   @override
   Future<List<TvSeriesModel>> searchTvSeries(String query) async {
     final response = await client.get(
-        Uri.parse(
-            '$BASE_URL/search/tv?query=$query&include_adult=false&language=en-US&page=1'),
+        Uri.parse('$BASE_URL/search/tv?query=$query&language=en-US&page=1'),
         headers: {
           'Authorization': 'Bearer $API_KEY',
           'accept': 'application/json',

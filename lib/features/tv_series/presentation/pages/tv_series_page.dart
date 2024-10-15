@@ -6,6 +6,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_detail_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_popular_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_top_rated_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,14 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TV Series'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              Navigator.pushNamed(context, TvSeriesSearchPage.ROUTE_NAME);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

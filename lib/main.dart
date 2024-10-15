@@ -16,6 +16,7 @@ import 'package:ditonton/features/movies/presentation/provider/watchlist_movie_n
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_detail_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_popular_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_top_rated_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
@@ -71,7 +72,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesTopRatedNotifier>(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TvSeriesSearchNotifier>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -109,12 +113,13 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => TvSeriesPopularPage());
             case TvSeriesTopRatedPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => TvSeriesTopRatedPage());
+            case TvSeriesSearchPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => TvSeriesSearchPage());
             case TvSeriesDetailPage.ROUTE_NAME:
               final tvSeries = settings.arguments as int;
               return MaterialPageRoute(
                   builder: (_) => TvSeriesDetailPage(tvSeriesId: tvSeries),
                   settings: settings);
-
             default:
               return MaterialPageRoute(builder: (_) {
                 return Scaffold(

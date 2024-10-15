@@ -18,6 +18,8 @@ class TvSeriesDetailModel extends Equatable {
     required this.status,
     required this.tagline,
     required this.name,
+    required this.numberOfEpisodes,
+    required this.numberOfSeasons,
     required this.voteAverage,
     required this.voteCount,
   });
@@ -33,10 +35,11 @@ class TvSeriesDetailModel extends Equatable {
   final double popularity;
   final String posterPath;
   final String firstAirDate;
-
   final String status;
   final String tagline;
   final String name;
+  final int numberOfEpisodes;
+  final int numberOfSeasons;
   final double voteAverage;
   final int voteCount;
 
@@ -57,6 +60,8 @@ class TvSeriesDetailModel extends Equatable {
         status: json["status"],
         tagline: json["tagline"],
         name: json["name"],
+        numberOfEpisodes: json["number_of_episodes"],
+        numberOfSeasons: json["number_of_seasons"],
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
       );
@@ -76,6 +81,8 @@ class TvSeriesDetailModel extends Equatable {
         "status": status,
         "tagline": tagline,
         "name": name,
+        "number_of_episodes": numberOfEpisodes,
+        "number_of_seasons": numberOfSeasons,
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
@@ -94,6 +101,9 @@ class TvSeriesDetailModel extends Equatable {
       posterPath: posterPath,
       firstAirDate: firstAirDate,
       name: name,
+      status: status,
+      numberOfEpisodes: numberOfEpisodes,
+      numberOfSeasons: numberOfSeasons,
       voteAverage: voteAverage,
       voteCount: voteCount,
     );
