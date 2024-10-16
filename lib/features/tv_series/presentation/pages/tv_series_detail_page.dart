@@ -161,9 +161,7 @@ class DetailContent extends StatelessWidget {
                             Text(
                               _showGenres(tvSeriesDetail.genres),
                             ),
-                            Text(
-                                // _showDuration(tvSeriesDetail.),
-                                ""),
+                            Text('${tvSeriesDetail.numberOfEpisodes} Episodes'),
                             Row(
                               children: [
                                 RatingBarIndicator(
@@ -185,6 +183,38 @@ class DetailContent extends StatelessWidget {
                             ),
                             Text(
                               tvSeriesDetail.overview!,
+                            ),
+                            SizedBox(height: 16),
+                            Text(
+                              'Seasons',
+                              style: kHeading6,
+                            ),
+                            SizedBox(
+                              height: 150,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  final tvSeries =
+                                      tvSeriesDetail.seasons![index];
+                                  return Container(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            '$BASE_IMAGE_URL${tvSeries.posterPath}',
+                                        placeholder: (context, url) => Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                itemCount: tvSeriesDetail.seasons!.length,
+                              ),
                             ),
                             SizedBox(height: 16),
                             Text(

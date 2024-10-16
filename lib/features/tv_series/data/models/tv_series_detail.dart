@@ -1,4 +1,5 @@
 import 'package:ditonton/features/tv_series/data/models/tv_series_genre.dart';
+import 'package:ditonton/features/tv_series/data/models/tv_series_season.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
 import 'package:equatable/equatable.dart';
 
@@ -20,6 +21,7 @@ class TvSeriesDetailModel extends Equatable {
     required this.name,
     required this.numberOfEpisodes,
     required this.numberOfSeasons,
+    required this.seasons,
     required this.voteAverage,
     required this.voteCount,
   });
@@ -41,6 +43,7 @@ class TvSeriesDetailModel extends Equatable {
   final int numberOfEpisodes;
   final int numberOfSeasons;
   final double voteAverage;
+  final List<TvSeriesSeasonModel> seasons;
   final int voteCount;
 
   factory TvSeriesDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -62,6 +65,8 @@ class TvSeriesDetailModel extends Equatable {
         name: json["name"],
         numberOfEpisodes: json["number_of_episodes"],
         numberOfSeasons: json["number_of_seasons"],
+        seasons: List<TvSeriesSeasonModel>.from(
+            json["seasons"].map((x) => TvSeriesSeasonModel.fromJson(x))),
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
       );
@@ -83,6 +88,7 @@ class TvSeriesDetailModel extends Equatable {
         "name": name,
         "number_of_episodes": numberOfEpisodes,
         "number_of_seasons": numberOfSeasons,
+        "seasons": List<dynamic>.from(seasons.map((x) => x.toJson())),
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
@@ -104,6 +110,7 @@ class TvSeriesDetailModel extends Equatable {
       status: status,
       numberOfEpisodes: numberOfEpisodes,
       numberOfSeasons: numberOfSeasons,
+      seasons: seasons.map((season) => season.toEntity()).toList(),
       voteAverage: voteAverage,
       voteCount: voteCount,
     );
@@ -125,6 +132,9 @@ class TvSeriesDetailModel extends Equatable {
         status,
         tagline,
         name,
+        numberOfEpisodes,
+        numberOfSeasons,
+        seasons,
         voteAverage,
         voteCount,
       ];
