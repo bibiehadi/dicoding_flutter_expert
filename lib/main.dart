@@ -19,11 +19,13 @@ import 'package:ditonton/features/tv_series/presentation/pages/tv_series_page.da
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_popular_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_top_rated_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_watchlist_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -77,6 +79,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSearchNotifier>(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TvSeriesWatchlistNotifier>(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -118,6 +123,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => TvSeriesTopRatedPage());
             case TvSeriesSearchPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => TvSeriesSearchPage());
+            case TvSeriesWatchlistPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => TvSeriesWatchlistPage());
             case TvSeriesDetailPage.ROUTE_NAME:
               final tvSeries = settings.arguments as int;
               return MaterialPageRoute(

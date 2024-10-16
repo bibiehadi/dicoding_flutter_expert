@@ -7,6 +7,10 @@ import 'package:ditonton/features/movies/presentation/pages/top_rated_movies_pag
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/features/movies/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/features/movies/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:ditonton/features/tv_series/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_watchlist_page.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +29,8 @@ class _WatchlistPageState extends State<WatchlistPage> {
     Future.microtask(() => {
           Provider.of<WatchlistMovieNotifier>(context, listen: false)
               .fetchWatchlistMovies(),
+          Provider.of<TvSeriesWatchlistNotifier>(context, listen: false)
+              .fetchWatchlistTvSeries(),
         });
   }
 
@@ -45,7 +51,27 @@ class _WatchlistPageState extends State<WatchlistPage> {
                 onTap: () => Navigator.pushNamed(
                     context, WatchlistMoviesPage.ROUTE_NAME),
               ),
-              Consumer<WatchlistMovieNotifier>(
+              SizedBox(
+                child: Consumer<WatchlistMovieNotifier>(
+                    builder: (context, value, child) {
+                  final state = value.watchlistState;
+                  if (state == RequestState.Loading) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state == RequestState.Loaded) {
+                    return MovieList(value.watchlistMovies);
+                  } else {
+                    return Text('Failed');
+                  }
+                }),
+              ),
+              _buildSubHeading(
+                title: 'Tv Series',
+                onTap: () => Navigator.pushNamed(
+                    context, TvSeriesWatchlistPage.ROUTE_NAME),
+              ),
+              Consumer<TvSeriesWatchlistNotifier>(
                   builder: (context, value, child) {
                 final state = value.watchlistState;
                 if (state == RequestState.Loading) {
@@ -53,28 +79,11 @@ class _WatchlistPageState extends State<WatchlistPage> {
                     child: CircularProgressIndicator(),
                   );
                 } else if (state == RequestState.Loaded) {
-                  return MovieList(value.watchlistMovies);
+                  return TvSeriesList(value.watchlistTvSeries);
                 } else {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
-                title: 'Tv Series',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
-              ),
-              // Consumer<MovieListNotifier>(builder: (context, value, child) {
-              //   final state = value.topRatedMoviesState;
-              //   if (state == RequestState.Loading) {
-              //     return Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(value.topRatedMovies);
-              //   } else {
-              //     return Text('Failed');
-              //   }
-              // }),
             ],
           ),
         ),

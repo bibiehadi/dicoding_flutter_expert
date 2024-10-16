@@ -1,4 +1,4 @@
-import 'package:ditonton/features/movies/data/models/movie_table.dart';
+import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
 import 'package:ditonton/features/movies/domain/entities/genre.dart';
 import 'package:ditonton/features/movies/domain/entities/movie.dart';
 import 'package:ditonton/features/movies/domain/entities/movie_detail.dart';
@@ -47,11 +47,12 @@ final testWatchlistMovie = Movie.watchlist(
   overview: 'overview',
 );
 
-final testMovieTable = MovieTable(
+final testWatchlistTable = WatchlistTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
+  isMovies: '1',
 );
 
 final testMovieMap = {
@@ -113,14 +114,15 @@ final testWatchlistTvSeries = TvSeries.watchlist(
   id: 1,
   name: 'title',
   posterPath: 'posterPath',
-  firstAirDate: 'overview',
+  overview: 'overview',
 );
 
-final testTvSeriesTable = MovieTable(
+final testTvSeriesTable = WatchlistTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
+  isMovies: '0',
 );
 
 final testTvSeriesMap = {

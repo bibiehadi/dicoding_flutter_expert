@@ -1,8 +1,8 @@
-import 'package:ditonton/features/tv_series/data/models/tv_series_model.dart';
+import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
 
 abstract class TvSeriesLocalDatasource {
-  Future<String> insertWatchlist(TvSeriesModel tvSeries);
-  Future<String> removeWatchlist(TvSeriesModel tvSeries);
-  Future<TvSeriesModel?> getTvSeriesById(int id);
-  Future<List<TvSeriesModel>> getWatchlistTvSeriess();
+  Future<String> insertWatchlist(WatchlistTable tvSeries);
+  Future<String> removeWatchlist(WatchlistTable tvSeries);
+  Future<WatchlistTable?> getTvSeriesById(int id);
+  Future<List<WatchlistTable>> getWatchlistTvSeries();
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
-import 'package:ditonton/features/movies/data/models/movie_table.dart';
+import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MovieDatabaseHelper {
@@ -15,9 +16,7 @@ class MovieDatabaseHelper {
   static Database? _database;
 
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await _initDb();
-    }
+    _database ??= await _initDb();
     return _database;
   }
 
@@ -37,17 +36,19 @@ class MovieDatabaseHelper {
         id INTEGER PRIMARY KEY,
         title TEXT,
         overview TEXT,
-        posterPath TEXT
+        posterPath TEXT,
+        isMovies Char(1)
       );
     ''');
   }
 
-  Future<int> insertWatchlist(MovieTable movie) async {
+  Future<int> insertWatchlist(WatchlistTable movie) async {
     final db = await database;
+    log(movie.toJson().toString(), name: "insertWatchlist");
     return await db!.insert(_tblWatchlist, movie.toJson());
   }
 
-  Future<int> removeWatchlist(MovieTable movie) async {
+  Future<int> removeWatchlist(WatchlistTable movie) async {
     final db = await database;
     return await db!.delete(
       _tblWatchlist,
@@ -73,8 +74,23 @@ class MovieDatabaseHelper {
 
   Future<List<Map<String, dynamic>>> getWatchlistMovies() async {
     final db = await database;
-    final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblWatchlist,
+      where: 'isMovies = ?',
+      whereArgs: ['1'],
+    );
+    log(results.toString(), name: "getWatchlistMovies");
+    return results;
+  }
 
+  Future<List<Map<String, dynamic>>> getWatchlistTvSeries() async {
+    final db = await database;
+    final List<Map<String, dynamic>> results = await db!.query(
+      _tblWatchlist,
+      where: 'isMovies = ?',
+      whereArgs: ['0'],
+    );
+    log(results.toString(), name: "getWatchlistTvSeries");
     return results;
   }
 }

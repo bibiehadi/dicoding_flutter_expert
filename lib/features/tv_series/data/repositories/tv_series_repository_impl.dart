@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
+import 'package:ditonton/features/tv_series/data/datasources/local/tv_series_local_datasource.dart';
 // import 'package:ditonton/features/tv_series/data/datasources/local/tv_series_local_datasource.dart';
 import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_remote_datasource.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
@@ -12,11 +14,11 @@ import 'package:ditonton/features/tv_series/domain/repositories/tv_series_reposi
 
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
   final TvSeriesRemoteDatasource remoteDatasource;
-  // final TvSeriesLocalDatasource localDatasource;
+  final TvSeriesLocalDatasource localDatasource;
 
   TvSeriesRepositoryImpl({
     required this.remoteDatasource,
-    // required this.localDatasource,
+    required this.localDatasource,
   });
 
   @override
@@ -70,27 +72,54 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, List<TvSeries>>> getWatchlistTvSeries() {
-    // TODO: implement getWatchlistTvSeries
-    throw UnimplementedError();
+  Future<Either<Failure, List<TvSeries>>> getWatchlistTvSeries() async {
+    try {
+      final result = await localDatasource.getWatchlistTvSeries();
+      return Right(result.map((model) => model.toEntityTvSeries()).toList());
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
-  Future<bool> isAddedToWatchlist(int id) {
-    // TODO: implement isAddedToWatchlist
-    throw UnimplementedError();
+  Future<bool> isAddedToWatchlist(int id) async {
+    try {
+      final result = await localDatasource.getTvSeriesById(id);
+      return result != null;
+    } on DatabaseException catch (e) {
+      throw DatabaseFailure(e.message);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
-  Future<Either<Failure, String>> removeWatchlist(TvSeriesDetail movie) {
-    // TODO: implement removeWatchlist
-    throw UnimplementedError();
+  Future<Either<Failure, String>> removeWatchlist(
+      TvSeriesDetail tvSeries) async {
+    try {
+      final result = await localDatasource
+          .removeWatchlist(WatchlistTable.fromEntityTvSeries(tvSeries));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
-  Future<Either<Failure, String>> saveWatchlist(TvSeriesDetail movie) {
-    // TODO: implement saveWatchlist
-    throw UnimplementedError();
+  Future<Either<Failure, String>> saveWatchlist(TvSeriesDetail tvSeries) async {
+    try {
+      final result = await localDatasource
+          .insertWatchlist(WatchlistTable.fromEntityTvSeries(tvSeries));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
