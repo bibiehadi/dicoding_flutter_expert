@@ -6,10 +6,10 @@ import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
 import 'package:ditonton/features/tv_series/data/datasources/local/tv_series_local_datasource.dart';
-// import 'package:ditonton/features/tv_series/data/datasources/local/tv_series_local_datasource.dart';
 import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_remote_datasource.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
+import 'package:ditonton/features/tv_series/domain/entities/tv_series_season_detail.dart';
 import 'package:ditonton/features/tv_series/domain/repositories/tv_series_repository.dart';
 
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
@@ -41,7 +41,6 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException catch (e) {
-      log("Error : $e", name: "REPOSITORY ERROR");
       return Left(ConnectionFailure(e.message));
     }
   }
@@ -54,7 +53,6 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException catch (e) {
-      log("Error : $e", name: "REPOSITORY ERROR");
       return Left(ConnectionFailure(e.message));
     }
   }
@@ -140,6 +138,20 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
     try {
       final result = await remoteDatasource.getRecommendationTvSeries(id);
       return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException catch (e) {
+      return Left(ConnectionFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, TvSeriesSeasonDetail>> getTvSeriesSeasonDetail(
+      int tvSeriesId, int seasonNumber) async {
+    try {
+      final result = await remoteDatasource.getTvSeriesSeasonDetail(
+          tvSeriesId, seasonNumber);
+      return Right(result.toEntity());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException catch (e) {

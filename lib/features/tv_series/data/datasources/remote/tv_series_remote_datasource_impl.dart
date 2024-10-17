@@ -7,6 +7,7 @@ import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_re
 import 'package:ditonton/features/tv_series/data/models/tv_series_detail.dart';
 import 'package:ditonton/features/tv_series/data/models/tv_series_model.dart';
 import 'package:ditonton/features/tv_series/data/models/tv_series_response.dart';
+import 'package:ditonton/features/tv_series/data/models/tv_series_season_detail.dart';
 import 'package:http/http.dart' as http;
 
 class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
@@ -23,7 +24,6 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     });
 
     if (response.statusCode == 200) {
-      // log(response.body, name: "Datasource Now Playing");
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
     } else {
       throw ServerException();
@@ -102,6 +102,23 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
 
     if (response.statusCode == 200) {
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<TvSeriesSeasonDetailModel> getTvSeriesSeasonDetail(
+      int id, int seasonNumber) async {
+    final response = await client.get(
+        Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?language=en-US'),
+        headers: {
+          'Authorization': 'Bearer $API_KEY',
+          'accept': 'application/json',
+        });
+
+    if (response.statusCode == 200) {
+      return TvSeriesSeasonDetailModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
     }

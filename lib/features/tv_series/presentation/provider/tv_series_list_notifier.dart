@@ -85,7 +85,6 @@ class TvSeriesListNotifier extends ChangeNotifier {
       (failure) {
         _topRatedTvSeriesState = RequestState.Error;
         _message = failure.message;
-        log("Error: $failure");
         notifyListeners();
       },
       (tvSeriesData) {

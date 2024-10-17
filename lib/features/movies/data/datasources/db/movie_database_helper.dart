@@ -44,7 +44,6 @@ class MovieDatabaseHelper {
 
   Future<int> insertWatchlist(WatchlistTable movie) async {
     final db = await database;
-    log(movie.toJson().toString(), name: "insertWatchlist");
     return await db!.insert(_tblWatchlist, movie.toJson());
   }
 
@@ -79,7 +78,6 @@ class MovieDatabaseHelper {
       where: 'isMovies = ?',
       whereArgs: ['1'],
     );
-    log(results.toString(), name: "getWatchlistMovies");
     return results;
   }
 
@@ -90,7 +88,6 @@ class MovieDatabaseHelper {
       where: 'isMovies = ?',
       whereArgs: ['0'],
     );
-    log(results.toString(), name: "getWatchlistTvSeries");
     return results;
   }
 }

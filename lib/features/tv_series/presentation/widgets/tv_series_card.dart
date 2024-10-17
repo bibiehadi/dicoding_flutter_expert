@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 class TvSeriesCard extends StatelessWidget {
   final TvSeries tvSeries;
+  final bool isNavigate;
 
-  const TvSeriesCard(this.tvSeries, {super.key});
+  const TvSeriesCard(this.tvSeries, {super.key, this.isNavigate = true});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,13 @@ class TvSeriesCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(
-            context,
-            MovieDetailPage.ROUTE_NAME,
-            arguments: tvSeries.id,
-          );
+          if (isNavigate) {
+            Navigator.pushNamed(
+              context,
+              MovieDetailPage.ROUTE_NAME,
+              arguments: tvSeries.id,
+            );
+          }
         },
         child: Stack(
           alignment: Alignment.bottomLeft,

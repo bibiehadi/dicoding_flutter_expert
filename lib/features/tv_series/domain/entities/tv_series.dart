@@ -3,20 +3,20 @@ import 'package:equatable/equatable.dart';
 // ignore: must_be_immutable
 class TvSeries extends Equatable {
   TvSeries({
-    required this.adult,
-    required this.backdropPath,
-    required this.firstAirDate,
-    required this.genreIds,
+    this.adult,
+    this.backdropPath,
+    this.firstAirDate,
+    this.genreIds,
     required this.id,
     required this.name,
-    required this.originCountry,
-    required this.originalLanguage,
-    required this.originalName,
+    this.originCountry,
+    this.originalLanguage,
+    this.originalName,
     required this.overview,
-    required this.popularity,
+    this.popularity,
     required this.posterPath,
-    required this.voteAverage,
-    required this.voteCount,
+    this.voteAverage,
+    this.voteCount,
   });
 
   TvSeries.watchlist({

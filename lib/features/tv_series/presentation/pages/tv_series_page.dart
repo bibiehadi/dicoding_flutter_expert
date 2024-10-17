@@ -77,7 +77,6 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, value, child) {
                 final state = value.popularTvSeriesState;
-                log("STATE $state");
                 if (state == RequestState.Loading) {
                   return Center(
                     child: CircularProgressIndicator(),
