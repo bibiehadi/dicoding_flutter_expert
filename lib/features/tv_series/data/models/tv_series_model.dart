@@ -8,7 +8,7 @@ class TvSeriesModel extends Equatable {
     required this.backdropPath,
     required this.genreIds,
     required this.id,
-    required this.originalCountry,
+    required this.originCountry,
     required this.originalLanguage,
     required this.originalName,
     required this.overview,
@@ -24,7 +24,7 @@ class TvSeriesModel extends Equatable {
   final String? backdropPath;
   final List<int> genreIds;
   final int id;
-  final List<String> originalCountry;
+  final List<String> originCountry;
   final String originalLanguage;
   final String originalName;
   final String overview;
@@ -48,7 +48,7 @@ class TvSeriesModel extends Equatable {
         name: json["name"],
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
-        originalCountry: json["origin_country"] == null
+        originCountry: json["origin_country"] == null
             ? []
             : List<String>.from(
                 json["origin_country"].map((x) => x),
@@ -77,7 +77,7 @@ class TvSeriesModel extends Equatable {
       backdropPath: backdropPath,
       genreIds: genreIds,
       id: id,
-      originCountry: originalCountry,
+      originCountry: originCountry,
       originalLanguage: originalLanguage,
       originalName: originalName,
       overview: overview,
@@ -96,7 +96,7 @@ class TvSeriesModel extends Equatable {
         backdropPath,
         genreIds,
         id,
-        originalCountry,
+        originCountry,
         originalLanguage,
         originalName,
         overview,

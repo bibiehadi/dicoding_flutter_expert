@@ -62,6 +62,14 @@ final testMovieMap = {
   'title': 'title',
 };
 
+final testWatchlistMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'title': 'title',
+  'isMovies': '1',
+};
+
 final testTvSeries = TvSeries(
   adult: false,
   backdropPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",

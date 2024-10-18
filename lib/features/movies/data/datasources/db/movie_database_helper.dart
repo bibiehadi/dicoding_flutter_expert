@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
 import 'package:sqflite/sqflite.dart';
