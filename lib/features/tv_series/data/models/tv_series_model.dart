@@ -40,20 +40,20 @@ class TvSeriesModel extends Equatable {
         backdropPath: json["backdrop_path"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
-        originalName: json["original_name"],
-        overview: json["overview"],
-        popularity: json["popularity"].toDouble(),
-        posterPath: json["poster_path"],
-        firstAirDate: json["release_date"],
-        name: json["name"],
-        voteAverage: json["vote_average"].toDouble(),
-        voteCount: json["vote_count"],
         originCountry: json["origin_country"] == null
             ? []
             : List<String>.from(
                 json["origin_country"].map((x) => x),
               ),
         originalLanguage: json["original_language"],
+        originalName: json["original_name"],
+        overview: json["overview"],
+        popularity: json["popularity"].toDouble(),
+        posterPath: json["poster_path"],
+        firstAirDate: json["first_air_date"],
+        name: json["name"],
+        voteAverage: json["vote_average"].toDouble(),
+        voteCount: json["vote_count"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -65,7 +65,7 @@ class TvSeriesModel extends Equatable {
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "release_date": firstAirDate,
+        "first_air_date": firstAirDate,
         "name": name,
         "vote_average": voteAverage,
         "vote_count": voteCount,

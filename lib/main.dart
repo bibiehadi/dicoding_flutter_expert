@@ -28,13 +28,16 @@ import 'package:ditonton/features/tv_series/presentation/provider/tv_series_sear
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_season_detail.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
-void main() {
+void main() async {
   di.init();
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 

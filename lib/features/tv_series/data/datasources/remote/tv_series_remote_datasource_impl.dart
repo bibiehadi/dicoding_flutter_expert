@@ -18,7 +18,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
   Future<List<TvSeriesModel>> getNowPlayingTvSeries() async {
     final response =
         await client.get(Uri.parse('$BASE_URL/tv/on_the_air'), headers: {
-      'Authorization': 'Bearer $API_KEY',
+      'Authorization': 'Bearer $ACCESS_TOKEN',
       'accept': 'application/json',
     });
 
@@ -33,7 +33,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
   Future<List<TvSeriesModel>> getPopularTvSeries() async {
     final response = await client
         .get(Uri.parse('$BASE_URL/tv/popular?language=en-US&page=1'), headers: {
-      'Authorization': 'Bearer $API_KEY',
+      'Authorization': 'Bearer $ACCESS_TOKEN',
       'accept': 'application/json',
     });
 
@@ -49,7 +49,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     final response = await client.get(
         Uri.parse('$BASE_URL/tv/top_rated?language=en-US&page=1'),
         headers: {
-          'Authorization': 'Bearer $API_KEY',
+          'Authorization': 'Bearer $ACCESS_TOKEN',
           'accept': 'application/json',
         });
     if (response.statusCode == 200) {
@@ -63,7 +63,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
   Future<TvSeriesDetailModel> getTvSeriesDetail(int id) async {
     final response = await client
         .get(Uri.parse('$BASE_URL/tv/$id?language=en-US'), headers: {
-      'Authorization': 'Bearer $API_KEY',
+      'Authorization': 'Bearer $ACCESS_TOKEN',
       'accept': 'application/json',
     });
 
@@ -79,7 +79,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     final response = await client.get(
         Uri.parse('$BASE_URL/search/tv?query=$query&language=en-US&page=1'),
         headers: {
-          'Authorization': 'Bearer $API_KEY',
+          'Authorization': 'Bearer $ACCESS_TOKEN',
           'accept': 'application/json',
         });
 
@@ -95,7 +95,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     final response = await client.get(
         Uri.parse('$BASE_URL/tv/$id/recommendations?language=en-US&page=1'),
         headers: {
-          'Authorization': 'Bearer $API_KEY',
+          'Authorization': 'Bearer $ACCESS_TOKEN',
           'accept': 'application/json',
         });
 
@@ -112,7 +112,7 @@ class TvSeriesRemoteDatasourceImpl implements TvSeriesRemoteDatasource {
     final response = await client.get(
         Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?language=en-US'),
         headers: {
-          'Authorization': 'Bearer $API_KEY',
+          'Authorization': 'Bearer $ACCESS_TOKEN',
           'accept': 'application/json',
         });
 

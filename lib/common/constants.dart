@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const String BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-const String BASE_URL = 'https://api.themoviedb.org/3';
-const String API_KEY =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZDBkYzdlMTQzZjMyYTQ4YzkxMDM1YzQ3MmZiYWVlNCIsIm5iZiI6MTcyMTcwNTQyOS4xMDAxNzYsInN1YiI6IjY2ODNjM2I5MDQwN2RkMmZjNzI2MzQ0YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QnNM3diW2Z2H57f4Ljz9XD8IJG9lPsIewBKRA5RGTeg";
+String BASE_IMAGE_URL = dotenv.env['BASE_IMAGE_URL']!;
+String BASE_URL = dotenv.env['BASE_URL']!;
+String ACCESS_TOKEN = dotenv.env['ACCESS_TOKEN']!;
 
 // colors
 const Color kRichBlack = Color(0xFF000814);
