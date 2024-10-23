@@ -75,21 +75,13 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Right(result.map((model) => model.toEntityTvSeries()).toList());
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
-    } catch (e) {
-      rethrow;
     }
   }
 
   @override
   Future<bool> isAddedToWatchlist(int id) async {
-    try {
-      final result = await localDatasource.getTvSeriesById(id);
-      return result != null;
-    } on DatabaseException catch (e) {
-      throw DatabaseFailure(e.message);
-    } catch (e) {
-      rethrow;
-    }
+    final result = await localDatasource.getTvSeriesById(id);
+    return result != null;
   }
 
   @override
@@ -101,8 +93,6 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -114,8 +104,6 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
-    } catch (e) {
-      rethrow;
     }
   }
 

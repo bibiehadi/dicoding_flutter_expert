@@ -87,6 +87,16 @@ void main() {
           expect(result, testWatchlistTable);
         },
       );
+
+      test('should return null when data is not found', () async {
+        // arrange
+        when(mockDatabaseHelper.getMovieById(tId))
+            .thenAnswer((_) async => null);
+        // act
+        final result = await datasource.getTvSeriesById(tId);
+        // assert
+        expect(result, null);
+      });
     },
   );
 

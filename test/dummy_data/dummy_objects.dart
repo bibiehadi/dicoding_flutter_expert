@@ -118,6 +118,15 @@ final testTvSeriesDetail = TvSeriesDetail(
   seasons: [],
 );
 
+final testWatchlistTvSeriesTable = WatchlistTable(
+  id: 81231,
+  title: "Pulang Araw",
+  posterPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+  overview:
+      "Red Sun is a family drama that tells stories of courage, sacrifice, and hardships that every Filipino family has. These stories were inspired by the tales of the unsung heroes who defied the odds of World War II and the Japanese occupation of the Philippines.",
+  isMovies: '0',
+);
+
 final testWatchlistTvSeries = TvSeries.watchlist(
   id: 1,
   name: 'title',

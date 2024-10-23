@@ -32,6 +32,19 @@ class Episode extends Equatable {
   });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        id,
+        name,
+        overview,
+        seasonNumber,
+        stillPath,
+        voteAverage,
+        voteCount,
+        airDate,
+        episodeNumber,
+        episodeType,
+        productionCode,
+        runtime,
+        showId,
+      ];
 }
