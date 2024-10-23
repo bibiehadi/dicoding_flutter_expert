@@ -1,31 +1,28 @@
 {
-    "dates": {
-      "maximum": "2024-10-16",
-      "minimum": "2024-09-04"
-    },
-    "page": 1,
-    "results": [
-      {
-        "adult": false,
-        "backdrop_path": "/7h6TqPB3ESmjuVbxCxAeB1c9OB1.jpg",
-        "genre_ids": [
-          27,
-          18,
-          878
-        ],
-        "id": 933260,
-        "original_language": "en",
-        "original_title": "The Substance",
-        "overview": "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
-        "popularity": 1556.96,
-        "poster_path": "/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
-        "release_date": "2024-09-07",
-        "title": "The Substance",
-        "video": false,
-        "vote_average": 7.3,
-        "vote_count": 249
-      }
-    ],
-    "total_pages": 252,
-    "total_results": 5026
-  }
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg",
+      "genre_ids": [
+        18,
+        80
+      ],
+      "id": 1396,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Breaking Bad",
+      "overview": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+      "popularity": 416.756,
+      "poster_path": "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
+      "first_air_date": "2008-01-20",
+      "name": "Breaking Bad",
+      "vote_average": 8.916,
+      "vote_count": 14275
+    }
+  ],
+  "total_pages": 103,
+  "total_results": 2049
+}

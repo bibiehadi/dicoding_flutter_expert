@@ -1,462 +1,53 @@
 {
-    "page": 1,
-    "results": [
-      {
-        "backdrop_path": "/bIhmqQNXcyWRzH153d3jaCbLTy3.jpg",
-        "id": 244643,
-        "name": "El amor no tiene receta",
-        "original_name": "El amor no tiene receta",
-        "overview": "Paz Roble, a kind, hard-working and honest woman from whom her husband, Fermín, takes her newborn daughter. Fermín has a large debt with some lenders and to pay it he decides to sell his daughter to Mauro Nicoliti. This plagiarism is orchestrated by Geneva, Mauro's adoptive sister. She lost her first-born daughter in childbirth and does everything to replace her dead daughter and keep her husband's fortune. On the other hand, Esteban Villa de Cortés loses his wife and becomes a widower with his three children. Elvira Moncada, Esteban's mother-in-law, holds him responsible for the death of her daughter. After a series of unexpected events, Esteban and Paz meet in the neighborhood where she lives with her family. The chemistry and great understanding that exists between them makes it inevitable that they will fall in love.",
-        "poster_path": "/fDRy8B1KdapuvBsgkCkEETY4MNr.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "es",
-        "genre_ids": [
-          10759,
-          10765,
-          18,
-          10751,
-          10766,
-          35
-        ],
-        "popularity": 77.466,
-        "first_air_date": "2024-02-19",
-        "vote_average": 7.724,
-        "vote_count": 58,
-        "origin_country": [
-          "MX"
-        ]
-      },
-      {
-        "backdrop_path": "/rTb9zU0tXAA0Lt88W83X4wwUQha.jpg",
-        "id": 132960,
-        "name": "S.O.S. me estoy enamorando",
-        "original_name": "S.O.S. me estoy enamorando",
-        "overview": "Alberto falls in love with the daughter of one of the men who wants to close the printing press that his family has run for generations. Although his love is immense, saving the business",
-        "poster_path": "/whhwHWXhtNL2UJ80NqelDPl6Fu5.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "es",
-        "genre_ids": [
-          35,
-          18
-        ],
-        "popularity": 12.417,
-        "first_air_date": "2021-09-06",
-        "vote_average": 7.6,
-        "vote_count": 20,
-        "origin_country": [
-          "MX"
-        ]
-      },
-      {
-        "backdrop_path": null,
-        "id": 69998,
-        "name": "Hugo Chávez, El Comandante",
-        "original_name": "Hugo Chávez, El Comandante",
-        "overview": "The life of Hugo Chavez; from childhood, his arrival to power, confrontations, and loves to his last days as president.",
-        "poster_path": "/sEThDZHGrhD6UPDVnP7skTAa6mF.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "es",
-        "genre_ids": [
-          99,
-          18
-        ],
-        "popularity": 26.55,
-        "first_air_date": "2017-01-31",
-        "vote_average": 7.252,
-        "vote_count": 523,
-        "origin_country": [
-          "CO",
-          "VE",
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/wQEW3xLrQAThu1GvqpsKQyejrYS.jpg",
-        "id": 94605,
-        "name": "Arcane",
-        "original_name": "Arcane",
-        "overview": "Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on rival sides of a war between magic technologies and clashing convictions.",
-        "poster_path": "/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          16,
-          10765,
-          10759,
-          9648
-        ],
-        "popularity": 87.267,
-        "first_air_date": "2021-11-06",
-        "vote_average": 8.749,
-        "vote_count": 3998,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/38aCLy0BdFbOAIEfuDladoITHN0.jpg",
-        "id": 42009,
-        "name": "Black Mirror",
-        "original_name": "Black Mirror",
-        "overview": "Over the last ten years, technology has transformed almost every aspect of our lives before we've had time to stop and question it. In every home; on every desk; in every palm - a plasma screen; a monitor; a smartphone - a black mirror of our 21st Century existence.",
-        "poster_path": "/5UaYsGZOFhjFDwQh6GuLjjA1WlF.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          18,
-          9648
-        ],
-        "popularity": 175.691,
-        "first_air_date": "2011-12-04",
-        "vote_average": 8.285,
-        "vote_count": 4986,
-        "origin_country": [
-          "GB"
-        ]
-      },
-      {
-        "backdrop_path": "/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg",
-        "id": 1396,
-        "name": "Breaking Bad",
-        "original_name": "Breaking Bad",
-        "overview": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
-        "poster_path": "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          80
-        ],
-        "popularity": 416.756,
-        "first_air_date": "2008-01-20",
-        "vote_average": 8.916,
-        "vote_count": 14275,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/zZqpAXxVSBtxV9qPBcscfXBcL2w.jpg",
-        "id": 1399,
-        "name": "Game of Thrones",
-        "original_name": "Game of Thrones",
-        "overview": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
-        "poster_path": "/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          18,
-          10759
-        ],
-        "popularity": 596.985,
-        "first_air_date": "2011-04-17",
-        "vote_average": 8.455,
-        "vote_count": 23940,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/2meX1nMdScFOoV4370rqHWKmXhY.jpg",
-        "id": 93405,
-        "name": "Squid Game",
-        "original_name": "오징어 게임",
-        "overview": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits — with deadly high stakes.",
-        "poster_path": "/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "ko",
-        "genre_ids": [
-          10759,
-          9648,
-          18
-        ],
-        "popularity": 181.168,
-        "first_air_date": "2021-09-17",
-        "vote_average": 7.83,
-        "vote_count": 13890,
-        "origin_country": [
-          "KR"
-        ]
-      },
-      {
-        "backdrop_path": "/q3jHCb4dMfYF6ojikKuHd6LscxC.jpg",
-        "id": 84958,
-        "name": "Loki",
-        "original_name": "Loki",
-        "overview": "After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.",
-        "poster_path": "/oJdVHUYrjdS2IqiNztVIP4GPB1p.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          10765
-        ],
-        "popularity": 130.173,
-        "first_air_date": "2021-06-09",
-        "vote_average": 8.177,
-        "vote_count": 11516,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
-        "id": 66732,
-        "name": "Stranger Things",
-        "original_name": "Stranger Things",
-        "overview": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
-        "poster_path": "/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          10765,
-          9648,
-          10759
-        ],
-        "popularity": 272.848,
-        "first_air_date": "2016-07-15",
-        "vote_average": 8.602,
-        "vote_count": 17545,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/rwYvhVv0vwbulMwxOfEsuAr1JrT.jpg",
-        "id": 1418,
-        "name": "The Big Bang Theory",
-        "original_name": "The Big Bang Theory",
-        "overview": "Physicists Leonard and Sheldon find their nerd-centric social circle with pals Howard and Raj expanding when aspiring actress Penny moves in next door.",
-        "poster_path": "/ooBGRQBdbGzBxAVfExiO8r7kloA.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          35
-        ],
-        "popularity": 196.056,
-        "first_air_date": "2007-09-24",
-        "vote_average": 7.907,
-        "vote_count": 11223,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/iHSwvRVsRyxpX7FE7GbviaDvgGZ.jpg",
-        "id": 119051,
-        "name": "Wednesday",
-        "original_name": "Wednesday",
-        "overview": "Wednesday Addams is sent to Nevermore Academy, a bizarre boarding school where she attempts to master her psychic powers, stop a monstrous killing spree of the town citizens, and solve the supernatural mystery that affected her family 25 years ago — all while navigating her new relationships.",
-        "poster_path": "/9PFonBhy4cQy7Jz20NpMygczOkv.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          9648,
-          35
-        ],
-        "popularity": 264.249,
-        "first_air_date": "2022-11-23",
-        "vote_average": 8.462,
-        "vote_count": 8542,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/9zcbqSxdsRMZWHYtyCd1nXPr2xq.jpg",
-        "id": 82856,
-        "name": "The Mandalorian",
-        "original_name": "The Mandalorian",
-        "overview": "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
-        "poster_path": "/eU1i6eHXlzMOlEq0ku1Rzq7Y4wA.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          10759,
-          18
-        ],
-        "popularity": 95.221,
-        "first_air_date": "2019-11-12",
-        "vote_average": 8.436,
-        "vote_count": 9988,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/uDgy6hyPd82kOHh6I95FLtLnj6p.jpg",
-        "id": 100088,
-        "name": "The Last of Us",
-        "original_name": "The Last of Us",
-        "overview": "Twenty years after modern civilization has been destroyed, Joel, a hardened survivor, is hired to smuggle Ellie, a 14-year-old girl, out of an oppressive quarantine zone. What starts as a small job soon becomes a brutal, heartbreaking journey, as they both must traverse the United States and depend on each other for survival.",
-        "poster_path": "/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18
-        ],
-        "popularity": 198.787,
-        "first_air_date": "2023-01-15",
-        "vote_average": 8.596,
-        "vote_count": 5046,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/5zmiBoMzeeVdQ62no55JOJMY498.jpg",
-        "id": 126308,
-        "name": "Shōgun",
-        "original_name": "Shōgun",
-        "overview": "In Japan in the year 1600, at the dawn of a century-defining civil war, Lord Yoshii Toranaga is fighting for his life as his enemies on the Council of Regents unite against him, when a mysterious European ship is found marooned in a nearby fishing village.",
-        "poster_path": "/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          10768
-        ],
-        "popularity": 184.263,
-        "first_air_date": "2024-02-27",
-        "vote_average": 8.549,
-        "vote_count": 1037,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/l0qVZIpXtIo7km9u5Yqh0nKPOr5.jpg",
-        "id": 1668,
-        "name": "Friends",
-        "original_name": "Friends",
-        "overview": "Six young people from New York City, on their own and struggling to survive in the real world, find the companionship, comfort and support they get from each other to be the perfect antidote to the pressures of life.",
-        "poster_path": "/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          35
-        ],
-        "popularity": 331.222,
-        "first_air_date": "1994-09-22",
-        "vote_average": 8.438,
-        "vote_count": 7972,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/r9KaBE7i4ovg8uSppQrCp6ZdPD9.jpg",
-        "id": 95396,
-        "name": "Severance",
-        "original_name": "Severance",
-        "overview": "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives. When a mysterious colleague appears outside of work, it begins a journey to discover the truth about their jobs.",
-        "poster_path": "/lFf6LLrQjYldcZItzOkGmMMigP7.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          9648,
-          10765
-        ],
-        "popularity": 70.885,
-        "first_air_date": "2022-02-17",
-        "vote_average": 8.383,
-        "vote_count": 1252,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/etj8E2o0Bud0HkONVQPjyCkIvpv.jpg",
-        "id": 94997,
-        "name": "House of the Dragon",
-        "original_name": "House of the Dragon",
-        "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
-        "poster_path": "/7QMsOTMUswlwxJP0rTTZfmz2tX2.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          18,
-          10759
-        ],
-        "popularity": 420.505,
-        "first_air_date": "2022-08-21",
-        "vote_average": 8.4,
-        "vote_count": 4921,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/r0Q6eeN9L1ORL9QsV0Sg8ZV3vnv.jpg",
-        "id": 1408,
-        "name": "House",
-        "original_name": "House",
-        "overview": "Dr. Gregory House, a drug-addicted, unconventional, misanthropic medical genius, leads a team of diagnosticians at the fictional Princeton–Plainsboro Teaching Hospital in New Jersey.",
-        "poster_path": "/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          18,
-          9648,
-          35
-        ],
-        "popularity": 482.942,
-        "first_air_date": "2004-11-16",
-        "vote_average": 8.59,
-        "vote_count": 6478,
-        "origin_country": [
-          "US"
-        ]
-      },
-      {
-        "backdrop_path": "/yGNnjoIGOdQy3douq60tULY8teK.jpg",
-        "id": 63247,
-        "name": "Westworld",
-        "original_name": "Westworld",
-        "overview": "A dark odyssey about the dawn of artificial consciousness and the evolution of sin. Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite, no matter how noble or depraved, can be indulged.",
-        "poster_path": "/8MfgyFHf7XEboZJPZXCIDqqiz6e.jpg",
-        "media_type": "tv",
-        "adult": false,
-        "original_language": "en",
-        "genre_ids": [
-          10765,
-          37
-        ],
-        "popularity": 120.678,
-        "first_air_date": "2016-10-02",
-        "vote_average": 8.047,
-        "vote_count": 5428,
-        "origin_country": [
-          "US"
-        ]
-      }
-    ],
-    "total_pages": 2,
-    "total_results": 40
-  }
+  "page": 1,
+  "results": [
+    {
+      "backdrop_path": "/lJuQBW4w1x6NgD514xDPqZ2Lbpz.jpg",
+      "id": 220542,
+      "name": "The Apothecary Diaries",
+      "original_name": "",
+      "overview": "Maomao lived a peaceful life with her apothecary father. Until one day, she's sold as a lowly servant to the emperor's palace. But she wasn't meant for a compliant life among royalty. So when imperial heirs fall ill, she decides to step in and find a cure! This catches the eye of Jinshi, a handsome palace official who promotes her. Now, she's making a name for herself solving medical mysteries!",
+      "poster_path": "/e3ojpANrFnmJCyeBNTinYwyBCIN.jpg",
+      "media_type": "tv",
+      "adult": false,
+      "original_language": "ja",
+      "genre_ids": [
+        16,
+        18,
+        9648
+      ],
+      "popularity": 167.021,
+      "first_air_date": "2023-10-22",
+      "vote_average": 8.7,
+      "vote_count": 173,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "backdrop_path": "/irpfqoLS3cI08zGSpCDhclA3yyR.jpg",
+      "id": 216269,
+      "name": "I'm in Love with the Villainess",
+      "original_name": "",
+      "overview": "The world turns upside down when a corporate drone wakes up as Rae Taylor, the heroine in her favorite otome game, Revolution. Rae is elated at the opportunity to court Claire François, the game's villainess and the object of her affection. Armed with her knowledge of the game and events to come, Rae sets out to make Claire fall for her. But how will the villainess take Rae's romantic advances?",
+      "poster_path": "/29jtBbv4eSk0QHdVMLwl8P4p6NX.jpg",
+      "media_type": "tv",
+      "adult": false,
+      "original_language": "ja",
+      "genre_ids": [
+        16,
+        35,
+        10765
+      ],
+      "popularity": 38.017,
+      "first_air_date": "2023-10-03",
+      "vote_average": 6.9,
+      "vote_count": 18,
+      "origin_country": [
+        "JP"
+      ]
+    }
+  ],
+  "total_pages": 2,
+  "total_results": 40
+}

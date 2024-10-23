@@ -8,7 +8,8 @@
             "name": "flutter_expert_project (running all test)",
             "request": "launch",
             "type": "dart",
-            "program": "test/", // or test/foo for a subset of tests
+            "program": "test/",
+            "args": ["--coverage"] // or test/foo for a subset of tests
         },
         {
             "name": "flutter_expert_project",

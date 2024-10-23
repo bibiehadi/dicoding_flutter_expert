@@ -1,6 +1,7 @@
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_season.dart';
+import 'package:equatable/equatable.dart';
 
-class TvSeriesSeasonModel {
+class TvSeriesSeasonModel extends Equatable {
   final String? airDate;
   final int episodeCount;
   final int id;
@@ -56,4 +57,16 @@ class TvSeriesSeasonModel {
       voteAverage: voteAverage,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        airDate,
+        episodeCount,
+        id,
+        name,
+        overview,
+        posterPath,
+        seasonNumber,
+        voteAverage,
+      ];
 }

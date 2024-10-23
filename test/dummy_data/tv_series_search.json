@@ -1,0 +1,29 @@
+{
+    "page": 1,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/96RT2A47UdzWlUfvIERFyBsLhL2.jpg",
+        "genre_ids": [
+          16,
+          10759,
+          10765
+        ],
+        "id": 209867,
+        "origin_country": [
+          "JP"
+        ],
+        "original_language": "ja",
+        "original_name": "",
+        "overview": "After the party of heroes defeated the Demon King, they restored peace to the land and returned to lives of solitude. Generations pass, and the elven mage Frieren comes face to face with humanity's mortality. She takes on a new apprentice and promises to fulfill old friends' dying wishes. Can an elven mind make peace with the nature of life and death? Frieren embarks on her quest to find out.",
+        "popularity": 195.53,
+        "poster_path": "/dqZENchTd7lp5zht7BdlqM7RBhD.jpg",
+        "first_air_date": "2023-09-29",
+        "name": "Frieren: Beyond Journey's End",
+        "vote_average": 8.842,
+        "vote_count": 297
+      }
+    ],
+    "total_pages": 1,
+    "total_results": 1
+  }
