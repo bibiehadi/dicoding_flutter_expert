@@ -5,6 +5,7 @@ import 'package:ditonton/features/movies/domain/entities/movie_detail.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_genre.dart';
+import 'package:ditonton/features/tv_series/domain/entities/tv_series_season_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -116,6 +117,16 @@ final testTvSeriesDetail = TvSeriesDetail(
   numberOfEpisodes: 10,
   numberOfSeasons: 1,
   seasons: [],
+);
+
+final testTvSeriesSeasonDetail = TvSeriesSeasonDetail(
+  id: 1,
+  name: 'Season 1',
+  overview: 'Overview',
+  posterPath: '/poster.jpg',
+  seasonNumber: 1,
+  episodes: [],
+  voteAverage: 1,
 );
 
 final testWatchlistTvSeriesTable = WatchlistTable(

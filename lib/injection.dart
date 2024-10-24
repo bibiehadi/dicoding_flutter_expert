@@ -38,7 +38,7 @@ import 'package:ditonton/features/tv_series/presentation/provider/tv_series_deta
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_search_notifier.dart';
-import 'package:ditonton/features/tv_series/presentation/provider/tv_series_season_detail.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
 import 'package:http/http.dart' as http;
