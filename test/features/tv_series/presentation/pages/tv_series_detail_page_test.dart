@@ -43,6 +43,95 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
+  testWidgets('Page should display tv series detail data when loaded',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
+    when(mockNotifier.tvSeriesRecommendationState)
+        .thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeriesRecommendation).thenReturn(<TvSeries>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+
+    final detailContent = find.byKey(Key('detail_content'));
+
+    await tester
+        .pumpWidget(_makeTestableWidget(TvSeriesDetailPage(tvSeriesId: 81231)));
+
+    expect(detailContent, findsOneWidget);
+  });
+
+  testWidgets('Page should display test with message when Error',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvSeriesState).thenReturn(RequestState.Error);
+    when(mockNotifier.message).thenReturn('Error message');
+
+    final textFinder = find.byKey(Key('error_message'));
+
+    await tester.pumpWidget(_makeTestableWidget(TvSeriesDetailPage(
+      tvSeriesId: 81231,
+    )));
+
+    expect(textFinder, findsOneWidget);
+  });
+
+  testWidgets('Page should display progress bar when loading',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
+    when(mockNotifier.tvSeriesRecommendationState)
+        .thenReturn(RequestState.Loading);
+    when(mockNotifier.tvSeriesRecommendation).thenReturn(<TvSeries>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+
+    final progressFinder =
+        find.byKey(Key('circular_progress_indicator_recommendation'));
+    final centerFinder = find.byKey(Key('loading_recommendation'));
+
+    await tester.pumpWidget(_makeTestableWidget(TvSeriesDetailPage(
+      tvSeriesId: 81231,
+    )));
+
+    expect(centerFinder, findsOneWidget);
+    expect(progressFinder, findsOneWidget);
+  });
+
+  testWidgets(
+      'Page should display list view tv series recommendation data when loaded',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
+    when(mockNotifier.tvSeriesRecommendationState)
+        .thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeriesRecommendation).thenReturn(<TvSeries>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+
+    final detailContent = find.byKey(Key('list_view_recommendation'));
+
+    await tester
+        .pumpWidget(_makeTestableWidget(TvSeriesDetailPage(tvSeriesId: 81231)));
+
+    expect(detailContent, findsOneWidget);
+  });
+
+  testWidgets('Page should display test with message when Error',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvSeriesState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvSeries).thenReturn(testTvSeriesDetail);
+    when(mockNotifier.tvSeriesRecommendationState)
+        .thenReturn(RequestState.Error);
+    when(mockNotifier.message).thenReturn('Error message');
+    when(mockNotifier.tvSeriesRecommendation).thenReturn(<TvSeries>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+
+    final textFinder = find.byKey(Key('error_message_recommendation'));
+
+    await tester.pumpWidget(_makeTestableWidget(TvSeriesDetailPage(
+      tvSeriesId: 81231,
+    )));
+
+    expect(textFinder, findsOneWidget);
+  });
+
   testWidgets(
       'Watchlist button should display add icon when movie not added to watchlist',
       (WidgetTester tester) async {

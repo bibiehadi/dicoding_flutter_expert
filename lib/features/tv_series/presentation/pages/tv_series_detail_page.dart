@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
@@ -49,13 +49,17 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
             final tvSeries = provider.tvSeries;
             return SafeArea(
               child: DetailContent(
+                key: Key('detail_content'),
                 tvSeries,
                 provider.tvSeriesRecommendation,
                 provider.isAddedToWatchlist,
               ),
             );
           } else {
-            return Text(provider.message);
+            return Text(
+              provider.message,
+              key: Key('error_message'),
+            );
           }
         },
       ),
@@ -248,16 +252,22 @@ class DetailContent extends StatelessWidget {
                                 if (data.tvSeriesRecommendationState ==
                                     RequestState.Loading) {
                                   return Center(
-                                    child: CircularProgressIndicator(),
+                                    key: Key('loading_recommendation'),
+                                    child: CircularProgressIndicator(
+                                      key: Key(
+                                          'circular_progress_indicator_recommendation'),
+                                    ),
                                   );
                                 } else if (data.tvSeriesRecommendationState ==
                                     RequestState.Error) {
-                                  return Text(data.message);
+                                  return Text(data.message,
+                                      key: Key('error_message_recommendation'));
                                 } else if (data.tvSeriesRecommendationState ==
                                     RequestState.Loaded) {
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
+                                      key: Key('list_view_recommendation'),
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                         final tvSeriesDetail =
@@ -349,16 +359,5 @@ class DetailContent extends StatelessWidget {
     }
 
     return result.substring(0, result.length - 2);
-  }
-
-  String _showDuration(int runtime) {
-    final int hours = runtime ~/ 60;
-    final int minutes = runtime % 60;
-
-    if (hours > 0) {
-      return '${hours}h ${minutes}m';
-    } else {
-      return '${minutes}m';
-    }
   }
 }
