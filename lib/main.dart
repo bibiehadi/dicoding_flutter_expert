@@ -15,6 +15,7 @@ import 'package:ditonton/features/movies/presentation/provider/popular_movies_no
 import 'package:ditonton/features/movies/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/features/movies/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_detail_page.dart';
+import 'package:ditonton/features/tv_series/presentation/pages/tv_series_now_playing_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_popular_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_search_page.dart';
@@ -23,6 +24,7 @@ import 'package:ditonton/features/tv_series/presentation/pages/tv_series_top_rat
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_watchlist_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_list_notifier.dart';
+import 'package:ditonton/features/tv_series/presentation/provider/tv_series_now_playing_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
@@ -90,6 +92,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSeasonDetailNotifier>(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TvSeriesNowPlayingNotifier>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -115,6 +120,10 @@ class MyApp extends StatelessWidget {
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
+
+            case TvSeriesNowPlayingPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                  builder: (_) => TvSeriesNowPlayingPage());
             case SearchPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchPage());
             case WatchlistPage.ROUTE_NAME:

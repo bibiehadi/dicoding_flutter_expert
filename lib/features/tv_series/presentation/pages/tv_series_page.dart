@@ -49,9 +49,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'Now Playing',
+                onTap: () => Navigator.pushNamed(
+                    context, TvSeriesTopRatedPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(
                 builder: (context, value, child) {
