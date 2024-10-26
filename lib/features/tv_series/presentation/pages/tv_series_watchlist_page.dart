@@ -11,7 +11,7 @@ class TvSeriesWatchlistPage extends StatefulWidget {
   const TvSeriesWatchlistPage({super.key});
 
   @override
-  _TvSeriesWatchlistPageState createState() => _TvSeriesWatchlistPageState();
+  State<TvSeriesWatchlistPage> createState() => _TvSeriesWatchlistPageState();
 }
 
 class _TvSeriesWatchlistPageState extends State<TvSeriesWatchlistPage>

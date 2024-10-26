@@ -6,7 +6,6 @@ import 'package:ditonton/features/movies/presentation/pages/movie_detail_page.da
 import 'package:ditonton/features/movies/presentation/pages/popular_movies_page.dart';
 import 'package:ditonton/features/movies/presentation/pages/search_page.dart';
 import 'package:ditonton/features/movies/presentation/pages/top_rated_movies_page.dart';
-import 'package:ditonton/features/movies/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/features/movies/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/features/movies/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
@@ -209,5 +208,19 @@ class MovieList extends StatelessWidget {
         itemCount: movies.length,
       ),
     );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

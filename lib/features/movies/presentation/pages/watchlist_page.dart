@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
+import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/features/movies/domain/entities/movie.dart';
 import 'package:ditonton/features/movies/presentation/pages/movie_detail_page.dart';
-import 'package:ditonton/features/movies/presentation/pages/popular_movies_page.dart';
-import 'package:ditonton/features/movies/presentation/pages/top_rated_movies_page.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/features/movies/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/features/movies/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_page.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_watchlist_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
@@ -22,7 +20,7 @@ class WatchlistPage extends StatefulWidget {
   _WatchlistPageState createState() => _WatchlistPageState();
 }
 
-class _WatchlistPageState extends State<WatchlistPage> {
+class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   @override
   void initState() {
     super.initState();
@@ -32,6 +30,23 @@ class _WatchlistPageState extends State<WatchlistPage> {
           Provider.of<TvSeriesWatchlistNotifier>(context, listen: false)
               .fetchWatchlistTvSeries(),
         });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void didPopNext() {
+    Future.microtask(() => {
+          Provider.of<WatchlistMovieNotifier>(context, listen: false)
+              .fetchWatchlistMovies(),
+          Provider.of<TvSeriesWatchlistNotifier>(context, listen: false)
+              .fetchWatchlistTvSeries(),
+        });
+    super.didPopNext();
   }
 
   @override
@@ -116,7 +131,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
 
-  MovieList(this.movies);
+  const MovieList(this.movies, {super.key});
 
   @override
   Widget build(BuildContext context) {

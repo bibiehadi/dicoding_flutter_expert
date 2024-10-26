@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_genre.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/remove_tv_series_watchlist/remove_tv_series_watchlist_params.dart';
 import 'package:ditonton/features/tv_series/presentation/pages/tv_series_season_detail_page.dart';
 import 'package:ditonton/features/tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +32,8 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
     Future.microtask(() {
       Provider.of<TvSeriesDetailNotifier>(context, listen: false)
           .fetchTvSeriesDetail(widget.tvSeriesId);
+      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+          .loadWatchlistStatus(widget.tvSeriesId);
     });
     super.initState();
   }
@@ -128,9 +130,7 @@ class DetailContent extends StatelessWidget {
                                   await Provider.of<TvSeriesDetailNotifier>(
                                           context,
                                           listen: false)
-                                      .removeTvSeriesWatchlist(
-                                          RemoveTvSeriesWatchlistParams(
-                                              tvSeriesDetail: tvSeriesDetail));
+                                      .removeWatchlist(tvSeriesDetail);
                                 }
 
                                 final message =
