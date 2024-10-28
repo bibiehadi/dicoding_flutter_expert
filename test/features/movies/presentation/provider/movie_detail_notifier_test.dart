@@ -224,7 +224,7 @@ void main() {
       when(mockGetMovieDetail.execute(tId))
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       when(mockGetMovieRecommendations.execute(tId))
-          .thenAnswer((_) async => Right(tMovies));
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchMovieDetail(tId);
       // assert

@@ -1,9 +1,16 @@
 import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
+import 'package:equatable/equatable.dart';
 
-class SaveTvSeriesWatchlistParams {
+class SaveTvSeriesWatchlistParams extends Equatable {
   final TvSeriesDetail tvSeriesDetail;
 
-  SaveTvSeriesWatchlistParams({
+  const SaveTvSeriesWatchlistParams({
     required this.tvSeriesDetail,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        tvSeriesDetail,
+      ];
 }

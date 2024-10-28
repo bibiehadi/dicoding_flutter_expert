@@ -1,5 +1,12 @@
-class GetTvSeriesWatchlistStatusParam {
+import 'package:equatable/equatable.dart';
+
+class GetTvSeriesWatchlistStatusParam extends Equatable {
   final int tvSeriesId;
 
-  GetTvSeriesWatchlistStatusParam({required this.tvSeriesId});
+  const GetTvSeriesWatchlistStatusParam({required this.tvSeriesId});
+
+  @override
+  List<Object?> get props => [
+        tvSeriesId,
+      ];
 }
