@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/exception.dart';
-import 'package:ditonton/features/tv_series/data/datasources/remote/tv_series_remote_datasource_impl.dart';
-import 'package:ditonton/features/tv_series/data/models/tv_series_detail.dart';
-import 'package:ditonton/features/tv_series/data/models/tv_series_response.dart';
-import 'package:ditonton/features/tv_series/data/models/tv_series_season_detail.dart';
+import '../../../../../core/lib/common/constants.dart';
+import '../../../../../core/lib/common/exception.dart';
+import '../../../../../features/tv_series/lib/data/datasources/remote/tv_series_remote_datasource_impl.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_detail.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_response.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_season_detail.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;

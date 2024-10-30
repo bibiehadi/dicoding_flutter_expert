@@ -1,7 +1,7 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
-import 'package:ditonton/features/tv_series/presentation/pages/tv_series_now_playing_page.dart';
-import 'package:ditonton/features/tv_series/presentation/provider/tv_series_now_playing_notifier.dart';
+import '../../../../../core/lib/common/state_enum.dart';
+import '../../../../../features/tv_series/lib/domain/entities/tv_series.dart';
+import '../../../../../features/tv_series/lib/presentation/pages/tv_series_now_playing_page.dart';
+import '../../../../../features/tv_series/lib/presentation/provider/tv_series_now_playing_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

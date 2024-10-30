@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/get_tv_series_list/get_tv_series_list.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/get_tv_series_list/get_tv_series_list_params.dart';
+import '../../../../../features/tv_series/lib/domain/entities/tv_series.dart';
+import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_list/get_tv_series_list.dart';
+import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_list/get_tv_series_list_params.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

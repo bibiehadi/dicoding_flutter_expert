@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
-import 'package:ditonton/features/tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
+import '../../../../../core/lib/common/failure.dart';
+import '../../../../../core/lib/common/state_enum.dart';
+import '../../../../../features/tv_series/lib/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
+import '../../../../../features/tv_series/lib/presentation/provider/tv_series_watchlist_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

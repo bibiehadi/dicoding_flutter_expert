@@ -1,5 +1,5 @@
-import 'package:ditonton/features/tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status.dart';
-import 'package:ditonton/features/tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status_param.dart';
+import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status.dart';
+import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status_param.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

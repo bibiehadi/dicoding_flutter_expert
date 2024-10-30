@@ -1,9 +1,9 @@
-import 'package:ditonton/features/tv_series/data/models/tv_series_detail.dart';
-import 'package:ditonton/features/tv_series/data/models/tv_series_genre.dart';
-import 'package:ditonton/features/tv_series/data/models/tv_series_season.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_genre.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_season.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_detail.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_genre.dart';
+import '../../../../../features/tv_series/lib/data/models/tv_series_season.dart';
+import '../../../../../features/tv_series/lib/domain/entities/tv_series_detail.dart';
+import '../../../../../features/tv_series/lib/domain/entities/tv_series_genre.dart';
+import '../../../../../features/tv_series/lib/domain/entities/tv_series_season.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

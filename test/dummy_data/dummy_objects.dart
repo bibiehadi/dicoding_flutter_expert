@@ -1,11 +1,11 @@
-import 'package:ditonton/features/movies/data/models/watchlist_table.dart';
-import 'package:ditonton/features/movies/domain/entities/genre.dart';
-import 'package:ditonton/features/movies/domain/entities/movie.dart';
-import 'package:ditonton/features/movies/domain/entities/movie_detail.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_detail.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_genre.dart';
-import 'package:ditonton/features/tv_series/domain/entities/tv_series_season_detail.dart';
+import '../../features/movies/lib/data/models/watchlist_table.dart';
+import '../../features/movies/lib/domain/entities/genre.dart';
+import '../../features/movies/lib/domain/entities/movie.dart';
+import '../../features/movies/lib/domain/entities/movie_detail.dart';
+import '../../features/tv_series/lib/domain/entities/tv_series.dart';
+import '../../features/tv_series/lib/domain/entities/tv_series_detail.dart';
+import '../../features/tv_series/lib/domain/entities/tv_series_genre.dart';
+import '../../features/tv_series/lib/domain/entities/tv_series_season_detail.dart';
 
 final testMovie = Movie(
   adult: false,
