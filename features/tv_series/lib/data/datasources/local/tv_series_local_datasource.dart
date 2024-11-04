@@ -1,4 +1,4 @@
-import 'package:movies/data/models/watchlist_table.dart';
+import 'package:core/utils/db/watchlist_table.dart';
 
 abstract class TvSeriesLocalDatasource {
   Future<String> insertWatchlist(WatchlistTable tvSeries);

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:core/core.dart';
 import 'package:core/third_party_library.dart';
-import 'package:movies/data/models/watchlist_table.dart';
+import 'package:core/utils/db/watchlist_table.dart';
 import 'package:tv_series/data/datasources/local/tv_series_local_datasource.dart';
 import 'package:tv_series/data/datasources/remote/tv_series_remote_datasource.dart';
 import 'package:tv_series/domain/entities/tv_series.dart';

@@ -1,11 +1,11 @@
 import 'package:core/core.dart';
-import 'package:movies/data/datasources/db/movie_database_helper.dart';
-import 'package:movies/data/models/watchlist_table.dart';
+import 'package:core/utils/db/database_helper.dart';
+import 'package:core/utils/db/watchlist_table.dart';
 
 import 'tv_series_local_datasource.dart';
 
 class TvSeriesLocalDatasourceImpl implements TvSeriesLocalDatasource {
-  final MovieDatabaseHelper databaseHelper;
+  final DatabaseHelper databaseHelper;
 
   TvSeriesLocalDatasourceImpl({required this.databaseHelper});
 

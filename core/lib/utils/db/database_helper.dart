@@ -1,17 +1,15 @@
 import 'dart:async';
 
 import 'package:core/third_party_library.dart';
+import 'package:core/utils/db/watchlist_table.dart';
 
-import '../../models/watchlist_table.dart';
-
-class MovieDatabaseHelper {
-  static MovieDatabaseHelper? _databaseHelper;
-  MovieDatabaseHelper._instance() {
+class DatabaseHelper {
+  static DatabaseHelper? _databaseHelper;
+  DatabaseHelper._instance() {
     _databaseHelper = this;
   }
 
-  factory MovieDatabaseHelper() =>
-      _databaseHelper ?? MovieDatabaseHelper._instance();
+  factory DatabaseHelper() => _databaseHelper ?? DatabaseHelper._instance();
 
   static Database? _database;
 

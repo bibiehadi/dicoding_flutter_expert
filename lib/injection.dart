@@ -1,4 +1,4 @@
-import 'package:movies/data/datasources/db/movie_database_helper.dart';
+import 'package:core/utils/db/database_helper.dart';
 import 'package:movies/data/datasources/movie_local_data_source.dart';
 import 'package:movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/data/repositories/movie_repository_impl.dart';
@@ -180,8 +180,7 @@ void init() {
     () => TvSeriesLocalDatasourceImpl(databaseHelper: locator()),
   );
   // helper
-  locator
-      .registerLazySingleton<MovieDatabaseHelper>(() => MovieDatabaseHelper());
+  locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
   locator.registerLazySingleton(() => http.Client());
