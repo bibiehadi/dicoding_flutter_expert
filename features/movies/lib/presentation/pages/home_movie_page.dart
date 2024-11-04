@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:tv_series/presentation/pages/tv_series_page.dart';
 
@@ -8,7 +9,6 @@ import 'movie_detail_page.dart';
 import 'popular_movies_page.dart';
 import 'search_page.dart';
 import 'top_rated_movies_page.dart';
-import 'watchlist_page.dart';
 import '../provider/movie_list_notifier.dart';
 
 class HomeMoviePage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: Icon(Icons.save_alt),
               title: Text('Watchlist'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+                Navigator.pushNamed(context, watchlistRoute);
               },
             ),
             ListTile(

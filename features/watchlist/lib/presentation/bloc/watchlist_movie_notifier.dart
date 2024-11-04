@@ -1,12 +1,12 @@
 import 'package:core/core.dart';
+import 'package:core/utils/db/watchlist_table.dart';
 
-import '../../domain/entities/movie.dart';
-import '../../domain/usecases/get_watchlist_movies.dart';
 import 'package:flutter/foundation.dart';
+import 'package:watchlist/domain/usecases/get_watchlist_movies/get_watchlist_movies.dart';
 
 class WatchlistMovieNotifier extends ChangeNotifier {
-  var _watchlistMovies = <Movie>[];
-  List<Movie> get watchlistMovies => _watchlistMovies;
+  var _watchlistMovies = <WatchlistTable>[];
+  List<WatchlistTable> get watchlistMovies => _watchlistMovies;
 
   var _watchlistState = RequestState.Empty;
   RequestState get watchlistState => _watchlistState;

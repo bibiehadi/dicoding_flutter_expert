@@ -30,6 +30,9 @@ dependencies:
   tv_series:
     path: features/tv_series
 
+  watchlist:
+    path: features/watchlist
+
   flutter:
     sdk: flutter
 

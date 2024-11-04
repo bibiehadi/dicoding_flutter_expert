@@ -8,6 +8,15 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  core:
+    path: ../../core
+
+  movies:
+    path: ../movies
+
+  tv_series:
+    path: ../tv_series
+
   flutter:
     sdk: flutter
 
