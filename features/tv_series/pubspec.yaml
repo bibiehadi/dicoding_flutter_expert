@@ -1,6 +1,7 @@
 name: tv_series
 description: "A new Flutter package project."
 version: 0.0.1
+publish_to: none
 homepage:
 
 environment:
@@ -17,10 +18,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  http: ^1.1.0
+
 dev_dependencies:
+  build_runner: ^2.0.4
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  mockito: ^5.0.8
+  sqflite_common_ffi: ^2.3.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

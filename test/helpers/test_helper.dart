@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
   MovieRepository,
   MovieRemoteDataSource,
   MovieLocalDataSource,
-  MovieDatabaseHelper,
+  DatabaseHelper,
   TvSeriesRepository,
   TvSeriesRemoteDatasource,
   TvSeriesLocalDatasource,
