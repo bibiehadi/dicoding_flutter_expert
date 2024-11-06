@@ -1,11 +1,9 @@
 import 'package:core/core.dart';
-import 'package:tv_series/presentation/pages/tv_series_page.dart';
-import 'package:tv_series/presentation/pages/tv_series_watchlist_page.dart';
-import 'package:tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
-import '../../domain/entities/movie.dart';
-import 'movie_detail_page.dart';
+import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
+import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
+import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
+import 'package:watchlist/presentation/widgets/watchlist_list.dart';
 import 'watchlist_movies_page.dart';
-import '../provider/watchlist_movie_notifier.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
@@ -13,7 +11,7 @@ class WatchlistPage extends StatefulWidget {
   const WatchlistPage({super.key});
 
   @override
-  _WatchlistPageState createState() => _WatchlistPageState();
+  State<WatchlistPage> createState() => _WatchlistPageState();
 }
 
 class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
@@ -23,7 +21,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
     Future.microtask(() => {
           Provider.of<WatchlistMovieNotifier>(context, listen: false)
               .fetchWatchlistMovies(),
-          Provider.of<TvSeriesWatchlistNotifier>(context, listen: false)
+          Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
               .fetchWatchlistTvSeries(),
         });
   }
@@ -39,7 +37,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
     Future.microtask(() => {
           Provider.of<WatchlistMovieNotifier>(context, listen: false)
               .fetchWatchlistMovies(),
-          Provider.of<TvSeriesWatchlistNotifier>(context, listen: false)
+          Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
               .fetchWatchlistTvSeries(),
         });
     super.didPopNext();
@@ -49,7 +47,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist'),
+        title: const Text('Watchlist'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -67,32 +65,32 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                     builder: (context, value, child) {
                   final state = value.watchlistState;
                   if (state == RequestState.Loading) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (state == RequestState.Loaded) {
-                    return MovieList(value.watchlistMovies);
+                    return WatchlistList(value.watchlistMovies);
                   } else {
-                    return Text('Failed');
+                    return const Text('Failed');
                   }
                 }),
               ),
               _buildSubHeading(
                 title: 'Tv Series',
                 onTap: () => Navigator.pushNamed(
-                    context, TvSeriesWatchlistPage.ROUTE_NAME),
+                    context, WatchlistTvSeriesPage.ROUTE_NAME),
               ),
-              Consumer<TvSeriesWatchlistNotifier>(
+              Consumer<WatchlistTvSeriesNotifier>(
                   builder: (context, value, child) {
                 final state = value.watchlistState;
                 if (state == RequestState.Loading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(value.watchlistTvSeries);
+                  return WatchlistList(value.watchlistTvSeries);
                 } else {
-                  return Text('Failed');
+                  return const Text('Failed');
                 }
               }),
             ],
@@ -112,56 +110,14 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
         ),
         InkWell(
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Row(
               children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
             ),
           ),
         ),
       ],
-    );
-  }
-}
-
-class MovieList extends StatelessWidget {
-  final List<Movie> movies;
-
-  const MovieList(this.movies, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final movie = movies[index];
-          return Container(
-            padding: const EdgeInsets.all(8),
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  MovieDetailPage.ROUTE_NAME,
-                  arguments: movie.id,
-                );
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                child: CachedNetworkImage(
-                  imageUrl: '$baseImageURL${movie.posterPath}',
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                ),
-              ),
-            ),
-          );
-        },
-        itemCount: movies.length,
-      ),
     );
   }
 }
