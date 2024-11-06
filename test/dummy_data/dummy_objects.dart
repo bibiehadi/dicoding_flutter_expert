@@ -1,4 +1,5 @@
-import '../../features/movies/lib/data/models/watchlist_table.dart';
+import 'package:core/utils/db/watchlist_table.dart';
+
 import '../../features/movies/lib/domain/entities/genre.dart';
 import '../../features/movies/lib/domain/entities/movie.dart';
 import '../../features/movies/lib/domain/entities/movie_detail.dart';
