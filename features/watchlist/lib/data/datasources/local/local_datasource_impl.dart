@@ -15,7 +15,7 @@ class LocalDatasourceImpl implements LocalDatasource {
       final result = await databaseHelper.getWatchlistTvSeries();
       return result.map((data) => WatchlistTable.fromMap(data)).toList();
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 
@@ -25,7 +25,7 @@ class LocalDatasourceImpl implements LocalDatasource {
       final result = await databaseHelper.getWatchlistMovies();
       return result.map((data) => WatchlistTable.fromMap(data)).toList();
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 }

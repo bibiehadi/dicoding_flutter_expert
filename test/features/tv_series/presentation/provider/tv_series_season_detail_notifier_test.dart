@@ -1,12 +1,11 @@
+import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../../core/lib/common/failure.dart';
-import '../../../../../core/lib/common/state_enum.dart';
-import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_season_detail/get_tv_series_season_detail.dart';
-import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_season_detail/get_tv_series_season_detail_params.dart';
-import '../../../../../features/tv_series/lib/presentation/provider/tv_series_season_detail_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tv_series/domain/usecases/get_tv_series_season_detail/get_tv_series_season_detail.dart';
+import 'package:tv_series/domain/usecases/get_tv_series_season_detail/get_tv_series_season_detail_params.dart';
+import 'package:tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
 import 'tv_series_season_detail_notifier_test.mocks.dart';

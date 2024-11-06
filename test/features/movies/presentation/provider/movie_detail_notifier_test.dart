@@ -1,16 +1,15 @@
-import 'package:dartz/dartz.dart';
-import '../../../../../features/movies/lib/domain/entities/movie.dart';
-import '../../../../../features/movies/lib/domain/usecases/get_movie_detail.dart';
-import '../../../../../features/movies/lib/domain/usecases/get_movie_recommendations.dart';
-import '../../../../../core/lib/common/failure.dart';
-import '../../../../../features/movies/lib/domain/usecases/get_watchlist_status.dart';
-import '../../../../../features/movies/lib/domain/usecases/remove_watchlist.dart';
-import '../../../../../features/movies/lib/domain/usecases/save_watchlist.dart';
-import '../../../../../features/movies/lib/presentation/provider/movie_detail_notifier.dart';
-import '../../../../../core/lib/common/state_enum.dart';
+import 'package:core/core.dart';
+import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/entities/movie.dart';
+import 'package:movies/domain/usecases/get_movie_detail.dart';
+import 'package:movies/domain/usecases/get_movie_recommendations.dart';
+import 'package:movies/domain/usecases/get_watchlist_status.dart';
+import 'package:movies/domain/usecases/remove_watchlist.dart';
+import 'package:movies/domain/usecases/save_watchlist.dart';
+import 'package:movies/presentation/provider/movie_detail_notifier.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
 import 'movie_detail_notifier_test.mocks.dart';

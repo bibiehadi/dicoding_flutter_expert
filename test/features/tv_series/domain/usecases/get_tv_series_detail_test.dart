@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_detail/get_tv_series_detail.dart';
-import '../../../../../features/tv_series/lib/domain/usecases/get_tv_series_detail/get_tv_series_detail_params.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tv_series/domain/usecases/get_tv_series_detail/get_tv_series_detail.dart';
+import 'package:tv_series/domain/usecases/get_tv_series_detail/get_tv_series_detail_params.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
 import '../../../../helpers/test_helper.mocks.dart';

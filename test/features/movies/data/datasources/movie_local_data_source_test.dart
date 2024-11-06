@@ -1,4 +1,4 @@
-import 'package:core/third_party_library.dart';
+import 'package:core/core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movies/data/datasources/movie_local_data_source.dart';
@@ -8,10 +8,10 @@ import '../../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MovieLocalDataSourceImpl dataSource;
-  late MockMovieDatabaseHelper mockDatabaseHelper;
+  late MockDatabaseHelper mockDatabaseHelper;
 
   setUp(() {
-    mockDatabaseHelper = MockMovieDatabaseHelper();
+    mockDatabaseHelper = MockDatabaseHelper();
     dataSource = MovieLocalDataSourceImpl(databaseHelper: mockDatabaseHelper);
   });
 

@@ -1,15 +1,14 @@
 import 'dart:convert';
 
-import '../../../../../core/lib/common/constants.dart';
-import '../../../../../core/lib/common/exception.dart';
-import '../../../../../features/tv_series/lib/data/datasources/remote/tv_series_remote_datasource_impl.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_detail.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_response.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_season_detail.dart';
+import 'package:core/core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
+import 'package:tv_series/data/datasources/remote/tv_series_remote_datasource_impl.dart';
+import 'package:tv_series/data/models/tv_series_detail.dart';
+import 'package:tv_series/data/models/tv_series_response.dart';
+import 'package:tv_series/data/models/tv_series_season_detail.dart';
 
 import '../../../../helpers/test_helper.mocks.dart';
 import '../../../../json_reader.dart';
@@ -33,8 +32,8 @@ void main() {
       'should return list of TvSeries Model when the response code is 200',
       () async {
         // arrange
-        when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air'), headers: {
-          'Authorization': 'Bearer $ACCESS_TOKEN',
+        when(mockHttpClient.get(Uri.parse('$baseURL/tv/on_the_air'), headers: {
+          'Authorization': 'Bearer $accessToken',
           'accept': 'application/json',
         })).thenAnswer(
           (_) async => http.Response(
@@ -52,9 +51,9 @@ void main() {
     test('should throw a ServerExeption when the response code is 404 or other',
         () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air'), headers: {
+      when(mockHttpClient.get(Uri.parse('$baseURL/tv/on_the_air'), headers: {
         'accept': 'application/json',
-        'Authorization': 'Bearer $ACCESS_TOKEN'
+        'Authorization': 'Bearer $accessToken'
       })).thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = datasource.getNowPlayingTvSeries();
@@ -75,10 +74,10 @@ void main() {
         () async {
           // arrange
           when(mockHttpClient.get(
-              Uri.parse('$BASE_URL/tv/popular?language=en-US&page=1'),
+              Uri.parse('$baseURL/tv/popular?language=en-US&page=1'),
               headers: {
                 'accept': 'application/json',
-                'Authorization': 'Bearer $ACCESS_TOKEN'
+                'Authorization': 'Bearer $accessToken'
               })).thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_series_popular.json'), 200));
 
@@ -95,10 +94,10 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$BASE_URL/tv/popular?language=en-US&page=1'),
+            Uri.parse('$baseURL/tv/popular?language=en-US&page=1'),
             headers: {
               'accept': 'application/json',
-              'Authorization': 'Bearer $ACCESS_TOKEN'
+              'Authorization': 'Bearer $accessToken'
             })).thenAnswer((_) async => http.Response('Not Found', 404));
 
         // act
@@ -122,10 +121,10 @@ void main() {
         () async {
           // arrange
           when(mockHttpClient.get(
-              Uri.parse('$BASE_URL/tv/top_rated?language=en-US&page=1'),
+              Uri.parse('$baseURL/tv/top_rated?language=en-US&page=1'),
               headers: {
                 'accept': 'application/json',
-                'Authorization': 'Bearer $ACCESS_TOKEN'
+                'Authorization': 'Bearer $accessToken'
               })).thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_series_top_rated.json'), 200));
 
@@ -142,10 +141,10 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$BASE_URL/tv/top_rated?language=en-US&page=1'),
+            Uri.parse('$baseURL/tv/top_rated?language=en-US&page=1'),
             headers: {
               'accept': 'application/json',
-              'Authorization': 'Bearer $ACCESS_TOKEN'
+              'Authorization': 'Bearer $accessToken'
             })).thenAnswer((_) async => http.Response('Not Found', 404));
 
         // act
@@ -169,8 +168,8 @@ void main() {
         () async {
           // arrange
           when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/$id?language=en-US'), headers: {
-            'Authorization': 'Bearer $ACCESS_TOKEN',
+              .get(Uri.parse('$baseURL/tv/$id?language=en-US'), headers: {
+            'Authorization': 'Bearer $accessToken',
             'accept': 'application/json',
           })).thenAnswer((_) async =>
               http.Response(readJson('dummy_data/tv_series_detail.json'), 200));
@@ -187,10 +186,10 @@ void main() {
         'should throw a ServerException when the response code is 404 or other',
         () async {
           // arrange
-          when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/$id?language=en-US'),
+          when(mockHttpClient.get(Uri.parse('$baseURL/tv/$id?language=en-US'),
               headers: {
                 'accept': 'application/json',
-                'Authorization': 'Bearer $ACCESS_TOKEN'
+                'Authorization': 'Bearer $accessToken'
               })).thenAnswer((_) async => http.Response('Not Found', 404));
 
           // act
@@ -215,9 +214,9 @@ void main() {
       () async {
         // arrange
         when(mockHttpClient.get(
-          Uri.parse('$BASE_URL/tv/$id/recommendations?language=en-US&page=1'),
+          Uri.parse('$baseURL/tv/$id/recommendations?language=en-US&page=1'),
           headers: {
-            'Authorization': 'Bearer $ACCESS_TOKEN',
+            'Authorization': 'Bearer $accessToken',
             'accept': 'application/json',
           },
         )).thenAnswer(
@@ -237,10 +236,10 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-        Uri.parse('$BASE_URL/tv/$id/recommendations?language=en-US&page=1'),
+        Uri.parse('$baseURL/tv/$id/recommendations?language=en-US&page=1'),
         headers: {
           'accept': 'application/json',
-          'Authorization': 'Bearer $ACCESS_TOKEN'
+          'Authorization': 'Bearer $accessToken'
         },
       )).thenAnswer((_) async => http.Response('Not Found', 404));
       // act
@@ -262,9 +261,9 @@ void main() {
       () async {
         // arrange
         when(mockHttpClient.get(
-          Uri.parse('$BASE_URL/search/tv?query=$query&language=en-US&page=1'),
+          Uri.parse('$baseURL/search/tv?query=$query&language=en-US&page=1'),
           headers: {
-            'Authorization': 'Bearer $ACCESS_TOKEN',
+            'Authorization': 'Bearer $accessToken',
             'accept': 'application/json',
           },
         )).thenAnswer(
@@ -284,10 +283,10 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-        Uri.parse('$BASE_URL/search/tv?query=$query&language=en-US&page=1'),
+        Uri.parse('$baseURL/search/tv?query=$query&language=en-US&page=1'),
         headers: {
           'accept': 'application/json',
-          'Authorization': 'Bearer $ACCESS_TOKEN'
+          'Authorization': 'Bearer $accessToken'
         },
       )).thenAnswer((_) async => http.Response('Not Found', 404));
       // act
@@ -310,9 +309,9 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?language=en-US'),
+            Uri.parse('$baseURL/tv/$id/season/$seasonNumber?language=en-US'),
             headers: {
-              'Authorization': 'Bearer $ACCESS_TOKEN',
+              'Authorization': 'Bearer $accessToken',
               'accept': 'application/json',
             })).thenAnswer((_) async => http.Response(
             readJson('dummy_data/tv_series_season_detail.json'), 200));
@@ -329,9 +328,9 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?language=en-US'),
+            Uri.parse('$baseURL/tv/$id/season/$seasonNumber?language=en-US'),
             headers: {
-              'Authorization': 'Bearer $ACCESS_TOKEN',
+              'Authorization': 'Bearer $accessToken',
               'accept': 'application/json',
             })).thenAnswer((_) async => http.Response('Not Found', 404));
 

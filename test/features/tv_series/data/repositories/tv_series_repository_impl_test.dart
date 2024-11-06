@@ -1,18 +1,17 @@
 import 'dart:io';
 
+import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../../core/lib/common/exception.dart';
-import '../../../../../core/lib/common/failure.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_detail.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_episode.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_genre.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_model.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_season.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_season_detail.dart';
-import '../../../../../features/tv_series/lib/data/repositories/tv_series_repository_impl.dart';
-import '../../../../../features/tv_series/lib/domain/entities/tv_series.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tv_series/data/models/tv_series_detail.dart';
+import 'package:tv_series/data/models/tv_series_episode.dart';
+import 'package:tv_series/data/models/tv_series_genre.dart';
+import 'package:tv_series/data/models/tv_series_model.dart';
+import 'package:tv_series/data/models/tv_series_season.dart';
+import 'package:tv_series/data/models/tv_series_season_detail.dart';
+import 'package:tv_series/data/repositories/tv_series_repository_impl.dart';
+import 'package:tv_series/domain/entities/tv_series.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
 import '../../../../helpers/test_helper.mocks.dart';

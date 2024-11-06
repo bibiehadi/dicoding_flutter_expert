@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:core/third_party_library.dart';
 import 'package:core/utils/db/watchlist_table.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;

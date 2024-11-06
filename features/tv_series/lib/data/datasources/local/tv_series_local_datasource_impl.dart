@@ -19,7 +19,7 @@ class TvSeriesLocalDatasourceImpl implements TvSeriesLocalDatasource {
         return null;
       }
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 
@@ -29,7 +29,7 @@ class TvSeriesLocalDatasourceImpl implements TvSeriesLocalDatasource {
       final result = await databaseHelper.getWatchlistTvSeries();
       return result.map((data) => WatchlistTable.fromMap(data)).toList();
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 
@@ -39,7 +39,7 @@ class TvSeriesLocalDatasourceImpl implements TvSeriesLocalDatasource {
       await databaseHelper.insertWatchlist(tvSeries);
       return 'Added to Watchlist';
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 
@@ -49,7 +49,7 @@ class TvSeriesLocalDatasourceImpl implements TvSeriesLocalDatasource {
       await databaseHelper.removeWatchlist(tvSeries);
       return 'Removed from Watchlist';
     } catch (e) {
-      throw DBException(e.toString());
+      throw DatabaseException(e.toString());
     }
   }
 }

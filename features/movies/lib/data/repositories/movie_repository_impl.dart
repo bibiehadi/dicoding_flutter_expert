@@ -96,7 +96,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final result = await localDataSource
           .insertWatchlist(WatchlistTable.fromEntity(movie));
       return Right(result);
-    } on DBException catch (e) {
+    } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
       rethrow;
@@ -109,7 +109,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final result = await localDataSource
           .removeWatchlist(WatchlistTable.fromEntity(movie));
       return Right(result);
-    } on DBException catch (e) {
+    } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     }
   }

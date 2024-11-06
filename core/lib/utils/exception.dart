@@ -1,7 +1,7 @@
 class ServerException implements Exception {}
 
-class DBException implements Exception {
+class DatabaseException implements Exception {
   final String message;
 
-  DBException(this.message);
+  DatabaseException(this.message);
 }

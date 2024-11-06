@@ -1,12 +1,11 @@
-import '../../../../../core/lib/common/state_enum.dart';
-import '../../../../../features/tv_series/lib/domain/entities/tv_series.dart';
-import '../../../../../features/tv_series/lib/presentation/pages/tv_series_detail_page.dart';
-import '../../../../../features/tv_series/lib/presentation/provider/tv_series_detail_notifier.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
+import 'package:tv_series/domain/entities/tv_series.dart';
+import 'package:tv_series/presentation/pages/tv_series_detail_page.dart';
+import 'package:tv_series/presentation/provider/tv_series_detail_notifier.dart';
 
 import '../../../../dummy_data/dummy_objects.dart';
 import 'tv_series_detail_page_test.mocks.dart';

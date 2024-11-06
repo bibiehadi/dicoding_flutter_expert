@@ -1,6 +1,6 @@
-import '../../../../../features/movies/lib/domain/usecases/get_watchlist_status.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/usecases/get_watchlist_status.dart';
 
 import '../../../../helpers/test_helper.mocks.dart';
 

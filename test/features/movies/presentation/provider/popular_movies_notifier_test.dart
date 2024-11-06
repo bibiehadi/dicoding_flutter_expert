@@ -1,12 +1,11 @@
-import 'package:dartz/dartz.dart';
-import '../../../../../core/lib/common/failure.dart';
-import '../../../../../core/lib/common/state_enum.dart';
-import '../../../../../features/movies/lib/domain/entities/movie.dart';
-import '../../../../../features/movies/lib/domain/usecases/get_popular_movies.dart';
-import '../../../../../features/movies/lib/presentation/provider/popular_movies_notifier.dart';
+import 'package:core/core.dart';
+import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/entities/movie.dart';
+import 'package:movies/domain/usecases/get_popular_movies.dart';
+import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 
 import 'popular_movies_notifier_test.mocks.dart';
 

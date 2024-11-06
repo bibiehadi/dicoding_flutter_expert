@@ -1,10 +1,10 @@
-import '../../../../../features/tv_series/lib/data/models/tv_series_detail.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_genre.dart';
-import '../../../../../features/tv_series/lib/data/models/tv_series_season.dart';
-import '../../../../../features/tv_series/lib/domain/entities/tv_series_detail.dart';
-import '../../../../../features/tv_series/lib/domain/entities/tv_series_genre.dart';
-import '../../../../../features/tv_series/lib/domain/entities/tv_series_season.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tv_series/data/models/tv_series_detail.dart';
+import 'package:tv_series/data/models/tv_series_genre.dart';
+import 'package:tv_series/data/models/tv_series_season.dart';
+import 'package:tv_series/domain/entities/tv_series_detail.dart';
+import 'package:tv_series/domain/entities/tv_series_genre.dart';
+import 'package:tv_series/domain/entities/tv_series_season.dart';
 
 void main() {
   final tTvSeriesDetailModel = TvSeriesDetailModel(

@@ -1,11 +1,11 @@
-import '../../../../../core/lib/common/state_enum.dart';
-import '../../../../../features/movies/lib/domain/entities/movie.dart';
-import '../../../../../features/movies/lib/presentation/pages/popular_movies_page.dart';
-import '../../../../../features/movies/lib/presentation/provider/popular_movies_notifier.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/entities/movie.dart';
+import 'package:movies/presentation/pages/popular_movies_page.dart';
+import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:provider/provider.dart';
 
 import 'popular_movies_page_test.mocks.dart';

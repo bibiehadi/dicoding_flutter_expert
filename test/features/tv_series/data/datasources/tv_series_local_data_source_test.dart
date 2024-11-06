@@ -1,13 +1,18 @@
+import 'package:core/third_party_library.dart';
+import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tv_series/data/datasources/local/tv_series_local_datasource_impl.dart';
 
+import '../../../../dummy_data/dummy_objects.dart';
+import '../../../../helpers/test_helper.mocks.dart';
+
 void main() {
   late TvSeriesLocalDatasourceImpl datasource;
-  late MockMovieDatabaseHelper mockDatabaseHelper;
+  late MockDatabaseHelper mockDatabaseHelper;
 
   setUp(() {
-    mockDatabaseHelper = MockMovieDatabaseHelper();
+    mockDatabaseHelper = MockDatabaseHelper();
     datasource =
         TvSeriesLocalDatasourceImpl(databaseHelper: mockDatabaseHelper);
   });
