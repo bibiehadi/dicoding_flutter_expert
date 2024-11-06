@@ -1,12 +1,10 @@
 import 'package:core/core.dart';
+import '../provider/watchlist_movie_notifier.dart';
+import '../widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/widgets/watchlist_card.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {
   static const ROUTE_NAME = '/watchlist-movie';
-
-  const WatchlistMoviesPage({super.key});
 
   @override
   _WatchlistMoviesPageState createState() => _WatchlistMoviesPageState();
@@ -51,7 +49,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final movie = data.watchlistMovies[index];
-                  return WatchlistCard(movie);
+                  return MovieCard(movie);
                 },
                 itemCount: data.watchlistMovies.length,
               );

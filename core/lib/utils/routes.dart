@@ -50,7 +50,6 @@ const topRatedMovieRoute = '/top-rated-movie';
 const movieDetailRoute = '/detail';
 const movieSearchRoute = '/search';
 const aboutRoute = '/about';
-const watchlistRoute = '/watchlist-page';
 
 const tvSeriesNowPlayingRoute = '/now-playing-tv-series';
 const tvSeriesPopularRoute = '/popular-tv-series';

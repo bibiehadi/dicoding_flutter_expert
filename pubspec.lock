@@ -791,13 +791,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  watchlist:
-    dependency: "direct main"
-    description:
-      path: "features/watchlist"
-      relative: true
-    source: path
-    version: "0.0.1"
   web:
     dependency: transitive
     description:

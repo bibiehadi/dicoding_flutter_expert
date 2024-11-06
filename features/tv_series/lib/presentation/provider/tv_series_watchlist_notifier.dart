@@ -1,11 +1,12 @@
 import 'package:core/core.dart';
-import 'package:core/utils/db/watchlist_table.dart';
+
+import '../../domain/entities/tv_series.dart';
 import '../../domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
 import 'package:flutter/foundation.dart';
 
-class WatchlistTvSeriesNotifier extends ChangeNotifier {
-  var _watchlistTvSeries = <WatchlistTable>[];
-  List<WatchlistTable> get watchlistTvSeries => _watchlistTvSeries;
+class TvSeriesWatchlistNotifier extends ChangeNotifier {
+  var _watchlistTvSeries = <TvSeries>[];
+  List<TvSeries> get watchlistTvSeries => _watchlistTvSeries;
 
   var _watchlistState = RequestState.Empty;
   RequestState get watchlistState => _watchlistState;
@@ -13,7 +14,7 @@ class WatchlistTvSeriesNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  WatchlistTvSeriesNotifier({required this.getWatchlistTvSeries});
+  TvSeriesWatchlistNotifier({required this.getWatchlistTvSeries});
 
   final GetWatchlistTvSeries getWatchlistTvSeries;
 
@@ -21,7 +22,7 @@ class WatchlistTvSeriesNotifier extends ChangeNotifier {
     _watchlistState = RequestState.Loading;
     notifyListeners();
 
-    final result = await getWatchlistTvSeries.execute();
+    final result = await getWatchlistTvSeries.call(null);
     result.fold(
       (failure) {
         _watchlistState = RequestState.Error;

@@ -8,11 +8,14 @@ import 'package:movies/presentation/pages/movie_detail_page.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
 import 'package:movies/presentation/pages/search_page.dart';
 import 'package:movies/presentation/pages/top_rated_movies_page.dart';
+import 'package:movies/presentation/pages/watchlist_movies_page.dart';
+import 'package:movies/presentation/pages/watchlist_page.dart';
 import 'package:movies/presentation/provider/movie_detail_notifier.dart';
 import 'package:movies/presentation/provider/movie_list_notifier.dart';
 import 'package:movies/presentation/provider/movie_search_notifier.dart';
 import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:movies/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:movies/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:tv_series/presentation/pages/tv_series_detail_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_now_playing_page.dart';
@@ -21,6 +24,7 @@ import 'package:tv_series/presentation/pages/tv_series_popular_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_season_detail_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_top_rated_page.dart';
+import 'package:tv_series/presentation/pages/tv_series_watchlist_page.dart';
 import 'package:tv_series/presentation/provider/tv_series_detail_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_list_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_now_playing_notifier.dart';
@@ -28,11 +32,7 @@ import 'package:tv_series/presentation/provider/tv_series_popular_notifier.dart'
 import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
-import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
-import 'package:watchlist/presentation/pages/watchlist_movies_page.dart';
-import 'package:watchlist/presentation/pages/watchlist_page.dart';
-import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
+import 'package:tv_series/presentation/provider/tv_series_watchlist_notifier.dart';
 
 void main() async {
   di.init();
@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<TvSeriesSearchNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvSeriesNotifier>(),
+          create: (_) => di.locator<TvSeriesWatchlistNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSeasonDetailNotifier>(),
@@ -136,8 +136,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => TvSeriesPopularPage());
             case TvSeriesSearchPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => TvSeriesSearchPage());
-            case WatchlistTvSeriesPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => WatchlistTvSeriesPage());
+            case TvSeriesWatchlistPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => TvSeriesWatchlistPage());
             case TvSeriesSeasonDetailPage.ROUTE_NAME:
               final season = settings.arguments as Map<String, dynamic>;
               return MaterialPageRoute(
