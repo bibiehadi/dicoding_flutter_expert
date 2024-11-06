@@ -86,7 +86,7 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       final result = await localDatasource
           .removeWatchlist(WatchlistTable.fromEntityTvSeries(tvSeries));
       return Right(result);
-    } on DBException catch (e) {
+    } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     }
   }
@@ -97,7 +97,7 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       final result = await localDatasource
           .insertWatchlist(WatchlistTable.fromEntityTvSeries(tvSeries));
       return Right(result);
-    } on DBException catch (e) {
+    } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     }
   }

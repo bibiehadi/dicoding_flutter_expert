@@ -17,7 +17,8 @@ void main() {
   late MovieRemoteDataSourceImpl dataSource;
   late MockHttpClient mockHttpClient;
 
-  setUp(() {
+  setUp(() async {
+    await dotenv.load(fileName: '.env');
     mockHttpClient = MockHttpClient();
     dataSource = MovieRemoteDataSourceImpl(client: mockHttpClient);
   });

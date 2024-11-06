@@ -371,7 +371,7 @@ void main() {
     test('should return DatabaseFailure when saving unsuccessful', () async {
       // arrange
       when(mockLocalDataSource.insertWatchlist(testWatchlistTvSeriesTable))
-          .thenThrow(DBException('Failed to add watchlist'));
+          .thenThrow(DatabaseException('Failed to add watchlist'));
       // act
       final result = await repository.saveWatchlist(testTvSeriesDetail);
       // assert
@@ -393,7 +393,7 @@ void main() {
     test('should return DatabaseFailure when remove unsuccessful', () async {
       // arrange
       when(mockLocalDataSource.removeWatchlist(testWatchlistTvSeriesTable))
-          .thenThrow(DBException('Failed to remove watchlist'));
+          .thenThrow(DatabaseException('Failed to remove watchlist'));
       // act
       final result = await repository.removeWatchlist(testTvSeriesDetail);
       // assert
