@@ -6,7 +6,6 @@ import '../widgets/tv_series_card.dart';
 import 'package:flutter/material.dart';
 
 class TvSeriesSeasonDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/tv-series-season-detail-page';
   final int seasonId;
   final int seasonNumber;
 

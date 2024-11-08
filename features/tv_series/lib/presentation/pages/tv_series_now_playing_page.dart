@@ -1,11 +1,10 @@
 import 'package:core/core.dart';
+import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 
-import '../provider/tv_series_now_playing_notifier.dart';
 import '../widgets/tv_series_card.dart';
 import 'package:flutter/material.dart';
 
 class TvSeriesNowPlayingPage extends StatefulWidget {
-  static const ROUTE_NAME = '/tv-series-now-playing-page';
   const TvSeriesNowPlayingPage({super.key});
 
   @override
@@ -15,9 +14,8 @@ class TvSeriesNowPlayingPage extends StatefulWidget {
 class _TvSeriesNowPlayingPageState extends State<TvSeriesNowPlayingPage> {
   @override
   void initState() {
-    Future.microtask(() =>
-        Provider.of<TvSeriesNowPlayingNotifier>(context, listen: false)
-            .fetchtvSeries());
+    Future.microtask(() => BlocProvider.of<NowPlayingTvSeriesCubit>(context)
+        .fetchNowPlayingTvSeries());
     super.initState();
   }
 
@@ -29,25 +27,27 @@ class _TvSeriesNowPlayingPageState extends State<TvSeriesNowPlayingPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TvSeriesNowPlayingNotifier>(
-          builder: (context, value, child) {
-            if (value.tvSeriesState == RequestState.Loading) {
+        child: BlocBuilder<NowPlayingTvSeriesCubit, NowPlayingTvSeriesState>(
+          builder: (context, state) {
+            if (state is NowPlayingTvSeriesLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (value.tvSeriesState == RequestState.Loaded) {
+            } else if (state is NowPlayingTvSeriesSuccess) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvSeries = value.tvSeries[index];
+                  final tvSeries = state.tvSeriesData[index];
                   return TvSeriesCard(tvSeries);
                 },
-                itemCount: value.tvSeries.length,
+                itemCount: state.tvSeriesData.length,
               );
-            } else {
+            } else if (state is NowPlayingTvSeriesFailed) {
               return Center(
                 key: const Key('error_message'),
-                child: Text(value.message),
+                child: Text(state.message),
               );
+            } else {
+              return const SizedBox.shrink();
             }
           },
         ),

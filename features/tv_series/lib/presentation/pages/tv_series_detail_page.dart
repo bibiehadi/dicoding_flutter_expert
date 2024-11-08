@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/tv_series.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/tv-series-detail-page';
   final int tvSeriesId;
 
   const TvSeriesDetailPage({
@@ -207,7 +206,7 @@ class DetailContent extends StatelessWidget {
                                       onTap: () {
                                         Navigator.pushNamed(
                                           context,
-                                          TvSeriesSeasonDetailPage.ROUTE_NAME,
+                                          tvSeriesSeasonDetailRoute,
                                           arguments: {
                                             'id': tvSeriesDetail.id,
                                             'seasonNumber':
@@ -277,7 +276,7 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                TvSeriesDetailPage.ROUTE_NAME,
+                                                tvSeriesDetailRoute,
                                                 arguments: tvSeriesDetail.id,
                                               );
                                             },

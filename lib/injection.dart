@@ -31,16 +31,15 @@ import 'package:tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_
 import 'package:tv_series/domain/usecases/remove_tv_series_watchlist/remove_tv_series_watchlist.dart';
 import 'package:tv_series/domain/usecases/save_tv_series_watchlist/save_tv_series_watchlist.dart';
 import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series.dart';
+import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/provider/tv_series_detail_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_list_notifier.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
-import 'package:tv_series/presentation/provider/tv_series_now_playing_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:watchlist/data/datasources/local/local_datasource.dart';
 import 'package:watchlist/data/datasources/local/local_datasource_impl.dart';
 import 'package:watchlist/data/repositories/watchlist_repository_impl.dart';
@@ -86,12 +85,6 @@ void init() {
   );
 
   locator.registerFactory(
-    () => TvSeriesListNotifier(
-      getTvSeriesList: locator(),
-    ),
-  );
-
-  locator.registerFactory(
     () => TvSeriesDetailNotifier(
       getTvSeriesDetail: locator(),
       getTvSeriesRecommendations: locator(),
@@ -108,28 +101,23 @@ void init() {
   );
 
   locator.registerFactory(
-    () => TvSeriesPopularNotifier(
-      getTvSeriesList: locator(),
-    ),
-  );
-
-  locator.registerFactory(
-    () => TvSeriesTopRatedNotifier(
-      getTvSeriesList: locator(),
-    ),
-  );
-
-  locator.registerFactory(
     () => TvSeriesSeasonDetailNotifier(getTvSeriesSeasonDetail: locator()),
   );
 
+  // Cubit BLOC
   locator.registerFactory(
-    () => TvSeriesNowPlayingNotifier(
+    () => TopRatedTvSeriesCubit(getTvSeriesList: locator()),
+  );
+
+  locator.registerFactory(
+    () => PopularTvSeriesCubit(getTvSeriesList: locator()),
+  );
+
+  locator.registerFactory(
+    () => NowPlayingTvSeriesCubit(
       getTvSeriesList: locator(),
     ),
   );
-
-  // Cubit BLOC
 
   locator.registerFactory(
     () => WatchlistMoviesCubit(

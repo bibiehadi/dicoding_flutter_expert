@@ -27,7 +27,7 @@ class WatchlistCard extends StatelessWidget {
             } else {
               Navigator.pushNamed(
                 context,
-                TvSeriesDetailPage.ROUTE_NAME,
+                tvSeriesDetailRoute,
                 arguments: watchlist.id,
               );
             }

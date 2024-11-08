@@ -14,6 +14,9 @@ import 'package:movies/presentation/provider/movie_search_notifier.dart';
 import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:movies/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/pages/tv_series_detail_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_now_playing_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_page.dart';
@@ -22,12 +25,8 @@ import 'package:tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_season_detail_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_top_rated_page.dart';
 import 'package:tv_series/presentation/provider/tv_series_detail_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_list_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_now_playing_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_popular_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
-import 'package:tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/pages/watchlist_movies_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
@@ -62,19 +61,10 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<PopularMoviesNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesListNotifier>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesDetailNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSearchNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesPopularNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesTopRatedNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSearchNotifier>(),
@@ -82,12 +72,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSeasonDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesNowPlayingNotifier>(),
-        ),
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(
+              create: (context) => di.locator<TopRatedTvSeriesCubit>()),
+          BlocProvider(create: (context) => di.locator<PopularTvSeriesCubit>()),
+          BlocProvider(
+              create: (context) => di.locator<NowPlayingTvSeriesCubit>()),
           BlocProvider(create: (context) => di.locator<WatchlistMoviesCubit>()),
           BlocProvider(
             create: (context) => di.locator<WatchlistTvSeriesCubit>(),
@@ -125,22 +117,22 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
               case AboutPage.ROUTE_NAME:
                 return MaterialPageRoute(builder: (_) => AboutPage());
-              case TvSeriesPage.ROUTE_NAME:
+              case tvSeriesRoute:
                 return MaterialPageRoute(builder: (_) => TvSeriesPage());
-              case TvSeriesTopRatedPage.ROUTE_NAME:
+              case tvSeriesTopRatedRoute:
                 return MaterialPageRoute(
                     builder: (_) => TvSeriesTopRatedPage());
-              case TvSeriesNowPlayingPage.ROUTE_NAME:
+              case tvSeriesNowPlayingRoute:
                 return MaterialPageRoute(
                     builder: (_) => TvSeriesNowPlayingPage());
-              case TvSeriesPopularPage.ROUTE_NAME:
+              case tvSeriesPopularRoute:
                 return MaterialPageRoute(builder: (_) => TvSeriesPopularPage());
-              case TvSeriesSearchPage.ROUTE_NAME:
+              case tvSeriesSearchRoute:
                 return MaterialPageRoute(builder: (_) => TvSeriesSearchPage());
               case WatchlistTvSeriesPage.ROUTE_NAME:
                 return MaterialPageRoute(
                     builder: (_) => WatchlistTvSeriesPage());
-              case TvSeriesSeasonDetailPage.ROUTE_NAME:
+              case tvSeriesSeasonDetailRoute:
                 final season = settings.arguments as Map<String, dynamic>;
                 return MaterialPageRoute(
                     builder: (_) => TvSeriesSeasonDetailPage(
@@ -148,7 +140,7 @@ class MyApp extends StatelessWidget {
                           seasonNumber: season['seasonNumber'],
                         ),
                     settings: settings);
-              case TvSeriesDetailPage.ROUTE_NAME:
+              case tvSeriesDetailRoute:
                 final tvSeries = settings.arguments as int;
                 return MaterialPageRoute(
                     builder: (_) => TvSeriesDetailPage(tvSeriesId: tvSeries),

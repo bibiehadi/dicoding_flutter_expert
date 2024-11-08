@@ -7,6 +7,7 @@ export 'utils/failure.dart';
 export 'utils/utils.dart';
 export 'utils/exception.dart';
 export 'utils/state_enum.dart';
+export 'utils/routes.dart';
 
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:provider/provider.dart';

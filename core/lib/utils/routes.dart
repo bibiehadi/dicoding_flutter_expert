@@ -44,18 +44,19 @@
 //             final tvSeries = settings.arguments as int;
 //             return MaterialPageRoute(
 //                 builder: (_) => TvSeriesDetailPage(tvSeriesId: tvSeries),
-const homeRoute = '/home';
-const popularMovieRoute = '/popular-movie';
-const topRatedMovieRoute = '/top-rated-movie';
-const movieDetailRoute = '/detail';
-const movieSearchRoute = '/search';
-const aboutRoute = '/about';
+const homeRoute = '/home-page';
+const popularMovieRoute = '/popular-movie-page';
+const topRatedMovieRoute = '/top-rated-movie-page';
+const movieDetailRoute = '/detail-page';
+const movieSearchRoute = '/search-page';
+const aboutRoute = '/about-page';
 const watchlistRoute = '/watchlist-page';
 
-const tvSeriesNowPlayingRoute = '/now-playing-tv-series';
-const tvSeriesPopularRoute = '/popular-tv-series';
-const tvSeriesTopRatedRoute = '/top-rated-tv-series';
-const tvSeriesDetailRoute = '/detail-tv-series';
-const tvSeriesSeasonDetailRoute = '/detail-tv-series-season';
-const tvSeriesSearchRoute = '/search-tv-series';
-const tvSeriesWatchlistRoute = '/watchlist-tv-series';
+const tvSeriesRoute = '/tv-series-page';
+const tvSeriesNowPlayingRoute = '/now-playing-tv-series-page';
+const tvSeriesPopularRoute = '/popular-tv-series-page';
+const tvSeriesTopRatedRoute = '/top-rated-tv-series-page';
+const tvSeriesDetailRoute = '/detail-tv-series-page';
+const tvSeriesSeasonDetailRoute = '/detail-tv-series-season-page';
+const tvSeriesSearchRoute = '/search-tv-series-page';
+const tvSeriesWatchlistRoute = '/watchlist-tv-series-page';

@@ -5,7 +5,6 @@ import '../widgets/tv_series_card.dart';
 import 'package:flutter/material.dart';
 
 class TvSeriesSearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/tv-series-search-page';
   const TvSeriesSearchPage({super.key});
 
   @override

@@ -19,7 +19,7 @@ class TvSeriesCard extends StatelessWidget {
           if (isNavigate) {
             Navigator.pushNamed(
               context,
-              TvSeriesDetailPage.ROUTE_NAME,
+              tvSeriesDetailRoute,
               arguments: tvSeries.id,
             );
           }
