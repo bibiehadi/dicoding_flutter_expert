@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 
 import 'package:core/core.dart';
+import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 
 import '../../domain/entities/tv_series_detail.dart';
 import '../../domain/entities/tv_series_genre.dart';
-import 'tv_series_season_detail_page.dart';
 import '../provider/tv_series_detail_notifier.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   @override
   void initState() {
     Future.microtask(() {
-      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+      BlocProvider.of<DetailTvSeriesCubit>(context)
           .fetchTvSeriesDetail(widget.tvSeriesId);
       Provider.of<TvSeriesDetailNotifier>(context, listen: false)
           .loadWatchlistStatus(widget.tvSeriesId);
@@ -36,29 +36,38 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    late List<TvSeries> recommendationList = [];
     return Scaffold(
-      body: Consumer<TvSeriesDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.tvSeriesState == RequestState.Loading) {
+      body: BlocConsumer<DetailTvSeriesCubit, DetailTvSeriesState>(
+        listener: (context, state) {
+          if (state is RecommendationTvSeriesSuccess) {
+            recommendationList = state.tvSeriesList;
+          }
+          if (state is DetailTvSeriesFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is DetailTvSeriesLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.tvSeriesState == RequestState.Loaded) {
-            final tvSeries = provider.tvSeries;
+          }
+          if (state is DetailTvSeriesSuccess) {
+            final tvSeriesDetail = state.tvSeriesData;
             return SafeArea(
               child: DetailContent(
-                key: const Key('detail_content'),
-                tvSeries,
-                provider.tvSeriesRecommendation,
-                provider.isAddedToWatchlist,
+                tvSeriesDetail,
+                recommendationList,
+                true,
               ),
             );
-          } else {
-            return Text(
-              provider.message,
-              key: const Key('error_message'),
-            );
           }
+          return Container();
         },
       ),
     );
@@ -243,71 +252,43 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            Consumer<TvSeriesDetailNotifier>(
-                              builder: (context, data, child) {
-                                if (data.tvSeriesRecommendationState ==
-                                    RequestState.Loading) {
-                                  return const Center(
-                                    key: Key('loading_recommendation'),
-                                    child: CircularProgressIndicator(
-                                      key: Key(
-                                          'circular_progress_indicator_recommendation'),
-                                    ),
-                                  );
-                                } else if (data.tvSeriesRecommendationState ==
-                                    RequestState.Error) {
-                                  return Text(data.message,
-                                      key: const Key(
-                                          'error_message_recommendation'));
-                                } else if (data.tvSeriesRecommendationState ==
-                                    RequestState.Loaded) {
-                                  return SizedBox(
-                                    height: 150,
-                                    child: ListView.builder(
-                                      key:
-                                          const Key('list_view_recommendation'),
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        final tvSeriesDetail =
-                                            recommendations[index];
-                                        return Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.pushReplacementNamed(
-                                                context,
-                                                tvSeriesDetailRoute,
-                                                arguments: tvSeriesDetail.id,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                Radius.circular(8),
-                                              ),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${tvSeriesDetail.posterPath}',
-                                                placeholder: (context, url) =>
-                                                    const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        const Icon(Icons.error),
-                                              ),
-                                            ),
-                                          ),
+                            SizedBox(
+                              height: 150,
+                              child: ListView.builder(
+                                key: const Key('list_view_recommendation'),
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  final tvSeriesDetail = recommendations[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushReplacementNamed(
+                                          context,
+                                          tvSeriesDetailRoute,
+                                          arguments: tvSeriesDetail.id,
                                         );
                                       },
-                                      itemCount: recommendations.length,
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(8),
+                                        ),
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              'https://image.tmdb.org/t/p/w500${tvSeriesDetail.posterPath}',
+                                          placeholder: (context, url) =>
+                                              const Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(Icons.error),
+                                        ),
+                                      ),
                                     ),
                                   );
-                                } else {
-                                  return Container();
-                                }
-                              },
+                                },
+                                itemCount: recommendations.length,
+                              ),
                             ),
                           ],
                         ),
@@ -350,7 +331,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<TvSeriesGenre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

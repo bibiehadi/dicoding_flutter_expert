@@ -31,6 +31,7 @@ import 'package:tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_
 import 'package:tv_series/domain/usecases/remove_tv_series_watchlist/remove_tv_series_watchlist.dart';
 import 'package:tv_series/domain/usecases/save_tv_series_watchlist/save_tv_series_watchlist.dart';
 import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series.dart';
+import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
@@ -116,6 +117,13 @@ void init() {
   locator.registerFactory(
     () => NowPlayingTvSeriesCubit(
       getTvSeriesList: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => DetailTvSeriesCubit(
+      getTvSeriesDetail: locator(),
+      getTvSeriesRecommendations: locator(),
     ),
   );
 

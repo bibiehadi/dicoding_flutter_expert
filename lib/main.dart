@@ -14,6 +14,7 @@ import 'package:movies/presentation/provider/movie_search_notifier.dart';
 import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:movies/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
@@ -76,14 +77,22 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => di.locator<TopRatedTvSeriesCubit>()),
-          BlocProvider(create: (context) => di.locator<PopularTvSeriesCubit>()),
-          BlocProvider(
-              create: (context) => di.locator<NowPlayingTvSeriesCubit>()),
-          BlocProvider(create: (context) => di.locator<WatchlistMoviesCubit>()),
-          BlocProvider(
-            create: (context) => di.locator<WatchlistTvSeriesCubit>(),
+            create: (context) => di.locator<TopRatedTvSeriesCubit>(),
           ),
+          BlocProvider(
+            create: (context) => di.locator<PopularTvSeriesCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => di.locator<NowPlayingTvSeriesCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => di.locator<WatchlistMoviesCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => di.locator<DetailTvSeriesCubit>(),
+          ),
+          BlocProvider(
+              create: (context) => di.locator<WatchlistTvSeriesCubit>()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

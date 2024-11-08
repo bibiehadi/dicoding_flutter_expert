@@ -80,19 +80,6 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 onTap: () => Navigator.pushNamed(
                     context, WatchlistTvSeriesPage.ROUTE_NAME),
               ),
-              // Consumer<WatchlistTvSeriesNotifier>(
-              //     builder: (context, value, child) {
-              //   final state = value.watchlistState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return WatchlistList(value.watchlistTvSeries);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
               BlocBuilder<WatchlistTvSeriesCubit, WatchlistTvSeriesState>(
                   builder: (context, state) {
                 log("state: $state");
@@ -106,12 +93,6 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                   return const Text('Failed');
                 }
               }),
-
-              // if (watchlistBloc.state is WatchlistInitial) ...[
-              //   const Center(
-              //     child: CircularProgressIndicator(),
-              //   ),
-              // ],
             ],
           ),
         ),
