@@ -1,4 +1,3 @@
-import 'package:core/thid_party_library_dev.dart';
 import 'package:core/third_party_library_dev.dart';
 import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';

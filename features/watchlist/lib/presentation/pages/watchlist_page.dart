@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:core/core.dart';
-import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
+import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
 import 'package:watchlist/presentation/widgets/watchlist_list.dart';
 import 'watchlist_movies_page.dart';
@@ -18,12 +19,10 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => {
-          Provider.of<WatchlistMovieNotifier>(context, listen: false)
-              .fetchWatchlistMovies(),
-          Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-              .fetchWatchlistTvSeries(),
-        });
+    Future.microtask(() {
+      BlocProvider.of<WatchlistMoviesCubit>(context).getWatchlistMovies();
+      BlocProvider.of<WatchlistTvSeriesCubit>(context).getWatchlistTvSeries();
+    });
   }
 
   @override
@@ -34,13 +33,17 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
 
   @override
   void didPopNext() {
-    Future.microtask(() => {
-          Provider.of<WatchlistMovieNotifier>(context, listen: false)
-              .fetchWatchlistMovies(),
-          Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-              .fetchWatchlistTvSeries(),
-        });
+    Future.microtask(() {
+      BlocProvider.of<WatchlistMoviesCubit>(context).getWatchlistMovies();
+      BlocProvider.of<WatchlistTvSeriesCubit>(context).getWatchlistTvSeries();
+    });
     super.didPopNext();
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
   }
 
   @override
@@ -60,39 +63,55 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 onTap: () => Navigator.pushNamed(
                     context, WatchlistMoviesPage.ROUTE_NAME),
               ),
-              SizedBox(
-                child: Consumer<WatchlistMovieNotifier>(
-                    builder: (context, value, child) {
-                  final state = value.watchlistState;
-                  if (state == RequestState.Loading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state == RequestState.Loaded) {
-                    return WatchlistList(value.watchlistMovies);
-                  } else {
-                    return const Text('Failed');
-                  }
-                }),
-              ),
+              BlocBuilder<WatchlistMoviesCubit, WatchlistMoviesState>(
+                  builder: (context, state) {
+                if (state is WatchlistMoviesLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is WatchlistMoviesSuccess) {
+                  return WatchlistList(state.watchlistMovies);
+                } else {
+                  return const Text('Failed');
+                }
+              }),
               _buildSubHeading(
                 title: 'Tv Series',
                 onTap: () => Navigator.pushNamed(
                     context, WatchlistTvSeriesPage.ROUTE_NAME),
               ),
-              Consumer<WatchlistTvSeriesNotifier>(
-                  builder: (context, value, child) {
-                final state = value.watchlistState;
-                if (state == RequestState.Loading) {
+              // Consumer<WatchlistTvSeriesNotifier>(
+              //     builder: (context, value, child) {
+              //   final state = value.watchlistState;
+              //   if (state == RequestState.Loading) {
+              //     return const Center(
+              //       child: CircularProgressIndicator(),
+              //     );
+              //   } else if (state == RequestState.Loaded) {
+              //     return WatchlistList(value.watchlistTvSeries);
+              //   } else {
+              //     return const Text('Failed');
+              //   }
+              // }),
+              BlocBuilder<WatchlistTvSeriesCubit, WatchlistTvSeriesState>(
+                  builder: (context, state) {
+                log("state: $state");
+                if (state is WatchlistTvSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return WatchlistList(value.watchlistTvSeries);
+                } else if (state is WatchlistTvSeriesSuccess) {
+                  return WatchlistList(state.watchlistTvSeries);
                 } else {
                   return const Text('Failed');
                 }
               }),
+
+              // if (watchlistBloc.state is WatchlistInitial) ...[
+              //   const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              // ],
             ],
           ),
         ),

@@ -47,6 +47,7 @@ import 'package:watchlist/data/repositories/watchlist_repository_impl.dart';
 import 'package:watchlist/domain/repositories/watchlist_repository.dart';
 import 'package:watchlist/domain/usecases/get_watchlist_movies/get_watchlist_movies.dart';
 import 'package:watchlist/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
+import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
 
@@ -136,6 +137,20 @@ void init() {
   locator.registerFactory(
     () => TvSeriesNowPlayingNotifier(
       getTvSeriesList: locator(),
+    ),
+  );
+
+  // Cubit BLOC
+
+  locator.registerFactory(
+    () => WatchlistMoviesCubit(
+      usecase: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => WatchlistTvSeriesCubit(
+      usecase: locator(),
     ),
   );
 
