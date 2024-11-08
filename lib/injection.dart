@@ -48,8 +48,6 @@ import 'package:watchlist/domain/repositories/watchlist_repository.dart';
 import 'package:watchlist/domain/usecases/get_watchlist_movies/get_watchlist_movies.dart';
 import 'package:watchlist/domain/usecases/get_watchlist_tv_series/get_watchlist_tv_series.dart';
 import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
-import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
 
 final locator = GetIt.instance;
 
@@ -86,11 +84,6 @@ void init() {
       getTopRatedMovies: locator(),
     ),
   );
-  locator.registerFactory(
-    () => WatchlistMovieNotifier(
-      getWatchlistMovies: locator(),
-    ),
-  );
 
   locator.registerFactory(
     () => TvSeriesListNotifier(
@@ -124,10 +117,6 @@ void init() {
     () => TvSeriesTopRatedNotifier(
       getTvSeriesList: locator(),
     ),
-  );
-
-  locator.registerFactory(
-    () => WatchlistTvSeriesNotifier(getWatchlistTvSeries: locator()),
   );
 
   locator.registerFactory(

@@ -29,8 +29,6 @@ import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_season_detail_notifier.dart';
 import 'package:tv_series/presentation/provider/tv_series_top_rated_notifier.dart';
 import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
-import 'package:watchlist/presentation/bloc/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
 import 'package:watchlist/presentation/pages/watchlist_movies_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
@@ -64,9 +62,6 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<PopularMoviesNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesListNotifier>(),
         ),
         ChangeNotifierProvider(
@@ -83,9 +78,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSearchNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvSeriesNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesSeasonDetailNotifier>(),

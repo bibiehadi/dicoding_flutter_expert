@@ -21,14 +21,14 @@ class WatchlistMoviesCubit extends Cubit<WatchlistMoviesState> {
           await usecase.execute();
       result.fold(
         (failure) {
-          emit(WatchlistMoviesFailed());
+          emit(WatchlistMoviesFailed(message: failure.message));
         },
         (moviesData) {
           emit(WatchlistMoviesSuccess(moviesData));
         },
       );
     } catch (e) {
-      emit(WatchlistMoviesFailed());
+      emit(WatchlistMoviesFailed(message: e.toString()));
     }
   }
 }
@@ -46,14 +46,14 @@ class WatchlistTvSeriesCubit extends Cubit<WatchlistTvSeriesState> {
           await usecase.execute();
       result.fold(
         (failure) {
-          emit(WatchlistTvSeriesFailed());
+          emit(WatchlistTvSeriesFailed(message: failure.message));
         },
         (tvSeriesData) {
           emit(WatchlistTvSeriesSuccess(tvSeriesData));
         },
       );
     } catch (e) {
-      emit(WatchlistTvSeriesFailed());
+      emit(WatchlistTvSeriesFailed(message: e.toString()));
     }
   }
 }

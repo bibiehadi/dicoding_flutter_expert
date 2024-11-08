@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:watchlist/presentation/bloc/watchlist_tv_series_notifier.dart';
+import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/widgets/watchlist_card.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
@@ -17,9 +17,8 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-            .fetchWatchlistTvSeries());
+    Future.microtask(() => BlocProvider.of<WatchlistTvSeriesCubit>(context)
+        .getWatchlistTvSeries());
   }
 
   @override
@@ -30,8 +29,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
 
   @override
   void didPopNext() {
-    Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-        .fetchWatchlistTvSeries();
+    BlocProvider.of<WatchlistTvSeriesCubit>(context).getWatchlistTvSeries();
   }
 
   @override
@@ -42,28 +40,33 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvSeriesNotifier>(
-          builder: (context, value, child) {
-            if (value.watchlistState == RequestState.Loading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (value.watchlistState == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final tvSeries = value.watchlistTvSeries[index];
-                  return WatchlistCard(tvSeries);
-                },
-                itemCount: value.watchlistTvSeries.length,
-              );
-            } else {
-              return Center(
-                key: const Key('error_message'),
-                child: Text(value.message),
-              );
-            }
-          },
-        ),
+        child: BlocBuilder<WatchlistTvSeriesCubit, WatchlistTvSeriesState>(
+            builder: (context, state) {
+          if (state is WatchlistTvSeriesLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is WatchlistTvSeriesSuccess) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final tvSeries = state.watchlistTvSeries[index];
+                return WatchlistCard(tvSeries);
+              },
+              itemCount: state.watchlistTvSeries.length,
+            );
+          } else if (state is WatchlistTvSeriesFailed) {
+            return Center(
+              key: const Key('error_message'),
+              child: Text(state.message),
+            );
+          } else {
+            return const Center(
+              key: Key('error_message'),
+              child: Text('Error'),
+            );
+          }
+        }),
+        //
       ),
     );
   }
