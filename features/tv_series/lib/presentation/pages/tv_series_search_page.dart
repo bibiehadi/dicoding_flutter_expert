@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
+import 'package:tv_series/presentation/bloc/search_tv_series/search_tv_series_cubit.dart';
 
-import '../provider/tv_series_search_notifier.dart';
 import '../widgets/tv_series_card.dart';
 import 'package:flutter/material.dart';
 
@@ -11,43 +11,42 @@ class TvSeriesSearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search TV Series'),
+        title: const Text('Search TV Series'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
               onSubmitted: (query) {
-                Provider.of<TvSeriesSearchNotifier>(context, listen: false)
-                    .fetchsearchTvSeries(query);
+                context.read<SearchTvSeriesCubit>().fetchsearchTvSeries(query);
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search title',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
               textInputAction: TextInputAction.search,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'Search Result',
               style: kHeading6,
             ),
-            Consumer<TvSeriesSearchNotifier>(
-              builder: (context, value, child) {
-                if (value.searchState == RequestState.Loading) {
-                  return Center(
+            BlocBuilder<SearchTvSeriesCubit, SearchTvSeriesState>(
+              builder: (context, state) {
+                if (state is SearchTvSeriesLoading) {
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (value.searchState == RequestState.Loaded) {
-                  final result = value.searchTvSeriesList;
+                } else if (state is SearchTvSeriesSuccess) {
+                  final result = state.tvSeriesList;
                   return Expanded(
                     child: ListView.builder(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) {
-                        final tvSeries = value.searchTvSeriesList[index];
+                        final tvSeries = state.tvSeriesList[index];
                         return TvSeriesCard(tvSeries);
                       },
                       itemCount: result.length,
@@ -60,6 +59,7 @@ class TvSeriesSearchPage extends StatelessWidget {
                 }
               },
             ),
+            //
           ],
         ),
       ),

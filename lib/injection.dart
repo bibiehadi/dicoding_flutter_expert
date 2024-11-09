@@ -34,13 +34,13 @@ import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series.dart
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/search_tv_series/search_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
-import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:watchlist/data/datasources/local/local_datasource.dart';
 import 'package:watchlist/data/datasources/local/local_datasource_impl.dart';
 import 'package:watchlist/data/repositories/watchlist_repository_impl.dart';
@@ -85,12 +85,6 @@ void init() {
     ),
   );
 
-  locator.registerFactory(
-    () => TvSeriesSearchNotifier(
-      searchTvSeries: locator(),
-    ),
-  );
-
   // Cubit BLOC
   locator.registerFactory(
     () => TopRatedTvSeriesCubit(getTvSeriesList: locator()),
@@ -118,6 +112,10 @@ void init() {
     () => SeasonDetailTvSeriesCubit(
       usecase: locator(),
     ),
+  );
+
+  locator.registerFactory(
+    () => SearchTvSeriesCubit(usecase: locator()),
   );
 
   locator.registerFactory(

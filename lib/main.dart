@@ -17,6 +17,7 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/search_tv_series/search_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
@@ -27,7 +28,6 @@ import 'package:tv_series/presentation/pages/tv_series_popular_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_search_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_season_detail_page.dart';
 import 'package:tv_series/presentation/pages/tv_series_top_rated_page.dart';
-import 'package:tv_series/presentation/provider/tv_series_search_notifier.dart';
 import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/pages/watchlist_movies_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
@@ -61,12 +61,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<PopularMoviesNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesSearchNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesSearchNotifier>(),
-        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -88,6 +82,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => di.locator<SeasonDetailTvSeriesCubit>(),
           ),
+          BlocProvider(create: (context) => di.locator<SearchTvSeriesCubit>()),
           BlocProvider(
             create: (context) => di.locator<WatchlistDetailTvSeriesCubit>(),
           ),
