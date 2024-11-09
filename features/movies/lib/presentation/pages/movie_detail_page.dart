@@ -36,7 +36,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       body: Consumer<MovieDetailNotifier>(
         builder: (context, provider, child) {
           if (provider.movieState == RequestState.Loading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (provider.movieState == RequestState.Loaded) {

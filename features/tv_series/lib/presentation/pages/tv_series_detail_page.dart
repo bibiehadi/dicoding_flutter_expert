@@ -1,11 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:core/core.dart';
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 
 import '../../domain/entities/tv_series_detail.dart';
 import '../../domain/entities/tv_series_genre.dart';
-import '../provider/tv_series_detail_notifier.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/tv_series.dart';
@@ -23,12 +25,16 @@ class TvSeriesDetailPage extends StatefulWidget {
 }
 
 class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
+  bool isAddedToWatchlist = false;
+
   @override
   void initState() {
     Future.microtask(() {
-      BlocProvider.of<DetailTvSeriesCubit>(context)
+      context
+          .read<DetailTvSeriesCubit>()
           .fetchTvSeriesDetail(widget.tvSeriesId);
-      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+      context
+          .read<WatchlistDetailTvSeriesCubit>()
           .loadWatchlistStatus(widget.tvSeriesId);
     });
     super.initState();
@@ -60,11 +66,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
           if (state is DetailTvSeriesSuccess) {
             final tvSeriesDetail = state.tvSeriesData;
             return SafeArea(
-              child: DetailContent(
-                tvSeriesDetail,
-                recommendationList,
-                true,
-              ),
+              child: DetailContent(tvSeriesDetail, recommendationList),
             );
           }
           return Container();
@@ -77,11 +79,8 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
 class DetailContent extends StatelessWidget {
   final TvSeriesDetail tvSeriesDetail;
   final List<TvSeries> recommendations;
-  final bool isAddedWatchlist;
 
-  const DetailContent(
-      this.tvSeriesDetail, this.recommendations, this.isAddedWatchlist,
-      {super.key});
+  const DetailContent(this.tvSeriesDetail, this.recommendations, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -124,52 +123,53 @@ class DetailContent extends StatelessWidget {
                               tvSeriesDetail.name,
                               style: kHeading5,
                             ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (!isAddedWatchlist) {
-                                  await Provider.of<TvSeriesDetailNotifier>(
-                                          context,
-                                          listen: false)
-                                      .addWatchlist(tvSeriesDetail);
-                                } else {
-                                  await Provider.of<TvSeriesDetailNotifier>(
-                                          context,
-                                          listen: false)
-                                      .removeWatchlist(tvSeriesDetail);
-                                }
+                            BlocBuilder<WatchlistDetailTvSeriesCubit,
+                                WatchlistDetailTvSeriesState>(
+                              builder: (context, state) {
+                                bool isAddedToWatchlist =
+                                    state.isAddedToWatchlist;
+                                log('isAddedToWatchlist: $state.isAddedToWatchlist');
+                                return ElevatedButton(
+                                  onPressed: () async {
+                                    if (!isAddedToWatchlist) {
+                                      await context
+                                          .read<WatchlistDetailTvSeriesCubit>()
+                                          .addWatchlist(tvSeriesDetail);
+                                    } else {
+                                      await context
+                                          .read<WatchlistDetailTvSeriesCubit>()
+                                          .removeWatchlist(tvSeriesDetail);
+                                    }
 
-                                final message =
-                                    Provider.of<TvSeriesDetailNotifier>(context,
-                                            listen: false)
-                                        .watchlistMessage;
-
-                                if (message ==
-                                        TvSeriesDetailNotifier
-                                            .watchlistAddSuccessMessage ||
-                                    message ==
-                                        TvSeriesDetailNotifier
-                                            .watchlistRemoveSuccessMessage) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text(message)));
-                                } else {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
+                                    final message = state.message;
+                                    if (message != "") {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
                                           content: Text(message),
-                                        );
-                                      });
-                                }
+                                        ),
+                                      );
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            content: Text(message),
+                                          );
+                                        },
+                                      );
+                                    }
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      isAddedToWatchlist
+                                          ? const Icon(Icons.check)
+                                          : const Icon(Icons.add),
+                                      const Text('Watchlist'),
+                                    ],
+                                  ),
+                                );
                               },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  isAddedWatchlist
-                                      ? const Icon(Icons.check)
-                                      : const Icon(Icons.add),
-                                  const Text('Watchlist'),
-                                ],
-                              ),
                             ),
                             Text(
                               _showGenres(tvSeriesDetail.genres),

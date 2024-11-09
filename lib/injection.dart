@@ -35,7 +35,7 @@ import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cu
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
-import 'package:tv_series/presentation/provider/tv_series_detail_notifier.dart';
+import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
@@ -86,16 +86,6 @@ void init() {
   );
 
   locator.registerFactory(
-    () => TvSeriesDetailNotifier(
-      getTvSeriesDetail: locator(),
-      getTvSeriesRecommendations: locator(),
-      saveTvSeriesWatchlist: locator(),
-      removeTvSeriesWatchlist: locator(),
-      getTvSeriesWatchlistStatus: locator(),
-    ),
-  );
-
-  locator.registerFactory(
     () => TvSeriesSearchNotifier(
       searchTvSeries: locator(),
     ),
@@ -124,6 +114,7 @@ void init() {
     () => DetailTvSeriesCubit(
       getTvSeriesDetail: locator(),
       getTvSeriesRecommendations: locator(),
+      getTvSeriesWatchlistStatus: locator(),
     ),
   );
 
@@ -136,6 +127,14 @@ void init() {
   locator.registerFactory(
     () => WatchlistTvSeriesCubit(
       usecase: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => WatchlistDetailTvSeriesCubit(
+      getTvSeriesWatchlistStatus: locator(),
+      saveTvSeriesWatchlist: locator(),
+      removeTvSeriesWatchlist: locator(),
     ),
   );
 
