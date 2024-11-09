@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
+import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detail_tv_series_cubit.dart';
 import '../../domain/entities/tv_series.dart';
 import '../../domain/entities/tv_series_season_detail.dart';
-import '../provider/tv_series_season_detail_notifier.dart';
 import '../widgets/tv_series_card.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +24,10 @@ class _TvSeriesSeasonDetailPageState extends State<TvSeriesSeasonDetailPage> {
   @override
   void initState() {
     Future.microtask(() {
-      Provider.of<TvSeriesSeasonDetailNotifier>(context, listen: false)
-          .fetchdetailSeasonTvSeries(widget.seasonId, widget.seasonNumber);
+      context.read<SeasonDetailTvSeriesCubit>().fetchdetailSeasonTvSeries(
+            widget.seasonId,
+            widget.seasonNumber,
+          );
     });
     super.initState();
   }
@@ -33,27 +35,50 @@ class _TvSeriesSeasonDetailPageState extends State<TvSeriesSeasonDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvSeriesSeasonDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.tvSeriesState == RequestState.Loading) {
-            return Center(
+      body: BlocBuilder<SeasonDetailTvSeriesCubit, SeasonDetailTvSeriesState>(
+        builder: (context, state) {
+          if (state is SeasonDetailTvSeriesLoading) {
+            return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.tvSeriesState == RequestState.Loaded) {
-            final tvSeries = provider.tvSeriesSeasonDetail;
+          } else if (state is SeasonDetailTvSeriesSuccess) {
+            final tvSeries = state.tvSeriesData;
             return SafeArea(
               child: DetailContent(
                 tvSeries,
               ),
             );
-          } else {
+          } else if (state is SeasonDetailTvSeriesFailed) {
             return Text(
-              provider.message,
-              key: Key('error_message'),
+              state.message,
+              key: const Key('error_message'),
             );
+          } else {
+            return const SizedBox.shrink();
           }
         },
       ),
+      // Consumer<TvSeriesSeasonDetailNotifier>(
+      //   builder: (context, provider, child) {
+      //     if (provider.tvSeriesState == RequestState.Loading) {
+      //       return Center(
+      //         child: CircularProgressIndicator(),
+      //       );
+      //     } else if (provider.tvSeriesState == RequestState.Loaded) {
+      //       final tvSeries = provider.tvSeriesSeasonDetail;
+      //       return SafeArea(
+      //         child: DetailContent(
+      //           tvSeries,
+      //         ),
+      //       );
+      //     } else {
+      //       return Text(
+      //         provider.message,
+      //         key: Key('error_message'),
+      //       );
+      //     }
+      //   },
+      // ),
     );
   }
 }
