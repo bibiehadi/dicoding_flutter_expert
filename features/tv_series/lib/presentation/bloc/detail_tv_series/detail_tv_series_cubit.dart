@@ -9,12 +9,10 @@ part 'detail_tv_series_state.dart';
 class DetailTvSeriesCubit extends Cubit<DetailTvSeriesState> {
   final GetTvSeriesDetail getTvSeriesDetail;
   final GetTvSeriesRecommendations getTvSeriesRecommendations;
-  final GetTvSeriesWatchlistStatus getTvSeriesWatchlistStatus;
 
   DetailTvSeriesCubit({
     required this.getTvSeriesDetail,
     required this.getTvSeriesRecommendations,
-    required this.getTvSeriesWatchlistStatus,
   }) : super(DetailTvSeriesInitial());
 
   Future<void> fetchTvSeriesDetail(int id) async {
@@ -34,50 +32,3 @@ class DetailTvSeriesCubit extends Cubit<DetailTvSeriesState> {
     );
   }
 }
-
-
-
-// String _watchlistMessage = '';
-// String get watchlistMessage => _watchlistMessage;
-
-// Future<void> addWatchlist(TvSeriesDetail tvSeries) async {
-//   final result = await saveTvSeriesWatchlist
-//       .call(SaveTvSeriesWatchlistParams(tvSeriesDetail: tvSeries));
-
-//   await result.fold(
-//     (failure) async {
-//       _watchlistMessage = failure.message;
-//       notifyListeners();
-//     },
-//     (successMessage) async {
-//       _watchlistMessage = successMessage;
-//       _isAddedToWatchlist = true;
-//       notifyListeners();
-//     },
-//   );
-// }
-
-// Future<void> removeWatchlist(TvSeriesDetail tvSeries) async {
-//   final result = await removeTvSeriesWatchlist
-//       .call(RemoveTvSeriesWatchlistParams(tvSeriesDetail: tvSeries));
-
-//   await result.fold(
-//     (failure) async {
-//       _watchlistMessage = failure.message;
-//       notifyListeners();
-//     },
-//     (successMessage) async {
-//       _watchlistMessage = successMessage;
-//       _isAddedToWatchlist = false;
-//       notifyListeners();
-//     },
-//   );
-// }
-
-// Future<void> loadWatchlistStatus(int id) async {
-//   final result = await getTvSeriesWatchlistStatus.call(
-//     GetTvSeriesWatchlistStatusParam(tvSeriesId: id),
-//   );
-//   _isAddedToWatchlist = result;
-//   notifyListeners();
-// }

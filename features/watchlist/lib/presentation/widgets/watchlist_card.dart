@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 import 'package:core/utils/db/watchlist_table.dart';
 
 import 'package:flutter/material.dart';
-import 'package:movies/presentation/pages/movie_detail_page.dart';
 
 class WatchlistCard extends StatelessWidget {
   final WatchlistTable watchlist;
@@ -20,7 +19,7 @@ class WatchlistCard extends StatelessWidget {
             if (watchlist.isMovies == '1') {
               Navigator.pushNamed(
                 context,
-                MovieDetailPage.ROUTE_NAME,
+                detailMovieRoute,
                 arguments: watchlist.id,
               );
             } else {

@@ -8,7 +8,6 @@ import 'watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist-page';
   const WatchlistPage({super.key});
 
   @override
@@ -60,8 +59,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
             children: [
               _buildSubHeading(
                 title: 'Movies',
-                onTap: () => Navigator.pushNamed(
-                    context, WatchlistMoviesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(context, watchlistRoute),
               ),
               BlocBuilder<WatchlistMoviesCubit, WatchlistMoviesState>(
                   builder: (context, state) {
@@ -77,8 +75,8 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               }),
               _buildSubHeading(
                 title: 'Tv Series',
-                onTap: () => Navigator.pushNamed(
-                    context, WatchlistTvSeriesPage.ROUTE_NAME),
+                onTap: () =>
+                    Navigator.pushNamed(context, tvSeriesWatchlistRoute),
               ),
               BlocBuilder<WatchlistTvSeriesCubit, WatchlistTvSeriesState>(
                   builder: (context, state) {

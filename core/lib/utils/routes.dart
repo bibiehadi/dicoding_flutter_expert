@@ -47,10 +47,11 @@
 const homeRoute = '/home-page';
 const popularMovieRoute = '/popular-movie-page';
 const topRatedMovieRoute = '/top-rated-movie-page';
-const movieDetailRoute = '/detail-page';
-const movieSearchRoute = '/search-page';
+const detailMovieRoute = '/detail-page';
+const searchMoviesRoute = '/search-page';
 const aboutRoute = '/about-page';
 const watchlistRoute = '/watchlist-page';
+const watchlistMoviesRoutes = '/watchlist-movies-page';
 
 const tvSeriesRoute = '/tv-series-page';
 const tvSeriesNowPlayingRoute = '/now-playing-tv-series-page';

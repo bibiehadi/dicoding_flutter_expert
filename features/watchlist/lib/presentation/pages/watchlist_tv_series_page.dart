@@ -4,8 +4,6 @@ import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
 import 'package:watchlist/presentation/widgets/watchlist_card.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/tv-series-watchlist-page';
-
   const WatchlistTvSeriesPage({super.key});
 
   @override
