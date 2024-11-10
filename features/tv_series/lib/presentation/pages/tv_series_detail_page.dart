@@ -141,22 +141,25 @@ class DetailContent extends StatelessWidget {
                                           .removeWatchlist(tvSeriesDetail);
                                     }
 
-                                    final message = state.message;
-                                    if (message != "") {
+                                    final message = context
+                                        .read<WatchlistDetailTvSeriesCubit>()
+                                        .state
+                                        .message;
+                                    if (message.toLowerCase() ==
+                                            "added to watchlist" ||
+                                        message.toLowerCase() ==
+                                            "removed from watchlist") {
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(message),
-                                        ),
-                                      );
+                                          .showSnackBar(SnackBar(
+                                              content: Text(state.message)));
+                                    } else if (state.message != "") {
                                       showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            content: Text(message),
-                                          );
-                                        },
-                                      );
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              content: Text(state.message),
+                                            );
+                                          });
                                     }
                                   },
                                   child: Row(

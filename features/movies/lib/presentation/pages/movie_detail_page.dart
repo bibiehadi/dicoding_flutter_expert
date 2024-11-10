@@ -146,10 +146,15 @@ class DetailContent extends StatelessWidget {
                                           .read<WatchlistDetailMovieCubit>()
                                           .removeFromWatchlist(movie);
                                     }
-                                    log("state.message: ${state.message}");
-                                    if (state.message.toLowerCase() ==
+
+                                    String message = context
+                                        .read<WatchlistDetailMovieCubit>()
+                                        .state
+                                        .message;
+
+                                    if (message.toLowerCase() ==
                                             "added to watchlist" ||
-                                        state.message.toLowerCase() ==
+                                        message.toLowerCase() ==
                                             "removed from watchlist") {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
