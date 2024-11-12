@@ -102,8 +102,27 @@ class DetailContent extends StatelessWidget {
                               movie.title,
                               style: kHeading5,
                             ),
-                            BlocBuilder<WatchlistDetailMovieCubit,
+                            BlocConsumer<WatchlistDetailMovieCubit,
                                 WatchlistDetailMovieState>(
+                              listener: (context, state) {
+                                if (state.message.toLowerCase() ==
+                                        "added to watchlist" ||
+                                    state.message.toLowerCase() ==
+                                        "removed from watchlist") {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          key: const Key('watchlist_snackbar'),
+                                          content: Text(state.message)));
+                                } else if (state.message != "") {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          content: Text(state.message),
+                                        );
+                                      });
+                                }
+                              },
                               builder: (context, state) {
                                 return ElevatedButton(
                                   onPressed: () async {
@@ -117,29 +136,6 @@ class DetailContent extends StatelessWidget {
                                       context
                                           .read<WatchlistDetailMovieCubit>()
                                           .removeFromWatchlist(movie);
-                                    }
-
-                                    String message = context
-                                        .read<WatchlistDetailMovieCubit>()
-                                        .state
-                                        .message;
-                                    log("state message: $message");
-
-                                    if (message.toLowerCase() ==
-                                            "added to watchlist" ||
-                                        message.toLowerCase() ==
-                                            "removed from watchlist") {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                              content: Text(state.message)));
-                                    } else if (state.message != "") {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              content: Text(state.message),
-                                            );
-                                          });
                                     }
                                   },
                                   child: Row(

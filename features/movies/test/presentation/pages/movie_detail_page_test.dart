@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/third_party_library.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -126,6 +127,16 @@ void main() {
     when(() => mockRecommendationCubit.state)
         .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
 
+    whenListen(
+        mockWatchlistCubit,
+        Stream.fromIterable([
+          const WatchlistDetailMovieState(
+              isAddedWatchlist: true, message: 'Added to watchlist')
+        ]));
+
+    when(() => mockWatchlistCubit.saveToWatchlist(testMovieDetail))
+        .thenAnswer((_) async => const Right('Added to watchlist'));
+
     final watchlistButton = find.byType(ElevatedButton);
 
     await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(id: 1)));
@@ -136,7 +147,7 @@ void main() {
     await tester.pump();
 
     expect(find.byType(SnackBar), findsOneWidget);
-    expect(find.text('Added to Watchlist'), findsOneWidget);
+    expect(find.text('Added to watchlist'), findsOneWidget);
   });
 
   testWidgets(
@@ -150,12 +161,19 @@ void main() {
     when(() => mockWatchlistCubit.loadWatchlistStatus(1))
         .thenAnswer((_) async => {});
     when(() => mockWatchlistCubit.state).thenReturn(
-        const WatchlistDetailMovieState(isAddedWatchlist: true, message: ''));
+        const WatchlistDetailMovieState(isAddedWatchlist: false, message: ''));
 
     when(() => mockRecommendationCubit.fetchRecommendationMovies(1))
         .thenAnswer((_) async => {});
     when(() => mockRecommendationCubit.state)
         .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
+
+    whenListen(
+        mockWatchlistCubit,
+        Stream.fromIterable([
+          const WatchlistDetailMovieState(
+              isAddedWatchlist: false, message: 'Failed')
+        ]));
 
     final watchlistButton = find.byType(ElevatedButton);
 
