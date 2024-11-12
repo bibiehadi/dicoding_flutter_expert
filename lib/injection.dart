@@ -13,6 +13,7 @@ import 'package:movies/domain/usecases/remove_watchlist.dart';
 import 'package:movies/domain/usecases/save_watchlist.dart';
 import 'package:movies/domain/usecases/search_movies.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
+import 'package:movies/presentation/bloc/recommendation_state/recommendation_movies_cubit.dart';
 import 'package:movies/presentation/bloc/search_movies/search_movies_cubit.dart';
 import 'package:movies/presentation/bloc/top_rated_movies/top_rated_movies_cubit.dart';
 import 'package:movies/presentation/bloc/now_playing_movies/now_playing_movies_cubit.dart';
@@ -65,8 +66,10 @@ void init() {
 
   locator.registerFactory(() => SearchMoviesCubit(usecase: locator()));
 
-  locator.registerFactory(() => DetailMovieCubit(
-      getMovieDetail: locator(), getMovieRecommendations: locator()));
+  locator.registerFactory(() => DetailMovieCubit(getMovieDetail: locator()));
+
+  locator.registerFactory(
+      () => RecommendationMoviesCubit(getMovieRecommendations: locator()));
 
   locator.registerFactory(() => WatchlistDetailMovieCubit(
       saveWatchlist: locator(),

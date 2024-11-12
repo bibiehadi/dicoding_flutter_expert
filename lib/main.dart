@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
+import 'package:movies/presentation/bloc/recommendation_state/recommendation_movies_cubit.dart';
 import 'package:movies/presentation/bloc/search_movies/search_movies_cubit.dart';
 import 'package:movies/presentation/bloc/top_rated_movies/top_rated_movies_cubit.dart';
 import 'package:movies/presentation/bloc/now_playing_movies/now_playing_movies_cubit.dart';
@@ -52,6 +53,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<TopRatedMoviesCubit>()),
         BlocProvider(create: (context) => di.locator<SearchMoviesCubit>()),
         BlocProvider(create: (context) => di.locator<DetailMovieCubit>()),
+        BlocProvider(
+            create: (context) => di.locator<RecommendationMoviesCubit>()),
         BlocProvider(
             create: (context) => di.locator<WatchlistDetailMovieCubit>()),
         BlocProvider(create: (context) => di.locator<TopRatedTvSeriesCubit>()),

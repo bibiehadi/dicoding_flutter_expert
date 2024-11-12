@@ -14,8 +14,7 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => context.read<PopularMoviesCubit>().fetchPopularMovies());
+    context.read<PopularMoviesCubit>().fetchPopularMovies();
   }
 
   @override
@@ -32,7 +31,8 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is PopularMoviesSuccess) {
+            }
+            if (state is PopularMoviesSuccess) {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final movie = state.moviesData[index];
@@ -40,14 +40,14 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
                 },
                 itemCount: state.moviesData.length,
               );
-            } else if (state is PopularMoviesFailed) {
+            }
+            if (state is PopularMoviesFailed) {
               return Center(
                 key: const Key('error_message'),
                 child: Text(state.message),
               );
-            } else {
-              return const SizedBox.shrink();
             }
+            return const SizedBox.shrink();
           },
         ),
       ),

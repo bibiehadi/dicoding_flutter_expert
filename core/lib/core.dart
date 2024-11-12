@@ -13,3 +13,4 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'package:provider/provider.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:bloc_test/bloc_test.dart';
