@@ -153,20 +153,18 @@ void main() {
   testWidgets(
       'Watchlist button should display AlertDialog when add to watchlist failed',
       (WidgetTester tester) async {
-    when(() => mockDetailMovieCubit.fetchDetailMovie(1))
-        .thenAnswer((_) async => {});
     when(() => mockDetailMovieCubit.state)
         .thenReturn(DetailMovieSuccess(movieDetail: testMovieDetail));
-
-    when(() => mockWatchlistCubit.loadWatchlistStatus(1))
+    when(() => mockDetailMovieCubit.fetchDetailMovie(1))
         .thenAnswer((_) async => {});
     when(() => mockWatchlistCubit.state).thenReturn(
         const WatchlistDetailMovieState(isAddedWatchlist: false, message: ''));
-
-    when(() => mockRecommendationCubit.fetchRecommendationMovies(1))
+    when(() => mockWatchlistCubit.loadWatchlistStatus(1))
         .thenAnswer((_) async => {});
     when(() => mockRecommendationCubit.state)
         .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
+    when(() => mockRecommendationCubit.fetchRecommendationMovies(1))
+        .thenAnswer((_) async => {});
 
     whenListen(
         mockWatchlistCubit,
@@ -175,13 +173,16 @@ void main() {
               isAddedWatchlist: false, message: 'Failed')
         ]));
 
-    final watchlistButton = find.byType(ElevatedButton);
+    when(() => mockWatchlistCubit.saveToWatchlist(testMovieDetail))
+        .thenAnswer((_) async => const Left(DatabaseFailure('Failed')));
+
+    final watchlistButton = find.byKey(const Key('watchlist_button'));
 
     await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 
-    await tester.tap(watchlistButton);
+    await tester.tap(watchlistButton, warnIfMissed: false);
     await tester.pump();
 
     expect(find.byType(AlertDialog), findsOneWidget);

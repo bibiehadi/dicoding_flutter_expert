@@ -22,6 +22,9 @@ void main() {
     datasource = TvSeriesRemoteDatasourceImpl(client: mockHttpClient);
   });
 
+  const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';
+  const BASE_URL = 'https://api.themoviedb.org/3';
+
   group('get Now Playing TvSeries', () {
     final tTvSeriesList = TvSeriesResponse.fromJson(
             json.decode(readJson('dummy_data/tv_series_on_the_air.json')))
@@ -31,10 +34,9 @@ void main() {
       'should return list of TvSeries Model when the response code is 200',
       () async {
         // arrange
-        when(mockHttpClient.get(Uri.parse('$baseURL/tv/on_the_air'), headers: {
-          'Authorization': 'Bearer $accessToken',
-          'accept': 'application/json',
-        })).thenAnswer(
+        when(mockHttpClient.get(
+          Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'),
+        )).thenAnswer(
           (_) async => http.Response(
             readJson('dummy_data/tv_series_on_the_air.json'),
             200,
@@ -50,10 +52,8 @@ void main() {
     test('should throw a ServerExeption when the response code is 404 or other',
         () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$baseURL/tv/on_the_air'), headers: {
-        'accept': 'application/json',
-        'Authorization': 'Bearer $accessToken'
-      })).thenAnswer((_) async => http.Response('Not Found', 404));
+      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
+          .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = datasource.getNowPlayingTvSeries();
       // assert
@@ -73,11 +73,8 @@ void main() {
         () async {
           // arrange
           when(mockHttpClient.get(
-              Uri.parse('$baseURL/tv/popular?language=en-US&page=1'),
-              headers: {
-                'accept': 'application/json',
-                'Authorization': 'Bearer $accessToken'
-              })).thenAnswer((_) async => http.Response(
+            Uri.parse('$BASE_URL/tv/popular?$API_KEY'),
+          )).thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_series_popular.json'), 200));
 
           //act
@@ -93,11 +90,8 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$baseURL/tv/popular?language=en-US&page=1'),
-            headers: {
-              'accept': 'application/json',
-              'Authorization': 'Bearer $accessToken'
-            })).thenAnswer((_) async => http.Response('Not Found', 404));
+          Uri.parse('$BASE_URL/tv/popular?$API_KEY'),
+        )).thenAnswer((_) async => http.Response('Not Found', 404));
 
         // act
         final call = datasource.getPopularTvSeries();
@@ -120,11 +114,8 @@ void main() {
         () async {
           // arrange
           when(mockHttpClient.get(
-              Uri.parse('$baseURL/tv/top_rated?language=en-US&page=1'),
-              headers: {
-                'accept': 'application/json',
-                'Authorization': 'Bearer $accessToken'
-              })).thenAnswer((_) async => http.Response(
+            Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'),
+          )).thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_series_top_rated.json'), 200));
 
           //act
@@ -140,11 +131,8 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$baseURL/tv/top_rated?language=en-US&page=1'),
-            headers: {
-              'accept': 'application/json',
-              'Authorization': 'Bearer $accessToken'
-            })).thenAnswer((_) async => http.Response('Not Found', 404));
+          Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'),
+        )).thenAnswer((_) async => http.Response('Not Found', 404));
 
         // act
         final call = datasource.getTopRatedTvSeries();
@@ -158,7 +146,7 @@ void main() {
   group(
     'get detail tvSeries',
     () {
-      final id = 209867;
+      const int id = 209867;
       final tTvSeriesDetail = TvSeriesDetailModel.fromJson(
           json.decode(readJson('dummy_data/tv_series_detail.json')));
 
@@ -166,11 +154,9 @@ void main() {
         "should return tv series detail when the respose code is 200",
         () async {
           // arrange
-          when(mockHttpClient
-              .get(Uri.parse('$baseURL/tv/$id?language=en-US'), headers: {
-            'Authorization': 'Bearer $accessToken',
-            'accept': 'application/json',
-          })).thenAnswer((_) async =>
+          when(mockHttpClient.get(
+            Uri.parse('$BASE_URL/tv/$id?$API_KEY'),
+          )).thenAnswer((_) async =>
               http.Response(readJson('dummy_data/tv_series_detail.json'), 200));
 
           // act
@@ -185,11 +171,9 @@ void main() {
         'should throw a ServerException when the response code is 404 or other',
         () async {
           // arrange
-          when(mockHttpClient.get(Uri.parse('$baseURL/tv/$id?language=en-US'),
-              headers: {
-                'accept': 'application/json',
-                'Authorization': 'Bearer $accessToken'
-              })).thenAnswer((_) async => http.Response('Not Found', 404));
+          when(mockHttpClient.get(
+            Uri.parse('$BASE_URL/tv/$id?$API_KEY'),
+          )).thenAnswer((_) async => http.Response('Not Found', 404));
 
           // act
           final call = datasource.getTvSeriesDetail(id);
@@ -206,18 +190,14 @@ void main() {
             json.decode(readJson('dummy_data/tv_series_recommendation.json')))
         .tvSeriesList;
 
-    final id = 209867;
+    const int id = 209867;
 
     test(
       'should return list of TvSeries Model when the response code is 200',
       () async {
         // arrange
         when(mockHttpClient.get(
-          Uri.parse('$baseURL/tv/$id/recommendations?language=en-US&page=1'),
-          headers: {
-            'Authorization': 'Bearer $accessToken',
-            'accept': 'application/json',
-          },
+          Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'),
         )).thenAnswer(
           (_) async => http.Response(
             readJson('dummy_data/tv_series_recommendation.json'),
@@ -235,11 +215,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-        Uri.parse('$baseURL/tv/$id/recommendations?language=en-US&page=1'),
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer $accessToken'
-        },
+        Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'),
       )).thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = datasource.getRecommendationTvSeries(id);
@@ -253,18 +229,14 @@ void main() {
             json.decode(readJson('dummy_data/tv_series_search.json')))
         .tvSeriesList;
 
-    final query = 'frieren';
+    const String query = 'frieren';
 
     test(
       'should return list of TvSeries Model when the response code is 200',
       () async {
         // arrange
         when(mockHttpClient.get(
-          Uri.parse('$baseURL/search/tv?query=$query&language=en-US&page=1'),
-          headers: {
-            'Authorization': 'Bearer $accessToken',
-            'accept': 'application/json',
-          },
+          Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query'),
         )).thenAnswer(
           (_) async => http.Response(
             readJson('dummy_data/tv_series_search.json'),
@@ -282,11 +254,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-        Uri.parse('$baseURL/search/tv?query=$query&language=en-US&page=1'),
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer $accessToken'
-        },
+        Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query'),
       )).thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = datasource.searchTvSeries(query);
@@ -308,11 +276,8 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$baseURL/tv/$id/season/$seasonNumber?language=en-US'),
-            headers: {
-              'Authorization': 'Bearer $accessToken',
-              'accept': 'application/json',
-            })).thenAnswer((_) async => http.Response(
+          Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?$API_KEY'),
+        )).thenAnswer((_) async => http.Response(
             readJson('dummy_data/tv_series_season_detail.json'), 200));
 
         // act
@@ -327,11 +292,8 @@ void main() {
           () async {
         // arrange
         when(mockHttpClient.get(
-            Uri.parse('$baseURL/tv/$id/season/$seasonNumber?language=en-US'),
-            headers: {
-              'Authorization': 'Bearer $accessToken',
-              'accept': 'application/json',
-            })).thenAnswer((_) async => http.Response('Not Found', 404));
+          Uri.parse('$BASE_URL/tv/$id/season/$seasonNumber?$API_KEY'),
+        )).thenAnswer((_) async => http.Response('Not Found', 404));
 
         // act
         final call = datasource.getTvSeriesSeasonDetail(id, seasonNumber);
