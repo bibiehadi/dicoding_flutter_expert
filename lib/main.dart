@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
 import 'package:movies/presentation/bloc/recommendation_state/recommendation_movies_cubit.dart';
 import 'package:movies/presentation/bloc/search_movies/search_movies_cubit.dart';
@@ -37,7 +36,6 @@ import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
 
 void main() async {
   di.init();
-  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 

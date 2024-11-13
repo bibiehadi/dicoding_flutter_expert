@@ -368,7 +368,7 @@ void main() {
 
     expect(find.byIcon(Icons.check), findsOneWidget);
 
-    await tester.tap(watchlistButton);
+    await tester.tap(watchlistButton, warnIfMissed: false);
     await tester.pump();
 
     expect(find.byType(SnackBar), findsOneWidget);
@@ -408,7 +408,7 @@ void main() {
 
     expect(find.byIcon(Icons.check), findsOneWidget);
 
-    await tester.tap(watchlistButton);
+    await tester.tap(watchlistButton, warnIfMissed: false);
     await tester.pump();
 
     expect(find.byType(AlertDialog), findsOneWidget);
