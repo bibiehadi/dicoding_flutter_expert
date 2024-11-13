@@ -1,6 +1,6 @@
-import 'package:core/third_party_library_dev.dart';
 import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 import 'package:tv_series/data/datasources/local/tv_series_local_datasource_impl.dart';
 
 import '../../dummy_data/dummy_objects.dart';

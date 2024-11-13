@@ -1,7 +1,5 @@
 import 'package:core/core.dart';
 import 'package:core/third_party_library.dart';
-import 'package:core/utils/failure.dart';
-import 'package:core/utils/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tv_series/domain/usecases/get_tv_series_season_detail/get_tv_series_season_detail.dart';
