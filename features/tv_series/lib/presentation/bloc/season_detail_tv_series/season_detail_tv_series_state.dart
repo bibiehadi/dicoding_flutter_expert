@@ -1,7 +1,7 @@
 part of 'season_detail_tv_series_cubit.dart';
 
 @immutable
-sealed class SeasonDetailTvSeriesState extends Equatable {}
+abstract class SeasonDetailTvSeriesState extends Equatable {}
 
 final class SeasonDetailTvSeriesInitial extends SeasonDetailTvSeriesState {
   @override

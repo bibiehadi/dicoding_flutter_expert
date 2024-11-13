@@ -1,7 +1,7 @@
 part of 'now_playing_tv_series_cubit.dart';
 
 @immutable
-sealed class NowPlayingTvSeriesState extends Equatable {}
+abstract class NowPlayingTvSeriesState extends Equatable {}
 
 final class NowPlayingTvSeriesInitial extends NowPlayingTvSeriesState {
   @override

@@ -58,27 +58,6 @@ class _TvSeriesSeasonDetailPageState extends State<TvSeriesSeasonDetailPage> {
           }
         },
       ),
-      // Consumer<TvSeriesSeasonDetailNotifier>(
-      //   builder: (context, provider, child) {
-      //     if (provider.tvSeriesState == RequestState.Loading) {
-      //       return Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     } else if (provider.tvSeriesState == RequestState.Loaded) {
-      //       final tvSeries = provider.tvSeriesSeasonDetail;
-      //       return SafeArea(
-      //         child: DetailContent(
-      //           tvSeries,
-      //         ),
-      //       );
-      //     } else {
-      //       return Text(
-      //         provider.message,
-      //         key: Key('error_message'),
-      //       );
-      //     }
-      //   },
-      // ),
     );
   }
 }

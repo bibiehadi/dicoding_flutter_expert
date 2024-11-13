@@ -58,7 +58,7 @@ void main() {
     act: (cubit) => cubit.saveToWatchlist(testMovieDetail),
     expect: () => [
       const WatchlistDetailMovieState(
-          isAddedWatchlist: false, message: 'Database Failure')
+          isAddedWatchlist: false, message: 'Server Failure')
     ],
     verify: (cubit) => verify(() => mockSaveWatchlist.execute(testMovieDetail)),
   );

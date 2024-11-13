@@ -1,7 +1,7 @@
 part of 'top_rated_tv_series_cubit.dart';
 
 @immutable
-sealed class TopRatedTvSeriesState extends Equatable {}
+abstract class TopRatedTvSeriesState extends Equatable {}
 
 final class TopRatedTvSeriesInitial extends TopRatedTvSeriesState {
   @override

@@ -64,6 +64,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<WatchlistMoviesCubit>()),
         BlocProvider(create: (context) => di.locator<DetailTvSeriesCubit>()),
         BlocProvider(
+            create: (context) => di.locator<RecommendationMoviesCubit>()),
+        BlocProvider(
             create: (context) => di.locator<SeasonDetailTvSeriesCubit>()),
         BlocProvider(create: (context) => di.locator<SearchTvSeriesCubit>()),
         BlocProvider(

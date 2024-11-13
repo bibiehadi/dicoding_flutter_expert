@@ -14,8 +14,8 @@ class TvSeriesNowPlayingPage extends StatefulWidget {
 class _TvSeriesNowPlayingPageState extends State<TvSeriesNowPlayingPage> {
   @override
   void initState() {
-    Future.microtask(() => BlocProvider.of<NowPlayingTvSeriesCubit>(context)
-        .fetchNowPlayingTvSeries());
+    Future.microtask(() =>
+        context.read<NowPlayingTvSeriesCubit>().fetchNowPlayingTvSeries());
     super.initState();
   }
 

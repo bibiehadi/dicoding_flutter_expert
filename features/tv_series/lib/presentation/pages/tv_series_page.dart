@@ -54,12 +54,20 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   builder: (context, state) {
                 if (state is NowPlayingTvSeriesLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    key: Key('now_playing_tv_series_center'),
+                    child: CircularProgressIndicator(
+                      key: Key('now_playing_tv_series_loading'),
+                    ),
                   );
                 } else if (state is NowPlayingTvSeriesSuccess) {
-                  return TvSeriesList(state.tvSeriesData);
+                  return TvSeriesList(
+                      key: const Key('now_playing_tv_series_list'),
+                      state.tvSeriesData);
                 } else {
-                  return const Text('Failed');
+                  return const Text(
+                    'Failed',
+                    key: Key('now_playing_tv_series_failed'),
+                  );
                 }
               }),
               _buildSubHeading(
@@ -71,12 +79,19 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   builder: (context, state) {
                 if (state is PopularTvSeriesLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    key: Key('popular_tv_series_center'),
+                    child: CircularProgressIndicator(
+                      key: Key('popular_tv_series_loading'),
+                    ),
                   );
                 } else if (state is PopularTvSeriesSuccess) {
-                  return TvSeriesList(state.tvSeriesData);
+                  return TvSeriesList(
+                    state.tvSeriesData,
+                    key: const Key('popular_tv_series_list'),
+                  );
                 } else {
-                  return const Text('Failed');
+                  return const Text(
+                      key: Key('popular_tv_series_failed'), 'Failed');
                 }
               }),
               _buildSubHeading(
@@ -88,12 +103,21 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   builder: (context, state) {
                 if (state is TopRatedTvSeriesLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    key: Key('top_rated_tv_series_center'),
+                    child: CircularProgressIndicator(
+                      key: Key('top_rated_tv_series_loading'),
+                    ),
                   );
                 } else if (state is TopRatedTvSeriesSuccess) {
-                  return TvSeriesList(state.tvSeriesData);
+                  return TvSeriesList(
+                    state.tvSeriesData,
+                    key: const Key('top_rated_tv_series_list'),
+                  );
                 } else {
-                  return const Text('Failed');
+                  return const Text(
+                    'Failed',
+                    key: Key('top_rated_tv_series_failed'),
+                  );
                 }
               }),
             ],

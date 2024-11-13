@@ -1,64 +1,71 @@
-// import 'package:core/core.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:mockito/annotations.dart';
-// import 'package:mockito/mockito.dart';
-// import 'package:tv_series/domain/entities/tv_series.dart';
-// import 'package:tv_series/presentation/pages/tv_series_popular_page.dart';
-// import 'package:tv_series/presentation/provider/tv_series_popular_notifier.dart';
+import 'package:core/core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:tv_series/domain/entities/tv_series.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/pages/tv_series_popular_page.dart';
 
-// import 'tv_series_popular_page_test.mocks.dart';
+class MockPopularTvSeriesCubit extends MockCubit<PopularTvSeriesState>
+    implements PopularTvSeriesCubit {}
 
-// @GenerateMocks([TvSeriesPopularNotifier])
-// void main() {
-//   late MockTvSeriesPopularNotifier mockNotifier;
+class FakePopularTvSeriesState extends Fake implements PopularTvSeriesState {}
 
-//   setUp(() {
-//     mockNotifier = MockTvSeriesPopularNotifier();
-//   });
+void main() {
+  late MockPopularTvSeriesCubit mockCubit;
 
-//   Widget _makeTestableWidget(Widget body) {
-//     return ChangeNotifierProvider<TvSeriesPopularNotifier>.value(
-//       value: mockNotifier,
-//       child: MaterialApp(
-//         home: body,
-//       ),
-//     );
-//   }
+  setUpAll(() {
+    registerFallbackValue(FakePopularTvSeriesState());
+  });
 
-//   testWidgets('Page should display progress bar when loading',
-//       (WidgetTester tester) async {
-//     when(mockNotifier.popularTvSeriesState).thenReturn(RequestState.Loading);
+  setUp(() {
+    mockCubit = MockPopularTvSeriesCubit();
+  });
 
-//     final progressFinder = find.byType(CircularProgressIndicator);
-//     final centerFinder = find.byType(Center);
+  Widget makeTestableWidget(Widget body) {
+    return BlocProvider<PopularTvSeriesCubit>.value(
+      value: mockCubit,
+      child: MaterialApp(home: body),
+    );
+  }
 
-//     await tester.pumpWidget(_makeTestableWidget(const TvSeriesPopularPage()));
+  testWidgets('Page should display progress bar when loading',
+      (WidgetTester tester) async {
+    when(() => mockCubit.fetchPopularTvSeries()).thenAnswer((_) async => {});
+    when(() => mockCubit.state).thenReturn(PopularTvSeriesLoading());
 
-//     expect(centerFinder, findsOneWidget);
-//     expect(progressFinder, findsOneWidget);
-//   });
+    final progressFinder = find.byType(CircularProgressIndicator);
+    final centerFinder = find.byType(Center);
 
-//   testWidgets('Page should display when data is loaded',
-//       (WidgetTester tester) async {
-//     when(mockNotifier.popularTvSeriesState).thenReturn(RequestState.Loaded);
-//     when(mockNotifier.popularTvSeries).thenReturn(<TvSeries>[]);
-//     final listViewFinder = find.byType(ListView);
+    await tester.pumpWidget(makeTestableWidget(const TvSeriesPopularPage()));
 
-//     await tester.pumpWidget(_makeTestableWidget(const TvSeriesPopularPage()));
+    expect(centerFinder, findsOneWidget);
+    expect(progressFinder, findsOneWidget);
+  });
 
-//     expect(listViewFinder, findsOneWidget);
-//   });
+  testWidgets('Page should display when data is loaded',
+      (WidgetTester tester) async {
+    when(() => mockCubit.fetchPopularTvSeries()).thenAnswer((_) async => {});
 
-//   testWidgets('Page should display test with message when Error',
-//       (WidgetTester tester) async {
-//     when(mockNotifier.popularTvSeriesState).thenReturn(RequestState.Error);
-//     when(mockNotifier.message).thenReturn('Error message');
+    when(() => mockCubit.state)
+        .thenReturn(PopularTvSeriesSuccess(tvSeriesData: const <TvSeries>[]));
+    final listViewFinder = find.byType(ListView);
 
-//     final textFinder = find.byKey(Key('error_message'));
+    await tester.pumpWidget(makeTestableWidget(const TvSeriesPopularPage()));
 
-//     await tester.pumpWidget(_makeTestableWidget(const TvSeriesPopularPage()));
+    expect(listViewFinder, findsOneWidget);
+  });
 
-//     expect(textFinder, findsOneWidget);
-//   });
-// }
+  testWidgets('Page should display test with message when Error',
+      (WidgetTester tester) async {
+    when(() => mockCubit.fetchPopularTvSeries()).thenAnswer((_) async => {});
+    when(() => mockCubit.state)
+        .thenReturn(PopularTvSeriesFailed(message: 'Error message'));
+
+    final textFinder = find.byKey(const Key('error_message'));
+
+    await tester.pumpWidget(makeTestableWidget(const TvSeriesPopularPage()));
+
+    expect(textFinder, findsOneWidget);
+  });
+}

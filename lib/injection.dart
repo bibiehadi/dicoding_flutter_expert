@@ -36,6 +36,7 @@ import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series.dart
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/recommendation_tv_series/recommendation_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/search_tv_series/search_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
@@ -88,6 +89,11 @@ void init() {
   locator.registerFactory(
     () => DetailTvSeriesCubit(
       getTvSeriesDetail: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => RecommendationTvSeriesCubit(
       getTvSeriesRecommendations: locator(),
     ),
   );
