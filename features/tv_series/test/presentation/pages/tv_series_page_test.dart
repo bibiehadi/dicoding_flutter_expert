@@ -2,11 +2,11 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
 import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/pages/tv_series_page.dart';
+import 'package:tv_series/tv_series.dart';
 
 class MockNowPlayingTvSeriesCubit extends MockCubit<NowPlayingTvSeriesState>
     implements NowPlayingTvSeriesCubit {}

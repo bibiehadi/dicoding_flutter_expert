@@ -2,11 +2,11 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
-import 'package:tv_series/presentation/bloc/recommendation_tv_series/recommendation_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
+import 'package:tv_series/presentation/bloc/recommendation_tv_series/recommendation_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 import 'package:tv_series/presentation/pages/tv_series_detail_page.dart';
+import 'package:tv_series/tv_series.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 
@@ -92,8 +92,8 @@ void main() {
             isAddedToWatchlist: false, message: ''));
     when(() => mockWatchlistCubit.loadWatchlistStatus(81231))
         .thenAnswer((_) async => {});
-    when(() => mockRecommendationCubit.state)
-        .thenReturn(RecommendationTvSeriesSuccess(tvSeriesList: <TvSeries>[]));
+    when(() => mockRecommendationCubit.state).thenReturn(
+        RecommendationTvSeriesSuccess(tvSeriesList: const <TvSeries>[]));
     when(() => mockRecommendationCubit.fetchRecommendationTvSeries(81231))
         .thenAnswer((_) async => {});
 
@@ -327,7 +327,7 @@ void main() {
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 
-    await tester.tap(watchlistButton);
+    await tester.tap(watchlistButton, warnIfMissed: false);
     await tester.pump();
 
     expect(find.byType(AlertDialog), findsOneWidget);

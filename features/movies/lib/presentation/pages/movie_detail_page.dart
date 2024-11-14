@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:core/core.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
 import 'package:movies/presentation/bloc/recommendation_state/recommendation_movies_cubit.dart';

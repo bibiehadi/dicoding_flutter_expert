@@ -2,9 +2,9 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/pages/tv_series_top_rated_page.dart';
+import 'package:tv_series/tv_series.dart';
 
 class MockTopRatedTvSeriesCubit extends MockCubit<TopRatedTvSeriesState>
     implements TopRatedTvSeriesCubit {}

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status.dart';
 import 'package:tv_series/domain/usecases/get_tv_series_watchlist_status/get_tv_series_watchlist_status_param.dart';
+import 'package:tv_series/tv_series.dart';
 
 import '../../tv_series_test.mocks.dart';
 

@@ -11,7 +11,6 @@ import 'package:tv_series/domain/usecases/remove_tv_series_watchlist/remove_tv_s
 import 'package:tv_series/domain/usecases/save_tv_series_watchlist/save_tv_series_watchlist.dart';
 import 'package:tv_series/domain/usecases/save_tv_series_watchlist/save_tv_series_watchlist_params.dart';
 import 'package:tv_series/presentation/bloc/detail_tv_series/detail_tv_series_cubit.dart';
-import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detail_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 
 import '../../dummy_data/dummy_objects.dart';

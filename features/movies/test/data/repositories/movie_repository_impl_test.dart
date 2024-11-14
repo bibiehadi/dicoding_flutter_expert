@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:core/core.dart';
 import 'package:core/third_party_library.dart';
+import 'package:core/utils/exception.dart';
+import 'package:core/utils/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movies/data/models/genre_model.dart';

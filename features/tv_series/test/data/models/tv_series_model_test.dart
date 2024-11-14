@@ -1,9 +1,9 @@
-import '../../../lib/data/models/tv_series_model.dart';
-import '../../../lib/domain/entities/tv_series.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tv_series/data/models/tv_series_model.dart';
+import 'package:tv_series/domain/entities/tv_series.dart';
 
 void main() {
-  final tTvSeriesModel = TvSeriesModel(
+  const tTvSeriesModel = TvSeriesModel(
     adult: false,
     backdropPath: "/path.jpg",
     genreIds: [1, 2, 3, 4],
@@ -23,7 +23,7 @@ void main() {
   final tTvSeries = TvSeries(
     adult: false,
     backdropPath: "/path.jpg",
-    genreIds: [1, 2, 3, 4],
+    genreIds: const [1, 2, 3, 4],
     firstAirDate: "2020-05-05",
     id: 1,
     name: "Name",
@@ -34,7 +34,7 @@ void main() {
     posterPath: "/path.jpg",
     voteAverage: 1.0,
     voteCount: 1,
-    originCountry: ["US"],
+    originCountry: const ["US"],
   );
 
   test('should be a subclass of TvSeries entity', () async {

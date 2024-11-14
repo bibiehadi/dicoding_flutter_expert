@@ -1,9 +1,8 @@
 import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
-import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series.dart';
 import 'package:tv_series/domain/usecases/search_tv_series/search_tv_series_params.dart';
+import 'package:tv_series/tv_series.dart';
 
 import '../../tv_series_test.mocks.dart';
 
@@ -16,7 +15,7 @@ void main() {
     usecase = SearchTvSeries(mockTvSeriesRepository);
   });
 
-  const String tQuery = 'spiderman';
+  final tQuery = 'spiderman';
   final tTvSeriesList = <TvSeries>[];
 
   test('should search tv series from the repository', () async {

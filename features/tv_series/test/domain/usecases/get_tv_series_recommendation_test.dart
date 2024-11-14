@@ -1,9 +1,8 @@
 import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
-import 'package:tv_series/domain/usecases/get_tv_series_recommendations/get_tv_series_recommendations.dart';
 import 'package:tv_series/domain/usecases/get_tv_series_recommendations/get_tv_series_recommendations_params.dart';
+import 'package:tv_series/tv_series.dart';
 
 import '../../tv_series_test.mocks.dart';
 

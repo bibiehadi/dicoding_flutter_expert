@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -7,7 +8,7 @@ import 'package:movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/data/models/movie_detail_model.dart';
 import 'package:movies/data/models/movie_response.dart';
 
-import '../../../../../test/json_reader.dart';
+import '../../json_reader.dart';
 import '../../movies_test.mocks.dart';
 
 void main() {
