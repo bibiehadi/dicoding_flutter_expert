@@ -37,6 +37,12 @@ void main() {
   final tQuery = 'spiderman';
 
   group('search movies', () {
+    blocTest(
+      'should change state to Initial when usecase is called',
+      build: () => searchMoviesCubit,
+      expect: () => <SearchMoviesState>[],
+      verify: (cubit) => expect(cubit.state, SearchMoviesInitial()),
+    );
     blocTest<SearchMoviesCubit, SearchMoviesState>(
       'should change movies data when data is gotten successfully',
       build: () {

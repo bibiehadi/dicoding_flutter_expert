@@ -41,6 +41,12 @@ void main() {
   final tMovies = <Movie>[tMovie];
 
   group('Get Movie Detail', () {
+    blocTest(
+      'should change state to Initial when usecase is called',
+      build: () => detailMovieCubit,
+      expect: () => <DetailMovieState>[],
+      verify: (cubit) => expect(cubit.state, DetailMovieInitial()),
+    );
     blocTest<DetailMovieCubit, DetailMovieState>(
       'should change movies data when data is gotten successfully',
       build: () {

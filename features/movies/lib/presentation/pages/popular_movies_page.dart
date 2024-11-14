@@ -34,6 +34,7 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
             }
             if (state is PopularMoviesSuccess) {
               return ListView.builder(
+                key: const Key('list_view'),
                 itemBuilder: (context, index) {
                   final movie = state.moviesData[index];
                   return MovieCard(movie);

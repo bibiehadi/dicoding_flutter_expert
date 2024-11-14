@@ -85,7 +85,7 @@ void main() {
   });
 
   testWidgets(
-      'Watchlist button should dispay check icon when movie is added to wathclist',
+      'Watchlist button should dislay check icon when movie is added to wathclist',
       (WidgetTester tester) async {
     when(() => mockDetailMovieCubit.fetchDetailMovie(1))
         .thenAnswer((_) async => {});
@@ -187,5 +187,135 @@ void main() {
 
     expect(find.byType(AlertDialog), findsOneWidget);
     expect(find.text('Failed'), findsOneWidget);
+  });
+
+  testWidgets(
+      'Watchlist button should display Snackbar when remove from watchlist',
+      (WidgetTester tester) async {
+    when(() => mockDetailMovieCubit.fetchDetailMovie(1))
+        .thenAnswer((_) async => {});
+    when(() => mockDetailMovieCubit.state)
+        .thenReturn(DetailMovieSuccess(movieDetail: testMovieDetail));
+
+    when(() => mockWatchlistCubit.loadWatchlistStatus(1))
+        .thenAnswer((_) async => {});
+    when(() => mockWatchlistCubit.state).thenReturn(
+        const WatchlistDetailMovieState(
+            isAddedWatchlist: true, message: 'Added to watchlist'));
+
+    when(() => mockRecommendationCubit.fetchRecommendationMovies(1))
+        .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
+
+    whenListen(
+        mockWatchlistCubit,
+        Stream.fromIterable([
+          const WatchlistDetailMovieState(
+              isAddedWatchlist: false, message: 'Removed from watchlist')
+        ]));
+
+    when(() => mockWatchlistCubit.removeFromWatchlist(testMovieDetail))
+        .thenAnswer((_) async => const Right('Removed from watchlist'));
+
+    final watchlistButton = find.byType(ElevatedButton);
+
+    await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(id: 1)));
+
+    expect(find.byIcon(Icons.check), findsOneWidget);
+
+    await tester.tap(watchlistButton);
+    await tester.pump();
+
+    expect(find.byType(SnackBar), findsOneWidget);
+    expect(find.text('Removed from watchlist'), findsOneWidget);
+  });
+
+  testWidgets(
+      'Watchlist button should display AlertDialog when removed from watchlist failed',
+      (WidgetTester tester) async {
+    when(() => mockDetailMovieCubit.state)
+        .thenReturn(DetailMovieSuccess(movieDetail: testMovieDetail));
+    when(() => mockDetailMovieCubit.fetchDetailMovie(1))
+        .thenAnswer((_) async => {});
+    when(() => mockWatchlistCubit.state).thenReturn(
+        const WatchlistDetailMovieState(
+            isAddedWatchlist: true, message: 'Added to watchlist'));
+    when(() => mockWatchlistCubit.loadWatchlistStatus(1))
+        .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
+    when(() => mockRecommendationCubit.fetchRecommendationMovies(1))
+        .thenAnswer((_) async => {});
+
+    whenListen(
+        mockWatchlistCubit,
+        Stream.fromIterable([
+          const WatchlistDetailMovieState(
+              isAddedWatchlist: true, message: 'Failed')
+        ]));
+
+    when(() => mockWatchlistCubit.removeFromWatchlist(testMovieDetail))
+        .thenAnswer((_) async => const Left(DatabaseFailure('Failed')));
+
+    final watchlistButton = find.byKey(const Key('watchlist_button'));
+
+    await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(id: 1)));
+
+    expect(find.byIcon(Icons.check), findsOneWidget);
+
+    await tester.tap(watchlistButton, warnIfMissed: false);
+    await tester.pump();
+
+    expect(find.byType(AlertDialog), findsOneWidget);
+    expect(find.text('Failed'), findsOneWidget);
+  });
+
+  testWidgets(
+      'Page should display list view tv series recommendation data when loaded',
+      (WidgetTester tester) async {
+    when(() => mockDetailMovieCubit.state)
+        .thenReturn(DetailMovieSuccess(movieDetail: testMovieDetail));
+    when(() => mockDetailMovieCubit.fetchDetailMovie(81231))
+        .thenAnswer((_) async => {});
+    when(() => mockWatchlistCubit.state).thenReturn(
+        const WatchlistDetailMovieState(isAddedWatchlist: false, message: ''));
+    when(() => mockWatchlistCubit.loadWatchlistStatus(81231))
+        .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationMoviesSuccess(moviesData: const <Movie>[]));
+    when(() => mockRecommendationCubit.fetchRecommendationMovies(81231))
+        .thenAnswer((_) async => {});
+
+    final detailContent = find.byKey(const Key('list_view_recommendation'));
+
+    await tester
+        .pumpWidget(makeTestableWidget(const MovieDetailPage(id: 81231)));
+
+    expect(detailContent, findsOneWidget);
+  });
+
+  testWidgets('Page should display test with message when Error',
+      (WidgetTester tester) async {
+    when(() => mockDetailMovieCubit.state)
+        .thenReturn(DetailMovieSuccess(movieDetail: testMovieDetail));
+    when(() => mockDetailMovieCubit.fetchDetailMovie(81231))
+        .thenAnswer((_) async => {});
+    when(() => mockWatchlistCubit.state).thenReturn(
+        const WatchlistDetailMovieState(isAddedWatchlist: false, message: ''));
+    when(() => mockWatchlistCubit.loadWatchlistStatus(81231))
+        .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationMoviesFailed(message: 'Error message'));
+    when(() => mockRecommendationCubit.fetchRecommendationMovies(81231))
+        .thenAnswer((_) async => {});
+
+    final textFinder = find.byKey(const Key('error_message_recommendation'));
+
+    await tester.pumpWidget(makeTestableWidget(const MovieDetailPage(
+      id: 81231,
+    )));
+
+    expect(textFinder, findsOneWidget);
   });
 }

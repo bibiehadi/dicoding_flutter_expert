@@ -189,6 +189,8 @@ class DetailContent extends StatelessWidget {
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
+                                      key:
+                                          const Key('list_view_recommendation'),
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                         final movie = state.moviesData[index];
@@ -228,7 +230,11 @@ class DetailContent extends StatelessWidget {
                                   );
                                 }
                                 if (state is RecommendationMoviesFailed) {
-                                  return Center(child: Text(state.message));
+                                  return Center(
+                                      child: Text(
+                                          key: const Key(
+                                              'error_message_recommendation'),
+                                          state.message));
                                 }
                                 if (state is RecommendationMoviesLoading) {
                                   return const Center(

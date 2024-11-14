@@ -34,6 +34,13 @@ void main() {
   );
 
   final tMovieList = <Movie>[tMovie];
+
+  blocTest(
+    'should change state to Initial when usecase is called',
+    build: () => moviesCubit,
+    expect: () => <TopRatedMoviesState>[],
+    verify: (cubit) => expect(cubit.state, TopRatedMoviesInitial()),
+  );
   blocTest<TopRatedMoviesCubit, TopRatedMoviesState>(
     'should change movies data when data is gotten successfully',
     build: () {
