@@ -10,7 +10,7 @@ import 'package:tv_series/data/models/tv_series_detail.dart';
 import 'package:tv_series/data/models/tv_series_response.dart';
 import 'package:tv_series/data/models/tv_series_season_detail.dart';
 
-import '../../../../../test/json_reader.dart';
+import '../../../test/json_reader.dart';
 import '../../tv_series_test.mocks.dart';
 
 void main() {
