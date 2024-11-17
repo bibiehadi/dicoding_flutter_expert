@@ -68,12 +68,6 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, List<TvSeries>>> getWatchlistTvSeries() async {
-    final result = await localDatasource.getWatchlistTvSeries();
-    return Right(result.map((model) => model.toEntityTvSeries()).toList());
-  }
-
-  @override
   Future<bool> isAddedToWatchlist(int id) async {
     final result = await localDatasource.getTvSeriesById(id);
     return result != null;

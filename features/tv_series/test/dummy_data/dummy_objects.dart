@@ -1,8 +1,5 @@
 import 'package:core/utils/db/watchlist_table.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
-import 'package:tv_series/domain/entities/tv_series_detail.dart';
-import 'package:tv_series/domain/entities/tv_series_genre.dart';
-import 'package:tv_series/domain/entities/tv_series_season_detail.dart';
+import 'package:tv_series/tv_series.dart';
 
 const testWatchlistTable = WatchlistTable(
   id: 1,
@@ -49,7 +46,7 @@ final testTvSeries = TvSeries(
 
 final testTvSeriesList = [testTvSeries];
 
-final testTvSeriesDetail = TvSeriesDetail(
+const testTvSeriesDetail = TvSeriesDetail(
   adult: false,
   backdropPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
   firstAirDate: "2024-12-01",
@@ -72,10 +69,21 @@ final testTvSeriesDetail = TvSeriesDetail(
   lastAirDate: "2024-12-01",
   numberOfEpisodes: 10,
   numberOfSeasons: 1,
-  seasons: [],
+  seasons: [
+    TvSeriesSeason(
+      airDate: "2024-12-01",
+      episodeCount: 10,
+      id: 1,
+      name: "Season 1",
+      overview: "Overview",
+      posterPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
+      seasonNumber: 1,
+      voteAverage: 7.4,
+    ),
+  ],
 );
 
-final testTvSeriesSeasonDetail = TvSeriesSeasonDetail(
+const testTvSeriesSeasonDetail = TvSeriesSeasonDetail(
   id: 1,
   name: 'Season 1',
   overview: 'Overview',
@@ -85,7 +93,7 @@ final testTvSeriesSeasonDetail = TvSeriesSeasonDetail(
   voteAverage: 1,
 );
 
-final testWatchlistTvSeriesTable = WatchlistTable(
+const testWatchlistTvSeriesTable = WatchlistTable(
   id: 81231,
   title: "Pulang Araw",
   posterPath: "/oPUJvCl9vo16nttEDwmK3zy06jj.jpg",
@@ -94,14 +102,7 @@ final testWatchlistTvSeriesTable = WatchlistTable(
   isMovies: '0',
 );
 
-final testWatchlistTvSeries = TvSeries.watchlist(
-  id: 1,
-  name: 'title',
-  posterPath: 'posterPath',
-  overview: 'overview',
-);
-
-final testTvSeriesTable = WatchlistTable(
+const testTvSeriesTable = WatchlistTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',

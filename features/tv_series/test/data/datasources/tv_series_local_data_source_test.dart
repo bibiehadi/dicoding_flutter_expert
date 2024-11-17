@@ -97,29 +97,16 @@ void main() {
         // assert
         expect(result, null);
       });
+
+      test('should throw DatabaseException when remove from database is failed',
+          () async {
+        // arrange
+        when(mockDatabaseHelper.getMovieById(tId)).thenThrow(Exception());
+        // act
+        final call = datasource.getTvSeriesById(tId);
+        // assert
+        expect(() => call, throwsA(isA<DatabaseException>()));
+      });
     },
   );
-
-  group('get watchlist tvSeries', () {
-    test('should return list of TvSeries Model when the data is found',
-        () async {
-      // arrange
-      when(mockDatabaseHelper.getWatchlistTvSeries())
-          .thenAnswer((_) async => [testWatchlistMap]);
-      // act
-      final result = await datasource.getWatchlistTvSeries();
-      // assert
-      expect(result, [testWatchlistTable]);
-    });
-
-    test('should return empty list when the data is not found', () async {
-      // arrange
-      when(mockDatabaseHelper.getWatchlistTvSeries())
-          .thenAnswer((_) async => []);
-      // act
-      final result = await datasource.getWatchlistTvSeries();
-      // assert
-      expect(result, []);
-    });
-  });
 }

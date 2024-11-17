@@ -13,15 +13,21 @@ class WatchlistRepositoryImpl implements WatchlistRepository {
 
   @override
   Future<Either<Failure, List<WatchlistTable>>> getWatchlistTvSeries() async {
-    final result = await localDatasource.getWatchlistTvSeries();
-    // return Right(result.map((model) => model.toEntityTvSeries()).toList());
-    return Right(result);
+    try {
+      final result = await localDatasource.getWatchlistTvSeries();
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    }
   }
 
   @override
-  Future<Either<Failure, List<WatchlistTable>>> getWatchlistMovie() async {
-    final result = await localDatasource.getWatchlistMovie();
-    // return Right(result.map((model) => model.toEntityTvSeries()).toList());
-    return Right(result);
+  Future<Either<Failure, List<WatchlistTable>>> getWatchlistMovies() async {
+    try {
+      final result = await localDatasource.getWatchlistMovies();
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    }
   }
 }

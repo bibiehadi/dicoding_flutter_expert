@@ -50,7 +50,7 @@ void main() {
 
     when(() => mockCubit.state).thenReturn(
         NowPlayingTvSeriesSuccess(tvSeriesData: const <TvSeries>[]));
-    final listViewFinder = find.byType(ListView);
+    final listViewFinder = find.byKey(const Key('tv_series_list'));
 
     await tester.pumpWidget(makeTestableWidget(const TvSeriesNowPlayingPage()));
 

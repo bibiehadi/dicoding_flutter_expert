@@ -21,16 +21,14 @@ class TvSeriesSeason extends Equatable {
       required this.voteAverage});
 
   @override
-  List<Object> get props {
-    return [
-      airDate ?? "",
-      episodeCount,
-      id,
-      name,
-      overview,
-      posterPath ?? "",
-      seasonNumber,
-      voteAverage,
-    ];
-  }
+  List<Object> get props => [
+        airDate ?? "",
+        episodeCount,
+        id,
+        name,
+        overview,
+        posterPath ?? "",
+        seasonNumber,
+        voteAverage,
+      ];
 }

@@ -1,13 +1,11 @@
-import '../../../lib/data/models/tv_series_detail.dart';
-import '../../../lib/data/models/tv_series_genre.dart';
-import '../../../lib/data/models/tv_series_season.dart';
-import '../../../lib/domain/entities/tv_series_detail.dart';
-import '../../../lib/domain/entities/tv_series_genre.dart';
-import '../../../lib/domain/entities/tv_series_season.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tv_series/data/models/tv_series_detail.dart';
+import 'package:tv_series/data/models/tv_series_genre.dart';
+import 'package:tv_series/data/models/tv_series_season.dart';
+import 'package:tv_series/tv_series.dart';
 
 void main() {
-  final tTvSeriesDetailModel = TvSeriesDetailModel(
+  const tTvSeriesDetailModel = TvSeriesDetailModel(
     backdropPath: "/path.jpg",
     firstAirDate: "2020-05-05",
     genres: <TvSeriesGenreModel>[
@@ -43,7 +41,7 @@ void main() {
     tagline: "asd",
   );
 
-  final tTvSeriesDetail = TvSeriesDetail(
+  const tTvSeriesDetail = TvSeriesDetail(
     adult: false,
     backdropPath: "/path.jpg",
     firstAirDate: "2020-05-05",

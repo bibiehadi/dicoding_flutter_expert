@@ -19,13 +19,6 @@ class TvSeries extends Equatable {
     this.voteCount,
   });
 
-  TvSeries.watchlist({
-    required this.id,
-    required this.name,
-    required this.posterPath,
-    required this.overview,
-  });
-
   bool? adult;
   String? backdropPath;
   String? firstAirDate;

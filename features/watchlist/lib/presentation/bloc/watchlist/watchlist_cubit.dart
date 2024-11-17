@@ -16,20 +16,21 @@ class WatchlistMoviesCubit extends Cubit<WatchlistMoviesState> {
 
   Future<void> getWatchlistMovies() async {
     emit(WatchlistMoviesLoading());
-    try {
-      final Either<Failure, List<WatchlistTable>> result =
-          await usecase.execute();
-      result.fold(
-        (failure) {
-          emit(WatchlistMoviesFailed(message: failure.message));
-        },
-        (moviesData) {
+    final Either<Failure, List<WatchlistTable>> result =
+        await usecase.execute();
+    result.fold(
+      (failure) {
+        emit(WatchlistMoviesFailed(message: failure.message));
+      },
+      (moviesData) {
+        if (moviesData.isEmpty) {
+          emit(WatchlistMoviesFailed(message: 'No watchlist movies found'));
+          return;
+        } else {
           emit(WatchlistMoviesSuccess(moviesData));
-        },
-      );
-    } catch (e) {
-      emit(WatchlistMoviesFailed(message: e.toString()));
-    }
+        }
+      },
+    );
   }
 }
 
@@ -41,19 +42,22 @@ class WatchlistTvSeriesCubit extends Cubit<WatchlistTvSeriesState> {
 
   Future<void> getWatchlistTvSeries() async {
     emit(WatchlistTvSeriesLoading());
-    try {
-      final Either<Failure, List<WatchlistTable>> result =
-          await usecase.execute();
-      result.fold(
-        (failure) {
-          emit(WatchlistTvSeriesFailed(message: failure.message));
-        },
-        (tvSeriesData) {
+
+    final Either<Failure, List<WatchlistTable>> result =
+        await usecase.execute();
+    result.fold(
+      (failure) {
+        emit(WatchlistTvSeriesFailed(message: failure.message));
+      },
+      (tvSeriesData) {
+        if (tvSeriesData.isEmpty) {
+          emit(
+              WatchlistTvSeriesFailed(message: 'No watchlist tv series found'));
+          return;
+        } else {
           emit(WatchlistTvSeriesSuccess(tvSeriesData));
-        },
-      );
-    } catch (e) {
-      emit(WatchlistTvSeriesFailed(message: e.toString()));
-    }
+        }
+      },
+    );
   }
 }

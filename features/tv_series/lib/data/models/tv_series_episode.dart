@@ -49,22 +49,6 @@ class EpisodeModel extends Equatable {
         showId: json["show_id"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "overview": overview,
-        "season_number": seasonNumber,
-        "still_path": stillPath,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-        "air_date": airDate,
-        "episode_number": episodeNumber,
-        "episode_type": episodeType,
-        "production_code": productionCode,
-        "runtime": runtime,
-        "show_id": showId,
-      };
-
   Episode toEntity() => Episode(
         id: id,
         name: name,

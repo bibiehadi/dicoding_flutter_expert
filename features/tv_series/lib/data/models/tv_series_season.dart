@@ -35,17 +35,6 @@ class TvSeriesSeasonModel extends Equatable {
         voteAverage: json['vote_average'],
       );
 
-  Map<String, dynamic> toJson() => {
-        'air_date': airDate,
-        'episode_count': episodeCount,
-        'id': id,
-        'name': name,
-        'overview': overview,
-        'poster_path': posterPath,
-        'season_number': seasonNumber,
-        'vote_average': voteAverage,
-      };
-
   TvSeriesSeason toEntity() {
     return TvSeriesSeason(
       airDate: airDate,

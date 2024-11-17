@@ -19,6 +19,13 @@ void main() {
     tvSeriesCubit = PopularTvSeriesCubit(getTvSeriesList: mockGetTvSeriesList);
   });
 
+  blocTest(
+    'should change state to Initial when usecase is called',
+    build: () => PopularTvSeriesCubit(getTvSeriesList: mockGetTvSeriesList),
+    expect: () => <PopularTvSeriesState>[],
+    verify: (cubit) => expect(cubit.state, PopularTvSeriesInitial()),
+  );
+
   blocTest<PopularTvSeriesCubit, PopularTvSeriesState>(
     'should change tv series data when data is gotten successfully',
     build: () {

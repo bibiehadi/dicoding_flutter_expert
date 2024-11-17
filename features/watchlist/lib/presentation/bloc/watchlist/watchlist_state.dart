@@ -1,9 +1,9 @@
 part of 'watchlist_cubit.dart';
 
 @immutable
-sealed class WatchlistMoviesState extends Equatable {}
+abstract class WatchlistMoviesState extends Equatable {}
 
-sealed class WatchlistTvSeriesState extends Equatable {}
+abstract class WatchlistTvSeriesState extends Equatable {}
 
 final class WatchlistMoviesInitial extends WatchlistMoviesState {
   @override

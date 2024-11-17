@@ -4,5 +4,5 @@ import 'package:core/utils/db/watchlist_table.dart';
 
 abstract class WatchlistRepository {
   Future<Either<Failure, List<WatchlistTable>>> getWatchlistTvSeries();
-  Future<Either<Failure, List<WatchlistTable>>> getWatchlistMovie();
+  Future<Either<Failure, List<WatchlistTable>>> getWatchlistMovies();
 }

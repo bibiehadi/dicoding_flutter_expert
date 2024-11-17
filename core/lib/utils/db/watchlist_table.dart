@@ -62,13 +62,6 @@ class WatchlistTable extends Equatable {
         title: title,
       );
 
-  TvSeries toEntityTvSeries() => TvSeries.watchlist(
-        id: id,
-        overview: overview,
-        posterPath: posterPath,
-        name: title,
-      );
-
   @override
   List<Object?> get props => [id, title, posterPath, overview];
 }

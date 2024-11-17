@@ -27,6 +27,18 @@ void main() {
     overview: 'overview',
     posterPath: '/poster_path.jpg',
     voteAverage: 7.0,
+    seasons: [
+      TvSeriesSeason(
+        airDate: '2021-08-01',
+        episodeCount: 1,
+        id: 1,
+        name: 'Season 1',
+        overview: 'overview',
+        posterPath: '/poster_path.jpg',
+        seasonNumber: 1,
+        voteAverage: 9.0,
+      ),
+    ],
   );
 
   test('should get tv series detail from the repository', () async {

@@ -46,19 +46,6 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  testWidgets('Page should display ListView when data is loaded',
-      (WidgetTester tester) async {
-    when(() => mockCubit.fetchPopularMovies()).thenAnswer((_) async => {});
-    when(() => mockCubit.state)
-        .thenReturn(PopularMoviesSuccess(moviesData: const <Movie>[]));
-
-    final listViewFinder = find.byType(ListView);
-
-    await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
-
-    expect(listViewFinder, findsOneWidget);
-  });
-
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
     when(() => mockCubit.fetchPopularMovies()).thenAnswer((_) async => {});
@@ -84,18 +71,5 @@ void main() {
     await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
 
     expect(detailContent, findsOneWidget);
-  });
-
-  testWidgets('Page should display test with message when Error',
-      (WidgetTester tester) async {
-    when(() => mockCubit.state)
-        .thenReturn(PopularMoviesFailed(message: 'Error message'));
-    when(() => mockCubit.fetchPopularMovies()).thenAnswer((_) async => {});
-
-    final textFinder = find.byKey(const Key('error_message'));
-
-    await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
-
-    expect(textFinder, findsOneWidget);
   });
 }

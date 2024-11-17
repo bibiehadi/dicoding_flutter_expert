@@ -56,21 +56,6 @@ class TvSeriesModel extends Equatable {
         voteCount: json["vote_count"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-        "id": id,
-        "original_name": originalName,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "first_air_date": firstAirDate,
-        "name": name,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
-
   TvSeries toEntity() {
     return TvSeries(
       adult: adult,

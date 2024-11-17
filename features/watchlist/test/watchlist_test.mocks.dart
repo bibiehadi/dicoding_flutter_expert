@@ -158,9 +158,9 @@ class MockWatchlistRepository extends _i1.Mock
 
   @override
   _i5.Future<_i2.Either<_i9.Failure, List<_i7.WatchlistTable>>>
-      getWatchlistMovie() => (super.noSuchMethod(
+      getWatchlistMovies() => (super.noSuchMethod(
             Invocation.method(
-              #getWatchlistMovie,
+              #getWatchlistMovies,
               [],
             ),
             returnValue: _i5.Future<
@@ -168,7 +168,7 @@ class MockWatchlistRepository extends _i1.Mock
                 _FakeEither_0<_i9.Failure, List<_i7.WatchlistTable>>(
               this,
               Invocation.method(
-                #getWatchlistMovie,
+                #getWatchlistMovies,
                 [],
               ),
             )),
@@ -195,10 +195,10 @@ class MockLocalDatasource extends _i1.Mock implements _i10.LocalDatasource {
       ) as _i5.Future<List<_i7.WatchlistTable>>);
 
   @override
-  _i5.Future<List<_i7.WatchlistTable>> getWatchlistMovie() =>
+  _i5.Future<List<_i7.WatchlistTable>> getWatchlistMovies() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getWatchlistMovie,
+          #getWatchlistMovies,
           [],
         ),
         returnValue:

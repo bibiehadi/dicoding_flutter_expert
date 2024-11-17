@@ -67,7 +67,7 @@ void main() {
       build: () {
         // arrange
         when(() => mockGetTvSeriesDetail.call(GetTvSeriesDetailParams(tId)))
-            .thenAnswer((_) async => Right(testTvSeriesDetail));
+            .thenAnswer((_) async => const Right(testTvSeriesDetail));
         // act
         return detailTvSeriesCubit;
       },
@@ -124,8 +124,9 @@ void main() {
       "should execute save watchlist when function called",
       build: () {
         // arrange
-        when(() => mockSaveTvSeriesWatchlist.call(SaveTvSeriesWatchlistParams(
-                tvSeriesDetail: testTvSeriesDetail)))
+        when(() => mockSaveTvSeriesWatchlist.call(
+                const SaveTvSeriesWatchlistParams(
+                    tvSeriesDetail: testTvSeriesDetail)))
             .thenAnswer((_) async => const Right('Added to watchlist'));
         // act
         return watchlistDetailTvSeriesCubit;
@@ -136,15 +137,17 @@ void main() {
             isAddedToWatchlist: true, message: 'Added to watchlist'),
       ],
       verify: (cubit) => verify(() => mockSaveTvSeriesWatchlist.call(
-          SaveTvSeriesWatchlistParams(tvSeriesDetail: testTvSeriesDetail))),
+          const SaveTvSeriesWatchlistParams(
+              tvSeriesDetail: testTvSeriesDetail))),
     );
 
     blocTest(
       "failed execute save watchlist when function called",
       build: () {
         // arrange
-        when(() => mockSaveTvSeriesWatchlist.call(SaveTvSeriesWatchlistParams(
-                tvSeriesDetail: testTvSeriesDetail)))
+        when(() => mockSaveTvSeriesWatchlist.call(
+                const SaveTvSeriesWatchlistParams(
+                    tvSeriesDetail: testTvSeriesDetail)))
             .thenAnswer((_) async => const Left(DatabaseFailure('Failed')));
         // act
         return watchlistDetailTvSeriesCubit;

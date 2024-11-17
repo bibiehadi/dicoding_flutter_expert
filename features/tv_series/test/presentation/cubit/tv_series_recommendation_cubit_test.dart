@@ -21,6 +21,14 @@ void main() {
         getTvSeriesRecommendations: mockGetTvSeriesRecommendations);
   });
 
+  blocTest(
+    'should change state to Initial when usecase is called',
+    build: () => RecommendationTvSeriesCubit(
+        getTvSeriesRecommendations: mockGetTvSeriesRecommendations),
+    expect: () => <RecommendationTvSeriesState>[],
+    verify: (cubit) => expect(cubit.state, RecommendationTvSeriesInitial()),
+  );
+
   blocTest<RecommendationTvSeriesCubit, RecommendationTvSeriesState>(
     'should change tv series data when data is gotten successfully',
     build: () {

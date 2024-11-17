@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 
 import '../../domain/entities/tv_series.dart';
-import '../pages/tv_series_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class TvSeriesCard extends StatelessWidget {
@@ -43,7 +42,7 @@ class TvSeriesCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       tvSeries.overview ?? '-',
                       maxLines: 2,
@@ -59,14 +58,14 @@ class TvSeriesCard extends StatelessWidget {
                 bottom: 16,
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
                 child: CachedNetworkImage(
                   imageUrl: '$baseImageURL${tvSeries.posterPath}',
                   width: 80,
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

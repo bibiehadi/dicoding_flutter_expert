@@ -34,16 +34,6 @@ class TvSeriesSeasonDetailModel extends Equatable {
             json["episodes"].map((x) => EpisodeModel.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "overview": overview,
-        "season_number": seasonNumber,
-        "poster_path": posterPath,
-        "vote_average": voteAverage,
-        "episodes": List<dynamic>.from(episodes.map((x) => x.toJson())),
-      };
-
   TvSeriesSeasonDetail toEntity() => TvSeriesSeasonDetail(
         id: id,
         name: name,

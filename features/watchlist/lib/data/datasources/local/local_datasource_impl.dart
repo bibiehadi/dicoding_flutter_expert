@@ -20,7 +20,7 @@ class LocalDatasourceImpl implements LocalDatasource {
   }
 
   @override
-  Future<List<WatchlistTable>> getWatchlistMovie() async {
+  Future<List<WatchlistTable>> getWatchlistMovies() async {
     try {
       final result = await databaseHelper.getWatchlistMovies();
       return result.map((data) => WatchlistTable.fromMap(data)).toList();

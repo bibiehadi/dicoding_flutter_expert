@@ -1,4 +1,5 @@
-import 'package:core/utils/exception.dart';
+import 'package:core/core.dart';
+import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:watchlist/data/datasources/local/local_datasource_impl.dart';
@@ -15,27 +16,65 @@ void main() {
     dataSource = LocalDatasourceImpl(databaseHelper: mockDatabaseHelper);
   });
 
-  group('get watchlist movies', () {
-    test('should return list of WatchlistTable from database', () async {
-      // arrange
-      when(mockDatabaseHelper.getWatchlistMovies())
-          .thenAnswer((_) async => [testMovieMap]);
-      // act
-      final result = await dataSource.getWatchlistMovie();
-      // assert
-      expect(result, [testWatchlistTable]);
-    });
-  });
-
-  group('get watchlist tv_series', () {
-    test('should return list of WatchlistTable from database', () async {
+  group('get watchlist tvSeries', () {
+    test('should return list of TvSeries Model when the data is found',
+        () async {
       // arrange
       when(mockDatabaseHelper.getWatchlistTvSeries())
-          .thenAnswer((_) async => [testMovieMap]);
+          .thenAnswer((_) async => [testWatchlistMap]);
       // act
       final result = await dataSource.getWatchlistTvSeries();
       // assert
       expect(result, [testWatchlistTable]);
+    });
+
+    test('should return empty list when the data is not found', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistTvSeries())
+          .thenAnswer((_) async => []);
+      // act
+      final result = await dataSource.getWatchlistTvSeries();
+      // assert
+      expect(result, []);
+    });
+
+    test('should return database exception when get exception', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistTvSeries()).thenThrow(Exception());
+      // act
+      final result = dataSource.getWatchlistTvSeries();
+      // assert
+      expect(() => result, throwsA(isA<DatabaseException>()));
+    });
+  });
+
+  group('get watchlist Movies', () {
+    test('should return list of Movies Model when the data is found', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistMovies())
+          .thenAnswer((_) async => [testWatchlistMap]);
+      // act
+      final result = await dataSource.getWatchlistMovies();
+      // assert
+      expect(result, [testWatchlistTable]);
+    });
+
+    test('should return empty list when the data is not found', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistMovies()).thenAnswer((_) async => []);
+      // act
+      final result = await dataSource.getWatchlistMovies();
+      // assert
+      expect(result, []);
+    });
+
+    test('should return database exception when get exception', () async {
+      // arrange
+      when(mockDatabaseHelper.getWatchlistMovies()).thenThrow(Exception());
+      // act
+      final result = dataSource.getWatchlistMovies();
+      // assert
+      expect(() => result, throwsA(isA<DatabaseException>()));
     });
   });
 }

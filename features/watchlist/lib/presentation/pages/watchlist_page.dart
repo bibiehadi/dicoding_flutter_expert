@@ -2,9 +2,7 @@ import 'dart:developer';
 
 import 'package:core/core.dart';
 import 'package:watchlist/presentation/bloc/watchlist/watchlist_cubit.dart';
-import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
 import 'package:watchlist/presentation/widgets/watchlist_list.dart';
-import 'watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
@@ -65,12 +63,19 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                   builder: (context, state) {
                 if (state is WatchlistMoviesLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      key: Key('watchlist_movies_loading'),
+                    ),
                   );
                 } else if (state is WatchlistMoviesSuccess) {
-                  return WatchlistList(state.watchlistMovies);
+                  return WatchlistList(
+                      key: const Key('watchlist_movies_list'),
+                      state.watchlistMovies);
                 } else {
-                  return const Text('Failed');
+                  return const Text(
+                    key: Key('watchlist_movies_failed'),
+                    'Failed',
+                  );
                 }
               }),
               _buildSubHeading(
@@ -83,12 +88,17 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 log("state: $state");
                 if (state is WatchlistTvSeriesLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      key: Key('watchlist_tv_series_loading'),
+                    ),
                   );
                 } else if (state is WatchlistTvSeriesSuccess) {
-                  return WatchlistList(state.watchlistTvSeries);
+                  return WatchlistList(
+                      key: const Key('watchlist_tv_series_list'),
+                      state.watchlistTvSeries);
                 } else {
-                  return const Text('Failed');
+                  return const Text(
+                      key: Key('watchlist_tv_series_failed'), 'Failed');
                 }
               }),
             ],
