@@ -64,6 +64,10 @@ void main() {
         .thenReturn(DetailTvSeriesLoading());
     when(() => mockDetailTvSeriesCubit.fetchTvSeriesDetail(81231))
         .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationTvSeriesLoading());
+    when(() => mockRecommendationCubit.fetchRecommendationTvSeries(81231))
+        .thenAnswer((_) async => {});
     when(() => mockWatchlistCubit.state).thenReturn(
         const WatchlistDetailTvSeriesState(
             isAddedToWatchlist: false, message: ''));
@@ -110,6 +114,10 @@ void main() {
     when(() => mockDetailTvSeriesCubit.state)
         .thenReturn(DetailTvSeriesFailed(message: 'Error message'));
     when(() => mockDetailTvSeriesCubit.fetchTvSeriesDetail(81231))
+        .thenAnswer((_) async => {});
+    when(() => mockRecommendationCubit.state)
+        .thenReturn(RecommendationTvSeriesLoading());
+    when(() => mockRecommendationCubit.fetchRecommendationTvSeries(81231))
         .thenAnswer((_) async => {});
     when(() => mockWatchlistCubit.state).thenReturn(
         const WatchlistDetailTvSeriesState(

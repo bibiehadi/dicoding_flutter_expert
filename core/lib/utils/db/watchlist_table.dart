@@ -1,7 +1,6 @@
 import 'package:core/third_party_library.dart';
 import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/entities/movie_detail.dart';
-import 'package:tv_series/domain/entities/tv_series.dart';
 import 'package:tv_series/domain/entities/tv_series_detail.dart';
 
 class WatchlistTable extends Equatable {

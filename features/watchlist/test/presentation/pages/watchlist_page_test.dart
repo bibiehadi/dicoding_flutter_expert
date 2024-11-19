@@ -91,6 +91,7 @@ void main() {
     await tester.pumpWidget(makeTestableWidget(watchlistPage));
 
     expect(find.byKey(const Key('watchlist_movies_list')), findsOneWidget);
+
     expect(find.byKey(const Key('watchlist_tv_series_list')), findsOneWidget);
   });
 
