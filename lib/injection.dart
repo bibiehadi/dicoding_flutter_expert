@@ -43,7 +43,6 @@ import 'package:tv_series/presentation/bloc/season_detail_tv_series/season_detai
 import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_cubit.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_cubit.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:watchlist/data/datasources/local/local_datasource.dart';
 import 'package:watchlist/data/datasources/local/local_datasource_impl.dart';
