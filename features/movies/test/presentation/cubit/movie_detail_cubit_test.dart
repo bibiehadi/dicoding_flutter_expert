@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/usecases/get_movie_detail.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
 
@@ -22,23 +21,6 @@ void main() {
   });
 
   const tId = 1;
-
-  final tMovie = Movie(
-    adult: false,
-    backdropPath: 'backdropPath',
-    genreIds: const [1, 2, 3],
-    id: 1,
-    originalTitle: 'originalTitle',
-    overview: 'overview',
-    popularity: 1,
-    posterPath: 'posterPath',
-    releaseDate: 'releaseDate',
-    title: 'title',
-    video: false,
-    voteAverage: 1,
-    voteCount: 1,
-  );
-  final tMovies = <Movie>[tMovie];
 
   group('Get Movie Detail', () {
     blocTest(

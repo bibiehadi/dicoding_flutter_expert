@@ -1,4 +1,5 @@
 import 'package:core/utils/db/database_helper.dart';
+import 'package:core/utils/ssl/ssl_config.dart';
 import 'package:movies/data/datasources/movie_local_data_source.dart';
 import 'package:movies/data/datasources/movie_remote_data_source.dart';
 import 'package:movies/data/repositories/movie_repository_impl.dart';
@@ -170,6 +171,7 @@ void init() {
   );
 
   // data sources
+
   locator.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(
@@ -187,5 +189,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => HttpSSLPinning.client);
 }

@@ -1,4 +1,6 @@
 import 'package:core/core.dart';
+import 'package:ditonton/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/presentation/bloc/detail_movie/detail_movie_cubit.dart';
@@ -35,7 +37,12 @@ import 'package:watchlist/presentation/pages/watchlist_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_tv_series_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   di.init();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await HttpSSLPinning.init();
   runApp(MyApp());
 }
 

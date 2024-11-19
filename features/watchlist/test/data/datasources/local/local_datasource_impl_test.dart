@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:core/third_party_library.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:watchlist/data/datasources/local/local_datasource_impl.dart';

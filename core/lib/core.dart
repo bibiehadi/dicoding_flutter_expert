@@ -8,6 +8,8 @@ export 'utils/utils.dart';
 export 'utils/exception.dart';
 export 'utils/routes.dart';
 
+export 'utils/ssl/ssl_config.dart';
+
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

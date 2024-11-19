@@ -2,8 +2,6 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-// import 'package:mockito/mockito.dart';
-import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/presentation/bloc/popular_movies/popular_movies_cubit.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
 
