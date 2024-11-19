@@ -19,17 +19,26 @@ class HttpSSLPinning {
   // Create an HTTP client with SSL pinning
   static Future<http.Client> _createLEClient() async {
     // Load the PEM certificate from assets
-
     final sslPemString = await rootBundle
         .load('packages/core/assets/certificates/certificates.pem');
 
     SecurityContext context = SecurityContext(withTrustedRoots: false);
-    context.setTrustedCertificatesBytes(sslPemString.buffer.asUint8List());
+    try {
+      context.setTrustedCertificatesBytes(sslPemString.buffer.asUint8List());
+    } catch (e) {
+      print("Error setting trusted certificates: $e");
+      rethrow;
+    }
 
     // Configure the HttpClient with SSL pinning
     final HttpClient client = HttpClient(context: context);
     client.badCertificateCallback =
-        (X509Certificate cert, String host, int port) => false;
+        (X509Certificate cert, String host, int port) {
+      print("Host: $host, Port: $port");
+      print("Certificate Subject: ${cert.subject}");
+      print("Certificate Issuer: ${cert.issuer}");
+      return false; // Ensure this doesn't blindly accept certificates
+    };
 
     return IOClient(client);
   }

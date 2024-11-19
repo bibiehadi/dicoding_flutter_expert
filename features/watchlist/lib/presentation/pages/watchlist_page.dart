@@ -71,6 +71,11 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                   return WatchlistList(
                       key: const Key('watchlist_movies_list'),
                       state.watchlistMovies);
+                } else if (state is WatchlistMoviesFailed) {
+                  return Text(
+                    key: const Key('watchlist_movies_failed'),
+                    state.message,
+                  );
                 } else {
                   return const Text(
                     key: Key('watchlist_movies_failed'),
@@ -96,9 +101,15 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                   return WatchlistList(
                       key: const Key('watchlist_tv_series_list'),
                       state.watchlistTvSeries);
+                } else if (state is WatchlistTvSeriesFailed) {
+                  return Text(
+                      key: const Key('watchlist_tv_series_failed'),
+                      state.message);
                 } else {
                   return const Text(
-                      key: Key('watchlist_tv_series_failed'), 'Failed');
+                    key: Key('watchlist_tv_series_failed'),
+                    'Failed',
+                  );
                 }
               }),
             ],

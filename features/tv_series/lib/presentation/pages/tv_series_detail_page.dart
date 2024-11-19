@@ -35,6 +35,9 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
           .read<DetailTvSeriesCubit>()
           .fetchTvSeriesDetail(widget.tvSeriesId);
       context
+          .read<RecommendationTvSeriesCubit>()
+          .fetchRecommendationTvSeries(widget.tvSeriesId);
+      context
           .read<WatchlistDetailTvSeriesCubit>()
           .loadWatchlistStatus(widget.tvSeriesId);
     });
@@ -270,7 +273,6 @@ class DetailContent extends StatelessWidget {
                                 if (state is RecommendationTvSeriesSuccess) {
                                   final List<TvSeries> recommendations =
                                       state.tvSeriesList;
-
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
